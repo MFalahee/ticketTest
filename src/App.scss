@@ -1,0 +1,137 @@
+.App {
+  background-color: black;
+  min-height: 100%;
+  min-width: 100%;
+  /* resets */
+  font-family: 'Roboto', sans-serif;
+  color: white;
+  text-align: center;
+  line-height: 1.5;
+  letter-spacing: 0.5px;
+  font-size: 16px;
+  font-weight: 400;
+  text-transform: none;
+  text-shadow: none;
+  text-decoration: none;
+  text-indent: 0;
+}
+/* 
+Colors and styles
+*/
+// variables
+$yellow: #fedc71;
+
+.grid-container {
+  min-height: 100%;
+  background: linear-gradient(180deg, black, transparent),
+  linear-gradient(360deg, black, transparent),
+  url('../public/assets/backgroundgradient.svg');
+  filter: contrast(110%) brightness(100%);
+}
+
+/* Component styles */
+
+/* Ticket */
+.custom-ticket-section {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+  align-items: center;
+  .custom-ticket-paper {
+    max-width: 50vw;
+    max-height: 50vh;
+  }
+  .custom-ticket-image {
+    max-width: inherit;
+    max-height: inherit;
+  }
+}
+
+
+/* Accordion */
+
+@mixin square-icon-styling($id, $top-or-bottom, $left-or-right) {
+  // .MuiSvgIcon-root .cas-square-#{$id} {
+    .MuiSvgIcon-root {
+      &.cas-square-#{$id} {
+        position: absolute;
+        width: 15px;
+        height: 15px;
+        #{$top-or-bottom}: 0;
+        #{$left-or-right}: 0;
+      }
+  }
+}
+.custom-accordion {
+  display: flex;
+  flex-direction: column;
+  background: inherit;
+  .custom-accordion-section {
+    background-color: black;
+    text-transform: uppercase;
+    border-color: white;
+    &:nth-child(odd) {
+      border-color: black;
+      background: $yellow;
+      color: black;
+    }
+    .cas-visible-content {
+      border: 1px solid red;
+      .cas-top-row {
+        margin: 0;
+        margin-bottom: -10px;
+        padding-top: 0.5rem;
+        border-bottom: 0.2rem solid;
+        border-color: inherit;
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        height: 5rem;
+        .cas-title-text {
+          align-self: center;
+          font-family: 'Roboto', sans-serif;
+          font-size: 5rem;
+          font-weight: 150;
+          margin: 0;
+          padding: 0;
+          padding-right: 1rem;    
+      }
+        .cas-square-icon-container {
+          position: relative;
+          height: 4rem;
+          width: 4rem;
+          margin: 0;
+          padding: 0;
+        }
+        .MuiSvgIcon-root {
+          &.cas-arrow {
+            position: relative;
+            width: 30px;
+            height: 30px;
+            top: 30%;
+          }
+        }
+      }
+      .cas-bottom-row {
+        margin: 0;
+        padding: 0;
+        border-color: inherit;
+        font-size: 0.7rem;
+        .cas-subcategories {
+          display: flex;
+          flex-direction: row;
+          justify-content: center;
+          span {
+            margin: 0 0.5rem;
+          }
+        }
+      }
+      }
+      
+    }
+  }
+
+  @include square-icon-styling(0, top, left);
+  @include square-icon-styling(1, top, right);
+  @include square-icon-styling(2, bottom, left);
+  @include square-icon-styling(3, bottom, right);
