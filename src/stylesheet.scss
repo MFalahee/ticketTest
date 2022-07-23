@@ -1,10 +1,16 @@
 .App {
+  background:
+  radial-gradient(circle,black,transparent),
+  url('./files/charcoalleatherbg.jpg');
+  background-attachment: fixed;
+  background-position: center;
+  background-size: cover; 
   background-color: black;
   min-height: 100%;
   min-width: 100%;
   /* resets */
   font-family: 'Roboto', sans-serif;
-  color: white;
+  color: #fff9e6;
   text-align: center;
   line-height: 1.5;
   letter-spacing: 0.5px;
@@ -20,13 +26,14 @@ Colors and styles
 */
 // variables
 $yellow: #fedc71;
+$white:#fff9e6;
 
 .grid-container {
   min-height: 100%;
-  background: linear-gradient(180deg, black, transparent),
-  linear-gradient(360deg, black, transparent),
-  url('../public/assets/backgroundgradient.svg');
-  filter: contrast(110%) brightness(100%);
+  // background: linear-gradient(180deg, black, transparent),
+  // linear-gradient(360deg, black, transparent),
+  // url('../public/assets/backgroundgradient.svg');
+  // filter: contrast(110%) brightness(100%);
 }
 
 /* Component styles */
@@ -47,9 +54,15 @@ $yellow: #fedc71;
   }
 }
 
-
+@keyframes rotate-90-cw {
+  0% {
+    transform: rotate(0);
+  }
+  100% {
+    transform: rotate(90deg);
+  }
+}
 /* Accordion */
-
 @mixin square-icon-styling($id, $top-or-bottom, $left-or-right) {
   // .MuiSvgIcon-root .cas-square-#{$id} {
     .MuiSvgIcon-root {
@@ -62,21 +75,25 @@ $yellow: #fedc71;
       }
   }
 }
+
+$primary : $yellow;
+$secondary : white;
+
 .custom-accordion {
   display: flex;
   flex-direction: column;
   background: inherit;
   .custom-accordion-section {
-    background-color: black;
     text-transform: uppercase;
-    border-color: white;
+    border-color: $white;
+    color: $white;
     &:nth-child(odd) {
       border-color: black;
       background: $yellow;
       color: black;
     }
     .cas-visible-content {
-      border: 1px solid red;
+   
       .cas-top-row {
         margin: 0;
         margin-bottom: -10px;
@@ -109,6 +126,14 @@ $yellow: #fedc71;
             width: 30px;
             height: 30px;
             top: 30%;
+            &:hover{
+              cursor: pointer;
+              color: $white;
+              animation: rotate-90-cw 400ms ease-in both;
+            }
+            &:active{
+              color: black;
+            }
           }
         }
       }
@@ -116,13 +141,16 @@ $yellow: #fedc71;
         margin: 0;
         padding: 0;
         border-color: inherit;
-        font-size: 0.7rem;
+        font-size: 1rem;
         .cas-subcategories {
           display: flex;
           flex-direction: row;
           justify-content: center;
           span {
-            margin: 0 0.5rem;
+            margin: 0 0.8rem;
+            &:hover {
+              cursor: pointer;
+              color: $white;            }
           }
         }
       }
@@ -135,3 +163,54 @@ $yellow: #fedc71;
   @include square-icon-styling(1, top, right);
   @include square-icon-styling(2, bottom, left);
   @include square-icon-styling(3, bottom, right);
+
+  /* 
+  
+  Crosshair
+  icon 0-1 are squares
+  icon 2-3 are lgcircle
+  icon 4-7 are smcircle
+  */
+
+@mixin crosshair-styles($id) {
+      .crosshair-icon-#{$id} {
+        color: $yellow;
+        background-color: $yellow;
+  }
+}
+  .crosshair {
+    z-index: -1;
+    min-height: 50vh;
+    width: 100vw;
+    position: fixed;
+    top: 30%;
+    .crosshair-inner {
+      background: linear-gradient(90deg, $yellow, transparent);
+      filter: drop-shadow(4px 4px 4px $yellow);
+      .ch-square {
+        color: $yellow;
+        position: absolute;
+        top: auto;
+        bottom: 50%;
+        left: 50%;
+        height: 50px;
+        width: 50px;
+      }
+      .ch-lgcircle {
+        color: $yellow;
+        position: absolute;
+        top: auto;
+        bottom: 50%;
+        left: 0;
+        min-height: 100px;
+        min-width: 100px;
+      }
+      .ch-smcircle {
+        color: $yellow;
+        position: absolute;
+        top: auto;
+        bottom: 50%;
+        left: 0;
+      }
+    }
+  }

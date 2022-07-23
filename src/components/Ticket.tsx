@@ -1,5 +1,5 @@
 import { Paper } from '@mui/material';
-import ticketImage from '../files/test1.jpg';
+import ticketImage from '../files/concertphotos/test1.jpg';
 
 export default function Ticket() {
     return(
