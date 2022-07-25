@@ -1,0 +1,18 @@
+
+  /* 
+  Crosshair
+  icon 0-1 are squares
+  icon 2-3 are lgcircle
+  icon 4-7 are smcircle
+  */
+  
+.crosshair {
+  z-index: -1;
+  min-height: 50vh;
+  width: 100vw;
+  position: fixed;
+  top: 30%;
+  .crosshair-inner {
+    display: relative;
+  }
+}

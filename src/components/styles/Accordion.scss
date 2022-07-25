@@ -1,0 +1,101 @@
+/* Accordion */
+@mixin square-icon-styling($id, $top-or-bottom, $left-or-right) {
+    // .MuiSvgIcon-root .cas-square-#{$id} {
+      .MuiSvgIcon-root {
+        &.cas-square-#{$id} {
+          position: absolute;
+          width: 15px;
+          height: 15px;
+          #{$top-or-bottom}: 0;
+          #{$left-or-right}: 0;
+        }
+    }
+  }
+  
+  $primary : $yellow;
+  $secondary : white;
+  
+  .custom-accordion {
+    display: flex;
+    flex-direction: column;
+    background: inherit;
+    .custom-accordion-section {
+      text-transform: uppercase;
+      border-color: $white;
+      color: $white;
+      &:nth-child(odd) {
+        border-color: black;
+        background: $yellow;
+        color: black;
+      }
+      .cas-visible-content {
+     
+        .cas-top-row {
+          margin: 0;
+          margin-bottom: -10px;
+          padding-top: 0.5rem;
+          border-bottom: 0.2rem solid;
+          border-color: inherit;
+          display: flex;
+          flex-direction: row;
+          justify-content: center;
+          height: 5rem;
+          .cas-title-text {
+            align-self: center;
+            font-family: $font1;
+            font-size: 5rem;
+            font-weight: 150;
+            margin: 0;
+            padding: 0;
+            padding-right: 1rem;    
+        }
+          .cas-square-icon-container {
+            position: relative;
+            height: 4rem;
+            width: 4rem;
+            margin: 0;
+            padding: 0;
+          }
+          .MuiSvgIcon-root {
+            &.cas-arrow {
+              position: relative;
+              width: 30px;
+              height: 30px;
+              top: 30%;
+              &:hover{
+                cursor: pointer;
+                color: $white;
+                animation: rotate-90-cw 400ms ease-in both;
+              }
+              &:active{
+                color: black;
+              }
+            }
+          }
+        }
+        .cas-bottom-row {
+          margin: 0;
+          padding: 0;
+          border-color: inherit;
+          font-size: 1rem;
+          .cas-subcategories {
+            display: flex;
+            flex-direction: row;
+            justify-content: center;
+            span {
+              margin: 0 0.8rem;
+              &:hover {
+                cursor: pointer;
+                color: $white;            }
+            }
+          }
+        }
+        }
+        
+      }
+    }
+  
+    @include square-icon-styling(0, top, left);
+    @include square-icon-styling(1, top, right);
+    @include square-icon-styling(2, bottom, left);
+    @include square-icon-styling(3, bottom, right);

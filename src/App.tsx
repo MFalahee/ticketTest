@@ -12,11 +12,11 @@ function App() {
   return (
     <div className="App" id="app-container">
       <CssBaseline />
-      <Grid container spacing={2} className="grid-container">
+      <Grid container justifyContent="center" spacing={1} className="grid-container">
         <Grid item xs={12}>
           <Header />
             </Grid>
-          <Grid item xs={12}>
+          <Grid item xs={8}>
             <Ticket />
           </Grid>
           <Grid item xs={12}>

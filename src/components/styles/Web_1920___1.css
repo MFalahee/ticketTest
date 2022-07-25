@@ -1,0 +1,491 @@
+.mediaViewInfo {
+	--web-view-name: Web 1920 – 1;
+	--web-view-id: Web_1920__1;
+	--web-scale-on-resize: true;
+	--web-enable-deep-linking: true;
+}
+:root {
+	--web-view-ids: Web_1920__1;
+}
+* {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+	border: none;
+}
+#Web_1920__1 {
+	position: absolute;
+	width: 1920px;
+	height: 1909px;
+	background-color: rgba(255,255,255,1);
+	overflow: hidden;
+	--web-view-name: Web 1920 – 1;
+	--web-view-id: Web_1920__1;
+	--web-scale-on-resize: true;
+	--web-enable-deep-linking: true;
+}
+#n_nftsite_photos {
+	position: absolute;
+	width: 1949px;
+	height: 2089px;
+	left: -14px;
+	top: -180px;
+	overflow: visible;
+}
+#BG_TEXTURE_copy {
+	position: absolute;
+	width: 1920px;
+	height: 2089px;
+	left: 14px;
+	top: 0px;
+	overflow: visible;
+}
+#Group_22 {
+	position: absolute;
+	width: 1949px;
+	height: 1814px;
+	left: 0px;
+	top: 179px;
+	overflow: visible;
+}
+#Scroll_Group_1 {
+	mix-blend-mode: normal;
+	position: absolute;
+	width: 1920px;
+	height: 556px;
+	left: 14px;
+	top: 1258px;
+	overflow: hidden;
+}
+#Rectangle_7 {
+	position: absolute;
+	width: 1920px;
+	height: 895px;
+	left: 0px;
+	top: -171px;
+	overflow: visible;
+}
+#ticket {
+	position: absolute;
+	width: 790.16px;
+	height: 834.852px;
+	left: 577.92px;
+	top: 219.92px;
+	overflow: visible;
+}
+#Layer_15 {
+	position: absolute;
+	width: 790.16px;
+	height: 789.16px;
+	left: 0px;
+	top: 0px;
+	overflow: visible;
+}
+#Layer_11 {
+	position: absolute;
+	width: 790.159px;
+	height: 789.16px;
+	left: 0px;
+	top: 0px;
+	overflow: visible;
+}
+#YOUR_TICKET {
+	left: 19.104px;
+	top: 795.852px;
+	position: absolute;
+	overflow: visible;
+	width: 203px;
+	white-space: nowrap;
+	text-align: center;
+	font-family: Chalet-LondonNineteenSixty;
+	font-style: normal;
+	font-weight: normal;
+	font-size: 32px;
+	color: rgba(255,249,230,1);
+}
+#Banner {
+	position: absolute;
+	width: 1949px;
+	height: 176px;
+	left: 0px;
+	top: 0px;
+	overflow: visible;
+}
+#Elephante_Logo {
+	position: absolute;
+	width: 458px;
+	height: 164px;
+	left: 745px;
+	top: 3px;
+	overflow: visible;
+}
+#Elephante_Logo_v {
+	position: absolute;
+	width: 458px;
+	height: 164px;
+	left: 0px;
+	top: 0px;
+	overflow: visible;
+}
+#PRIVATE_COLLECTION {
+	left: 816.677px;
+	top: 138.682px;
+	position: absolute;
+	overflow: visible;
+	width: 317px;
+	white-space: nowrap;
+	text-align: center;
+	font-family: Chalet-ParisNineteenSixty;
+	font-style: normal;
+	font-weight: normal;
+	font-size: 32px;
+	color: rgba(255,255,255,1);
+}
+#Group_16_copy {
+	position: absolute;
+	width: 1949px;
+	height: 176px;
+	left: 0px;
+	top: 0px;
+	overflow: visible;
+}
+#Group_16_copy_y {
+	position: absolute;
+	width: 1949px;
+	height: 176px;
+	left: 0px;
+	top: 0px;
+	overflow: visible;
+}
+#Photos {
+	position: absolute;
+	width: 1920px;
+	height: 188.307px;
+	left: 13.99px;
+	top: 1066.973px;
+	overflow: visible;
+}
+#JOIN_US_ {
+	left: 909.825px;
+	top: 155.307px;
+	position: absolute;
+	overflow: visible;
+	width: 126px;
+	white-space: nowrap;
+	text-align: left;
+	font-family: Chalet-LondonNineteenSixty;
+	font-style: normal;
+	font-weight: normal;
+	font-size: 26.637760162353516px;
+	color: rgba(255,255,255,1);
+}
+#Text {
+	left: 864.73px;
+	top: 155.307px;
+	position: absolute;
+	overflow: visible;
+	width: 7px;
+	white-space: nowrap;
+	text-align: left;
+	font-family: Chalet-LondonNineteenSixty;
+	font-style: normal;
+	font-weight: normal;
+	font-size: 26.637760162353516px;
+	color: rgba(255,255,255,1);
+}
+#VIEW_GALLERY {
+	left: 581.126px;
+	top: 155.307px;
+	position: absolute;
+	overflow: visible;
+	width: 188px;
+	white-space: nowrap;
+	text-align: left;
+	font-family: Chalet-LondonNineteenSixty;
+	font-style: normal;
+	font-weight: normal;
+	font-size: 26.637760162353516px;
+	color: rgba(255,255,255,1);
+}
+#WORLD {
+	left: 581.126px;
+	top: 0px;
+	position: absolute;
+	overflow: visible;
+	width: 517px;
+	white-space: nowrap;
+	text-align: left;
+	font-family: Chalet-LondonNineteenSixty;
+	font-style: normal;
+	font-weight: normal;
+	font-size: 146.86453247070312px;
+	color: rgba(255,255,255,1);
+}
+#Rectangle_9 {
+	fill: rgba(255,255,255,1);
+}
+.Rectangle_9 {
+	position: absolute;
+	overflow: visible;
+	width: 1920px;
+	height: 2.72px;
+	left: 0px;
+	top: 152.017px;
+}
+#button {
+	position: absolute;
+	width: 108.66px;
+	height: 105.39px;
+	left: 1227.72px;
+	top: 37.697px;
+	overflow: visible;
+}
+#Rectangle_8 {
+	fill: rgba(255,255,255,1);
+	stroke: rgba(40,40,40,1);
+	stroke-width: 0px;
+	stroke-linejoin: miter;
+	stroke-linecap: butt;
+	stroke-miterlimit: 100;
+	shape-rendering: auto;
+}
+.Rectangle_8 {
+	position: absolute;
+	overflow: visible;
+	width: 18.47px;
+	height: 18.47px;
+	left: 0px;
+	top: 0px;
+}
+#Rectangle_8_copy {
+	fill: rgba(255,255,255,1);
+	stroke: rgba(40,40,40,1);
+	stroke-width: 0px;
+	stroke-linejoin: miter;
+	stroke-linecap: butt;
+	stroke-miterlimit: 100;
+	shape-rendering: auto;
+}
+.Rectangle_8_copy {
+	position: absolute;
+	overflow: visible;
+	width: 18.47px;
+	height: 18.47px;
+	left: 0px;
+	top: 86.92px;
+}
+#Rectangle_8_copy_2 {
+	fill: rgba(255,255,255,1);
+	stroke: rgba(40,40,40,1);
+	stroke-width: 0px;
+	stroke-linejoin: miter;
+	stroke-linecap: butt;
+	stroke-miterlimit: 100;
+	shape-rendering: auto;
+}
+.Rectangle_8_copy_2 {
+	position: absolute;
+	overflow: visible;
+	width: 18.47px;
+	height: 18.47px;
+	left: 90.19px;
+	top: 86.92px;
+}
+#Rectangle_8_copy_3 {
+	fill: rgba(255,255,255,1);
+	stroke: rgba(40,40,40,1);
+	stroke-width: 0px;
+	stroke-linejoin: miter;
+	stroke-linecap: butt;
+	stroke-miterlimit: 100;
+	shape-rendering: auto;
+}
+.Rectangle_8_copy_3 {
+	position: absolute;
+	overflow: visible;
+	width: 18.47px;
+	height: 18.47px;
+	left: 90.19px;
+	top: 0px;
+}
+#Triangle {
+	fill: rgba(255,255,255,1);
+	stroke: rgba(40,40,40,1);
+	stroke-width: 0px;
+	stroke-linejoin: miter;
+	stroke-linecap: butt;
+	stroke-miterlimit: 100;
+	shape-rendering: auto;
+}
+.Triangle {
+	overflow: visible;
+	position: absolute;
+	width: 32.531px;
+	height: 47.844px;
+	transform: translate(-1227.71px, -1102.67px) matrix(1,0,0,1,1265.9883,1136.8639) rotate(90deg);
+	transform-origin: center;
+	left: 0px;
+	top: 0px;
+}
+#overlay {
+	position: absolute;
+	width: 1920px;
+	height: 894px;
+	left: 14px;
+	top: 194px;
+	overflow: visible;
+}
+#Layer_16 {
+	position: absolute;
+	width: 1920px;
+	height: 855px;
+	left: 0px;
+	top: 0px;
+	overflow: visible;
+}
+#Glow_Overlay {
+	position: absolute;
+	width: 1920px;
+	height: 426px;
+	left: 0px;
+	top: 468px;
+	overflow: visible;
+}
+#Glow_Overlay_be {
+	position: absolute;
+	width: 1920px;
+	height: 426px;
+	left: 0px;
+	top: 0px;
+	overflow: visible;
+}
+#DISCORD_INVITE_LINK {
+	left: 574px;
+	top: 1299.657px;
+	position: absolute;
+	overflow: visible;
+	width: 327px;
+	white-space: nowrap;
+	text-align: center;
+	font-family: Chalet-LondonNineteenSixty;
+	font-style: normal;
+	font-weight: normal;
+	font-size: 32px;
+	color: rgba(0,0,0,1);
+}
+#SOCIALS {
+	left: 570.208px;
+	top: 1510.171px;
+	position: absolute;
+	overflow: visible;
+	width: 133px;
+	white-space: nowrap;
+	text-align: left;
+	font-family: Chalet-LondonNineteenSixty;
+	font-style: normal;
+	font-weight: normal;
+	font-size: 32px;
+	color: rgba(0,0,0,1);
+}
+#discord {
+	position: absolute;
+	width: 124px;
+	height: 124px;
+	left: 570px;
+	top: 1344px;
+	overflow: visible;
+}
+#facebook {
+	position: absolute;
+	width: 124px;
+	height: 124px;
+	left: 574px;
+	top: 1555px;
+	overflow: visible;
+}
+#instagram {
+	position: absolute;
+	width: 124px;
+	height: 124px;
+	left: 728px;
+	top: 1555px;
+	overflow: visible;
+}
+#twitter {
+	position: absolute;
+	width: 124px;
+	height: 124px;
+	left: 882px;
+	top: 1555px;
+	overflow: visible;
+}
+#tiktok {
+	position: absolute;
+	width: 124px;
+	height: 124px;
+	left: 1036px;
+	top: 1555px;
+	overflow: visible;
+}
+#snapchat {
+	position: absolute;
+	width: 124px;
+	height: 124px;
+	left: 1190px;
+	top: 1555px;
+	overflow: visible;
+}
+#Legal {
+	position: absolute;
+	width: 705.6px;
+	height: 62px;
+	left: 577.497px;
+	top: 1841px;
+	overflow: visible;
+}
+#ELEPHANTMUSICCOM {
+	left: 0px;
+	top: 8.18px;
+	position: absolute;
+	overflow: visible;
+	width: 339px;
+	white-space: nowrap;
+	text-align: center;
+	font-family: Chalet-LondonNineteenSixty;
+	font-style: normal;
+	font-weight: normal;
+	font-size: 32px;
+	color: rgba(255,249,230,1);
+	text-decoration: underline;
+}
+#LEGAL_TERMS {
+	left: 491.6px;
+	top: 8.18px;
+	position: absolute;
+	overflow: visible;
+	width: 215px;
+	white-space: nowrap;
+	text-align: center;
+	font-family: Chalet-LondonNineteenSixty;
+	font-style: normal;
+	font-weight: normal;
+	font-size: 32px;
+	color: rgba(255,249,230,1);
+	text-decoration: underline;
+}
+#logo {
+	position: absolute;
+	width: 45px;
+	height: 62px;
+	left: 401.503px;
+	top: 0px;
+	overflow: visible;
+}
+#logo_br {
+	position: absolute;
+	width: 45px;
+	height: 62px;
+	left: 0px;
+	top: 0px;
+	overflow: visible;
+}

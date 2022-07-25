@@ -1,15 +1,24 @@
+$font1: 'Source Sans Pro', sans-serif;
+$font2: 'Staatliches', sans-serif;
+$font3: 'Roboto', sans-serif;
+
+$media-breakpoint-sm: 768px;
+$media-breakpoint-md: 992px;
+$media-breakpoint-lg: 1200px;
+
 .App {
   background:
   radial-gradient(circle,black,transparent),
-  url('./files/charcoalleatherbg.jpg');
+  url('./files/svgs/bg.svg');
   background-attachment: fixed;
   background-position: center;
   background-size: cover; 
   background-color: black;
+  background-blend-mode: lighten;
   min-height: 100%;
   min-width: 100%;
   /* resets */
-  font-family: 'Roboto', sans-serif;
+  font-family: $font1;
   color: #fff9e6;
   text-align: center;
   line-height: 1.5;
@@ -30,28 +39,17 @@ $white:#fff9e6;
 
 .grid-container {
   min-height: 100%;
-  // background: linear-gradient(180deg, black, transparent),
-  // linear-gradient(360deg, black, transparent),
-  // url('../public/assets/backgroundgradient.svg');
-  // filter: contrast(110%) brightness(100%);
 }
 
 /* Component styles */
 
-/* Ticket */
-.custom-ticket-section {
-  display: flex;
-  flex-direction: row;
-  justify-content: space-evenly;
-  align-items: center;
-  .custom-ticket-paper {
-    max-width: 50vw;
-    max-height: 50vh;
-  }
-  .custom-ticket-image {
-    max-width: inherit;
-    max-height: inherit;
-  }
+@import './components/styles/index.scss';
+
+/* Animations 
+*/
+.fade-in {
+	-webkit-animation: fade-in 1s cubic-bezier(0.390, 0.575, 0.565, 1.000) both;
+	        animation: fade-in 1s cubic-bezier(0.390, 0.575, 0.565, 1.000) both;
 }
 
 @keyframes rotate-90-cw {
@@ -62,155 +60,33 @@ $white:#fff9e6;
     transform: rotate(90deg);
   }
 }
-/* Accordion */
-@mixin square-icon-styling($id, $top-or-bottom, $left-or-right) {
-  // .MuiSvgIcon-root .cas-square-#{$id} {
-    .MuiSvgIcon-root {
-      &.cas-square-#{$id} {
-        position: absolute;
-        width: 15px;
-        height: 15px;
-        #{$top-or-bottom}: 0;
-        #{$left-or-right}: 0;
-      }
+
+@-webkit-keyframes fade-in {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+@keyframes fade-in {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+@keyframes slide-open {
+  // opening animation for accordion panels.
+  0% {
+    transform: translateY(100%);
   }
 }
 
-$primary : $yellow;
-$secondary : white;
-
-.custom-accordion {
-  display: flex;
-  flex-direction: column;
-  background: inherit;
-  .custom-accordion-section {
-    text-transform: uppercase;
-    border-color: $white;
-    color: $white;
-    &:nth-child(odd) {
-      border-color: black;
-      background: $yellow;
-      color: black;
-    }
-    .cas-visible-content {
-   
-      .cas-top-row {
-        margin: 0;
-        margin-bottom: -10px;
-        padding-top: 0.5rem;
-        border-bottom: 0.2rem solid;
-        border-color: inherit;
-        display: flex;
-        flex-direction: row;
-        justify-content: center;
-        height: 5rem;
-        .cas-title-text {
-          align-self: center;
-          font-family: 'Roboto', sans-serif;
-          font-size: 5rem;
-          font-weight: 150;
-          margin: 0;
-          padding: 0;
-          padding-right: 1rem;    
-      }
-        .cas-square-icon-container {
-          position: relative;
-          height: 4rem;
-          width: 4rem;
-          margin: 0;
-          padding: 0;
-        }
-        .MuiSvgIcon-root {
-          &.cas-arrow {
-            position: relative;
-            width: 30px;
-            height: 30px;
-            top: 30%;
-            &:hover{
-              cursor: pointer;
-              color: $white;
-              animation: rotate-90-cw 400ms ease-in both;
-            }
-            &:active{
-              color: black;
-            }
-          }
-        }
-      }
-      .cas-bottom-row {
-        margin: 0;
-        padding: 0;
-        border-color: inherit;
-        font-size: 1rem;
-        .cas-subcategories {
-          display: flex;
-          flex-direction: row;
-          justify-content: center;
-          span {
-            margin: 0 0.8rem;
-            &:hover {
-              cursor: pointer;
-              color: $white;            }
-          }
-        }
-      }
-      }
-      
-    }
-  }
-
-  @include square-icon-styling(0, top, left);
-  @include square-icon-styling(1, top, right);
-  @include square-icon-styling(2, bottom, left);
-  @include square-icon-styling(3, bottom, right);
-
-  /* 
-  
-  Crosshair
-  icon 0-1 are squares
-  icon 2-3 are lgcircle
-  icon 4-7 are smcircle
-  */
-
-@mixin crosshair-styles($id) {
-      .crosshair-icon-#{$id} {
-        color: $yellow;
-        background-color: $yellow;
+@keyframes slide-closed {
+  // closing animation for accordion panels.
+  0% {
+    transform: translateY()
   }
 }
-  .crosshair {
-    z-index: -1;
-    min-height: 50vh;
-    width: 100vw;
-    position: fixed;
-    top: 30%;
-    .crosshair-inner {
-      background: linear-gradient(90deg, $yellow, transparent);
-      filter: drop-shadow(4px 4px 4px $yellow);
-      .ch-square {
-        color: $yellow;
-        position: absolute;
-        top: auto;
-        bottom: 50%;
-        left: 50%;
-        height: 50px;
-        width: 50px;
-      }
-      .ch-lgcircle {
-        color: $yellow;
-        position: absolute;
-        top: auto;
-        bottom: 50%;
-        left: 0;
-        min-height: 100px;
-        min-width: 100px;
-      }
-      .ch-smcircle {
-        color: $yellow;
-        position: absolute;
-        top: auto;
-        bottom: 50%;
-        left: 0;
-      }
-    }
-  }
