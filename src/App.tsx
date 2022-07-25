@@ -12,6 +12,7 @@ function App() {
   return (
     <div className="App" id="app-container">
       <CssBaseline />
+      <Crosshair />
       <Grid container justifyContent="center" spacing={1} className="grid-container">
         <Grid item xs={12}>
           <Header />
@@ -24,7 +25,7 @@ function App() {
           </Grid>
           
       </Grid>
-      <Crosshair />
+
     </div>
   );
 }

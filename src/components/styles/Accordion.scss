@@ -29,7 +29,7 @@
         color: black;
       }
       .cas-visible-content {
-     
+        z-index: 2;
         .cas-top-row {
           margin: 0;
           margin-bottom: -10px;
@@ -62,6 +62,7 @@
               width: 30px;
               height: 30px;
               top: 30%;
+              z-index: inherit;
               &:hover{
                 cursor: pointer;
                 color: $white;
@@ -86,7 +87,8 @@
               margin: 0 0.8rem;
               &:hover {
                 cursor: pointer;
-                color: $white;            }
+                color: $white;            
+            }
             }
           }
         }
