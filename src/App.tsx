@@ -22,6 +22,7 @@ function App() {
           <Grid item xs={12}>
             <Accordion sections={[...sectionsData]} />
           </Grid>
+          
       </Grid>
       <Crosshair />
     </div>

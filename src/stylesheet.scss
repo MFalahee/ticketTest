@@ -16,7 +16,7 @@ $media-breakpoint-lg: 1200px;
   background-color: black;
   background-blend-mode: lighten;
   min-height: 100%;
-  min-width: 100%;
+  max-width: 100%;
   /* resets */
   font-family: $font1;
   color: #fff9e6;

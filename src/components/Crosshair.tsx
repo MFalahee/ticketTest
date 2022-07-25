@@ -4,11 +4,10 @@ import crosshairSVG from '../files/svgs/crosshair.svg';
 
 const Crosshair = () => {
     return(
-        <div className="crosshair">
-            <div className="crosshair-inner">
-                <img className="crosshair-svg" src={crosshairSVG} alt="crosshair"/>
-            </div>
+        <div className="crosshair-container">
+        <img src={crosshairSVG} alt="crosshair" className="crosshair-image" />
         </div>
+        
     )
 }
 
