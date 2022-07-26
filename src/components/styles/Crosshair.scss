@@ -1,0 +1,27 @@
+ .crosshair-container {
+  z-index: 0;
+  width: 100%;
+  position: fixed;
+  display: flex;
+  justify-content: space-between;
+  bottom: auto;
+  top: 20%;
+  //   .crosshair-image {
+  //   position: relative;
+  //   max-width: 100%;
+  //   z-index: -1;
+  // }
+  .crosshair-left {
+    max-width: 20%;
+    @include for-desktop-up {
+      max-width: 25%;
+    }
+  }
+  .crosshair-right {
+    transform: rotate(180deg);
+    max-width: 20%;
+    @include for-desktop-up {
+      max-width: 25%;
+    }
+  }
+}

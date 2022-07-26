@@ -1,6 +1,6 @@
 import './stylesheet.scss';
 import * as React from 'react';
-import { Header, Ticket, Accordion, Crosshair } from './components/index';
+import { Header, Ticket, Accordion, Crosshair, Footer } from './components/index';
 import CssBaseline from '@mui/material/CssBaseline';
 import sections from './files/sectionsData';
 
@@ -12,7 +12,8 @@ function App() {
   return (
     <div className="App" id="app-container">
       <CssBaseline />
-      <Grid container spacing={2} className="grid-container">
+      <Crosshair />
+      <Grid container justifyContent="center" spacing={1} className="grid-container">
         <Grid item xs={12}>
           <Header />
             </Grid>
@@ -23,7 +24,7 @@ function App() {
             <Accordion sections={[...sectionsData]} />
           </Grid>
       </Grid>
-      <Crosshair />
+    <Footer />
     </div>
   );
 }

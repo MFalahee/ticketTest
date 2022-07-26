@@ -1,0 +1,29 @@
+.custom-ticket-section {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    .custom-ticket-image {
+      max-width: 50%;
+      max-height: 50%;
+      @include for-mobile {
+        max-width: 68%;
+        max-height: 68%;
+      }
+      @include for-tablet {
+        max-width: 60%;
+        max-height: 60%;
+      }
+      @include for-desktop-up {
+        max-width: 55%;
+        max-height: 100%;
+      }
+    }
+    .custom-ticket-text {
+      font-family: $font3;
+      font-size: 1rem;
+      font-weight: 200;
+      margin: 0;
+      padding: 0;
+    }
+  }
