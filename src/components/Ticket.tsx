@@ -6,7 +6,7 @@ export default function Ticket() {
             <img src={ticketImage} alt="ticket stub" className="custom-ticket-image"/>
             <p className="custom-ticket-text">
                 YOUR TICKET
-                </p>
+            </p>
         </div>
     )
 }

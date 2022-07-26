@@ -6,13 +6,28 @@
   justify-content: space-between;
   bottom: auto;
   top: 20%;
-  //   .crosshair-image {
-  //   position: relative;
-  //   max-width: 100%;
-  //   z-index: -1;
-  // }
+
+
+  @keyframes crosshair-stop-animation{
+    0%{
+      transform: translateY(-3%);
+    }
+    25% {
+      transform: translateY(11%);
+    }
+    50% {
+      transform: translateY(-5%);
+    }
+    100%{
+      transform: translateY(-3%);
+    }
+  }
+
   .crosshair-left {
     max-width: 20%;
+    @include for-mobile {
+      max-width: 15%;
+    }
     @include for-desktop-up {
       max-width: 25%;
     }
@@ -20,6 +35,9 @@
   .crosshair-right {
     transform: rotate(180deg);
     max-width: 20%;
+    @include for-mobile {
+      max-width: 15%;
+    }
     @include for-desktop-up {
       max-width: 25%;
     }

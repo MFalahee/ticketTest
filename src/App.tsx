@@ -8,7 +8,11 @@ import { Grid } from '@mui/material';
 
 function App() {
   let [sectionsData, setSectionsData] = React.useState(sections);
-
+  
+  window.addEventListener('scroll', () => {
+    document.body.style.setProperty('--scroll', (window.scrollY / (document.body.offsetHeight - window.innerHeight)).toString());
+  }, false);
+  
   return (
     <div className="App" id="app-container">
       <CssBaseline />
