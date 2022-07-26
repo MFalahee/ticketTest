@@ -1,4 +1,4 @@
- .crosshair-container {
+.crosshair-container {
   z-index: 0;
   width: 100%;
   position: fixed;
@@ -7,9 +7,8 @@
   bottom: auto;
   top: 20%;
 
-
-  @keyframes crosshair-stop-animation{
-    0%{
+  @keyframes crosshair-stop-animation {
+    0% {
       transform: translateY(-3%);
     }
     25% {
@@ -18,7 +17,7 @@
     50% {
       transform: translateY(-5%);
     }
-    100%{
+    100% {
       transform: translateY(-3%);
     }
   }

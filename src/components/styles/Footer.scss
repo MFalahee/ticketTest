@@ -1,18 +1,18 @@
 .footer-container {
-    background: url('../../files/svgs/bg.svg');
-    bottom: 0;
-    position: fixed;
-    width: 100%;
-    display: flex;
-    justify-content: center;
-    .footer-item {
-        padding-top: .5rem;
-        font-family: $font1;
-        font-weight: 100;
-        text-decoration: underline;
-        .footer-elephant-logo {
-            max-width: 50%;
-            max-height: 50%;
-        }
+  background: url("../../files/svgs/bg.svg");
+  bottom: 0;
+  position: fixed;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  .footer-item {
+    padding-top: 0.5rem;
+    font-family: $font1;
+    font-weight: 100;
+    text-decoration: underline;
+    .footer-elephant-logo {
+      max-width: 50%;
+      max-height: 50%;
     }
+  }
 }
