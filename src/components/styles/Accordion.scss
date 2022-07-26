@@ -6,6 +6,7 @@
       position: absolute;
       width: 15px;
       height: 15px;
+      z-index: 0;
       #{$top-or-bottom}: 0;
       #{$left-or-right}: 0;
     }
@@ -33,10 +34,15 @@
 $primary: $yellow;
 $secondary: white;
 
+// spacer above accordion for fixed positioning of ticket/header
+.fixed-top {
+  @extend .spacer-div;
+    height: 64vh;
+}
+
 .custom-accordion {
   display: flex;
   flex-direction: column;
-  background: inherit;
   .custom-accordion-section {
     text-transform: uppercase;
     border-color: $white;
@@ -47,7 +53,6 @@ $secondary: white;
       color: black;
     }
     .cas-visible-content {
-      z-index: 2;
       .cas-top-row {
         margin: 0;
         margin-bottom: -10px;
@@ -80,7 +85,6 @@ $secondary: white;
             width: 30px;
             height: 30px;
             top: 30%;
-            z-index: inherit;
             &:hover {
               cursor: pointer;
               color: $white;

@@ -7,23 +7,19 @@
   }
   .header-title {
     position: relative;
-    top: 0;
-    left: 0.2rem;
-    // need media breakpoints for this more specifically
     height: 100%;
     max-width: 23vw;
-    min-height: 100%;
     margin: 0;
     padding: 0;
-    @include for-mobile {
-      left: 0rem;
-    }
-    @include for-tablet {
-      left: 0.25rem;
-    }
-    @include for-desktop-up {
-      left: 0.5rem;
-    }
+    // @include for-mobile {
+    //     top: -2.4rem;
+    // }
+    // @include for-tablet {
+    //     top: -5rem;
+    // }
+    // @include for-desktop-up {
+
+    // }
   }
   .header-subtitle {
     position: relative;
@@ -33,11 +29,11 @@
     font-weight: 300;
     font-size: 1rem;
     @include for-mobile {
-      top: -0.5rem;
+      top: -0.8rem;
       font-size: 0.8rem;
     }
     @include for-tablet {
-      top: -1rem;
+      top: -1.2rem;
     }
   }
 }
