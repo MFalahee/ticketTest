@@ -33,12 +33,10 @@ $media-breakpoint-lg: 1200px;
 
 .App {
   background:
-  radial-gradient(circle,black,transparent),
   url('./files/svgs/bg.svg');
   background-attachment: fixed;
   background-position: center;
   background-color: black;
-  background-blend-mode: lighten;
   min-height: 100%;
   max-width: 100%;
   /* resets */
