@@ -1,13 +1,11 @@
 // variables
 
-$font1: 'Source Sans Pro', sans-serif;
-$font2: 'Staatliches', sans-serif;
-$font3: 'Roboto', sans-serif;
-
+$font1: "Source Sans Pro", sans-serif;
+$font2: "Staatliches", sans-serif;
+$font3: "Roboto", sans-serif;
 
 $yellow: #fedc71;
-$white:#fff9e6;
-
+$white: #fff9e6;
 
 $media-breakpoint-sm: 768px;
 $media-breakpoint-md: 992px;
@@ -32,8 +30,7 @@ $media-breakpoint-lg: 1200px;
 }
 
 .App {
-  background:
-  url('./files/svgs/bg.svg');
+  background: url("./files/svgs/bg.svg");
   background-attachment: fixed;
   background-position: center;
   background-color: black;
@@ -64,13 +61,13 @@ Colors and styles
 
 /* Component styles */
 
-@import './components/styles/index.scss';
+@import "./components/styles/index.scss";
 
 /* Animations 
 */
 .fade-in {
-	-webkit-animation: fade-in 1s cubic-bezier(0.390, 0.575, 0.565, 1.000) both;
-	        animation: fade-in 1s cubic-bezier(0.390, 0.575, 0.565, 1.000) both;
+  -webkit-animation: fade-in 1s cubic-bezier(0.39, 0.575, 0.565, 1) both;
+  animation: fade-in 1s cubic-bezier(0.39, 0.575, 0.565, 1) both;
 }
 
 @keyframes rotate-90-cw {
@@ -96,18 +93,5 @@ Colors and styles
   }
   100% {
     opacity: 1;
-  }
-}
-@keyframes slide-open {
-  // opening animation for accordion panels.
-  0% {
-    transform: translateY(100%);
-  }
-}
-
-@keyframes slide-closed {
-  // closing animation for accordion panels.
-  0% {
-    transform: translateY()
   }
 }
