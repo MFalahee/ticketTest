@@ -29,4 +29,18 @@ let sections: Array<Section> = [
     }
 ]
 
+/*
+social links:
+https://discord.gg
+https://linktr.ee/iamtheelephante
+https://www.facebook.com/IAmTheElephante
+https://www.instagram.com/iamtheelephante
+https://twitter.com/IAmTheElephante
+
+@Tim
+need discord link
+need info for domain name
+*/ 
+
+
 export default sections;
