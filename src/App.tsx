@@ -34,10 +34,10 @@ function App() {
     <div className="App" id="app-container">
       <CssBaseline />
       <Crosshair />
-      <div className="header-container">
+      {/* <div className="header-container">
       <Header />
       <Ticket />
-      </div>
+      </div> */}
       <div className="spacer-div fixed-top" />
       <Accordion sections={[...sectionsData]} />
       <Footer />

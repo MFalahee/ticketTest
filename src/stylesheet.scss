@@ -50,7 +50,6 @@ $media-breakpoint-lg: 1200px;
 .header-container {
   position: fixed;
   background: url("./files/svgs/bg.svg");
-  height: 100%;
   width: 100%;
   height: fit-content;
   z-index: 1;
@@ -72,35 +71,5 @@ Colors and styles
 
 @import "./components/styles/index.scss";
 
-/* Animations 
-*/
-.fade-in {
-  -webkit-animation: fade-in 1s cubic-bezier(0.39, 0.575, 0.565, 1) both;
-  animation: fade-in 1s cubic-bezier(0.39, 0.575, 0.565, 1) both;
-}
-
-@keyframes rotate-90-cw {
-  0% {
-    transform: rotate(0);
-  }
-  100% {
-    transform: rotate(90deg);
-  }
-}
-
-@-webkit-keyframes fade-in {
-  0% {
-    opacity: 0;
-  }
-  100% {
-    opacity: 1;
-  }
-}
-@keyframes fade-in {
-  0% {
-    opacity: 0;
-  }
-  100% {
-    opacity: 1;
-  }
-}
+/* Animation import */
+@import './files/animations.scss';

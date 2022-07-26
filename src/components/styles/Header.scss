@@ -7,19 +7,9 @@
   }
   .header-title {
     position: relative;
-    height: 100%;
     max-width: 23vw;
     margin: 0;
     padding: 0;
-    // @include for-mobile {
-    //     top: -2.4rem;
-    // }
-    // @include for-tablet {
-    //     top: -5rem;
-    // }
-    // @include for-desktop-up {
-
-    // }
   }
   .header-subtitle {
     position: relative;
@@ -34,6 +24,9 @@
     }
     @include for-tablet {
       top: -1.2rem;
+    }
+    @include for-desktop-up {
+    top: -2.1rem;
     }
   }
 }

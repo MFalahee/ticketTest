@@ -5,30 +5,27 @@ import { PhotoTicker, CommentWall } from './index';
 import { Stack } from "@mui/material";
 
 export default function Accordion(props: AccordionProps) {
-  let [i, setI] = React.useState<Array<number>>(
+  let [state_index, setIndex] = React.useState<Array<number>>(
     new Array(props.sections?.length).fill(0)
   );
 
-  React.useEffect(() => {}, [i]);
-
+  React.useEffect(() => {}, [state_index]);
 
   const handleActiveDrawer = (index: number) => {
         //check for active drawer, and add or remove active class
         let activeDrawer = document.getElementById(`cas-content-${index}`);
         if (activeDrawer) {
             activeDrawer.classList.toggle("cas-content-hidden");
+            document.getElementById(`cas-arrow-${index}`)?.classList.toggle("clicked-arrow")
+            document.getElementById(`squares-${index}`)?.classList.toggle("clicked-square")           
         } else {
             console.error('Drawer missing');
         }
   };
 
+
+
   if (props.sections && props.sections.length >= 0) {
-    const handleArrowClick = (index: number) => {
-      let temp = [...i];
-      temp[index] = temp[index] === 0 ? 1 : 0;
-    //   handleActiveDrawer(index);
-      setI(temp);
-    };
     return (
       <div className="custom-accordion">
         {props.sections.map((section, key) => {
@@ -45,7 +42,6 @@ export default function Accordion(props: AccordionProps) {
                   <span className="cas-title-text">{section.name}</span>
                   <ArrowButton
                     index={sectionIndex}
-                    handleArrowClick={handleArrowClick}
                   />
                 </div>{" "}
                 {/* end of cas-top-row */}

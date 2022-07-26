@@ -7,7 +7,7 @@ export default function PhotoTicker() {
             {photoArr?.map((photo, key) => {
                 return(
                     <div key={key} className="custom-photo-ticker-photo">
-                        <img src={photo} alt="concert photo stub" className="custom-photo-ticker-image"/>
+                        <img src={photo} alt="concert photo stub" className={`custom-photo-ticker-image img-${key}`}/>
                     </div>
                 )
             }

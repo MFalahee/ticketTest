@@ -38,6 +38,15 @@ $secondary: white;
 .fixed-top {
   @extend .spacer-div;
     height: 64vh;
+    @include for-mobile {
+      height: 45vh;
+    }
+    @include for-tablet {
+      height: 45vh;
+    }
+    @include for-desktop-up {
+      height: 67vh;
+    }
 }
 
 .custom-accordion {
@@ -71,29 +80,6 @@ $secondary: white;
           margin: 0;
           padding: 0;
           padding-right: 1rem;
-        }
-        .cas-square-icon-container {
-          position: relative;
-          height: 4rem;
-          width: 4rem;
-          margin: 0;
-          padding: 0;
-        }
-        .MuiSvgIcon-root {
-          &.cas-arrow {
-            position: relative;
-            width: 30px;
-            height: 30px;
-            top: 30%;
-            &:hover {
-              cursor: pointer;
-              color: $white;
-              animation: rotate-90-cw 400ms ease-in both;
-            }
-            &:active {
-              color: black;
-            }
-          }
         }
       }
       .cas-bottom-row {

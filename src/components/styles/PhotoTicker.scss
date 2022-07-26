@@ -1,6 +1,23 @@
 .custom-photo-ticker {
   display: flex;
+  width: 100%;
   flex-direction: row;
-  flex-wrap: nowrap;
-  overflow: hidden;
+  overflow-x: hidden;
+  justify-content: space-between;
+  border: 1px solid red;
+  .custom-photo-ticker-photo {
+    display: none;
+    &:hover {
+        cursor: pointer;
+    }
+    img {
+        height: auto;
+        width: auto;
+        border: 1px solid blue;
+        &:active {
+            cursor: pointer;
+            opacity: 0.5;
+        }
+    }
+  }
 }

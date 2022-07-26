@@ -6,20 +6,19 @@ import SquareIcon from '@mui/icons-material/Square';
 interface ArrowButtonProps {
     // todo: add props
     index: number;
-    handleArrowClick: (index: number) => void;
 }
 const ArrowButton: React.FC<ArrowButtonProps> = (props) => {
     let temp = new Array(4).fill(0);
     return (
-<div className="cas-square-icon-container" >
+<div className="cas-square-icon-container" id={`squares-${props.index}`} >
     {temp.map((e, i) => {
             return (
             <SquareIcon 
             key={i}
-            className={`cas-square-${i}`} 
+            className={`cas-square-${i} cas-square`} 
             />)
     })}
-    <PlayArrowIcon className="cas-arrow" onClick={e => props.handleArrowClick(props.index)}/>
+    <PlayArrowIcon className={`cas-arrow`} id={`cas-arrow-${props.index}`}/>
     </div>
     )
 }
