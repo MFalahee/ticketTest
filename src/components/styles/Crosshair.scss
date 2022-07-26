@@ -1,12 +1,12 @@
  .crosshair-container {
   z-index: 0;
+  width: 100%;
   position: fixed;
   bottom: auto;
-  width: 100%;
   top: 15%;
     .crosshair-image {
     position: relative;
-    width: 100%;
+    max-width: 100%;
     z-index: -1;
   }
 }

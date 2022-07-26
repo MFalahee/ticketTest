@@ -2,7 +2,7 @@ import * as React from 'react';
 import crosshairSVG from '../files/svgs/crosshair.svg';
 
 
-const Crosshair = () => {
+export default function Crosshair() {
     return(
         <div className="crosshair-container">
         <img src={crosshairSVG} alt="crosshair" className="crosshair-image" />
@@ -10,5 +10,3 @@ const Crosshair = () => {
         
     )
 }
-
-export default Crosshair;

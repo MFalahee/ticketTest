@@ -1,10 +1,35 @@
+// variables
+
 $font1: 'Source Sans Pro', sans-serif;
 $font2: 'Staatliches', sans-serif;
 $font3: 'Roboto', sans-serif;
 
+
+$yellow: #fedc71;
+$white:#fff9e6;
+
+
 $media-breakpoint-sm: 768px;
 $media-breakpoint-md: 992px;
 $media-breakpoint-lg: 1200px;
+
+@mixin for-mobile {
+  @media screen and (max-width: $media-breakpoint-sm) {
+    @content;
+  }
+}
+
+@mixin for-tablet {
+  @media screen and (min-width: $media-breakpoint-sm) and (max-width: $media-breakpoint-md) {
+    @content;
+  }
+}
+
+@mixin for-desktop-up {
+  @media screen and (min-width: $media-breakpoint-md) {
+    @content;
+  }
+}
 
 .App {
   background:
@@ -12,7 +37,6 @@ $media-breakpoint-lg: 1200px;
   url('./files/svgs/bg.svg');
   background-attachment: fixed;
   background-position: center;
-  background-size: cover; 
   background-color: black;
   background-blend-mode: lighten;
   min-height: 100%;
@@ -30,14 +54,13 @@ $media-breakpoint-lg: 1200px;
   text-decoration: none;
   text-indent: 0;
 }
+
 /* 
 Colors and styles
 */
-// variables
-$yellow: #fedc71;
-$white:#fff9e6;
 
 .grid-container {
+  max-width: 100%;
   min-height: 100%;
 }
 

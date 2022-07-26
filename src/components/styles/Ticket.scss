@@ -1,5 +1,4 @@
-
-  .custom-ticket-section {
+.custom-ticket-section {
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
@@ -7,15 +6,15 @@
     .custom-ticket-image {
       max-width: 50%;
       max-height: 50%;
-      @media screen and (max-width: $media-breakpoint-sm) {
+      @include for-mobile {
         max-width: 68%;
         max-height: 68%;
       }
-      @media screen and (min-width: $media-breakpoint-sm) {
+      @include for-tablet {
         max-width: 60%;
         max-height: 60%;
       }
-      @media screen and (min-width: $media-breakpoint-lg) {
+      @include for-desktop-up {
         max-width: 55%;
         max-height: 100%;
       }

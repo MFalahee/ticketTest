@@ -1,8 +1,7 @@
 .App-header {
-    width: 100%;
     .header-art {
         position: absolute;
-        width: 100vw;
+        width: 100%;
         left: 0;
         top: 0;
     }
@@ -16,13 +15,13 @@
         min-height: 100%;
         margin: 0;
         padding: 0;
-        @media screen and (max-width: $media-breakpoint-sm) {
+        @include  for-mobile {
             left: 0rem;
         }
-        @media screen and (min-width: $media-breakpoint-sm) {
+        @include for-tablet {
             left: 0.25rem;
         }
-        @media screen and (min-width: $media-breakpoint-lg) {
+        @include for-desktop-up {
             left: 0.5rem;
         }
     }
@@ -33,11 +32,11 @@
         font-family: $font1;
         font-weight: 300;
         font-size: 1.0rem;
-        @media screen and (max-width: $media-breakpoint-sm) {
+        @include for-mobile {
             top: -0.5rem;
             font-size: 0.8rem;
         }
-        @media screen and (min-width: $media-breakpoint-sm) {
+        @include for-tablet {
             top: -1rem;
         }
     }
