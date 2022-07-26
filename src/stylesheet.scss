@@ -95,16 +95,3 @@ Colors and styles
     opacity: 1;
   }
 }
-@keyframes slide-open {
-  // opening animation for accordion panels.
-  0% {
-    transform: translateY(100%);
-  }
-}
-
-@keyframes slide-closed {
-  // closing animation for accordion panels.
-  0% {
-    transform: translateY();
-  }
-}

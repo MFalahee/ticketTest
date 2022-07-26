@@ -12,6 +12,24 @@
   }
 }
 
+@keyframes slide-open {
+  // opening animation for accordion panels.
+  0% {
+    transform: translateY(0);
+  }
+  100% {
+    transform: translateY(100%);
+  }
+}
+
+@keyframes slide-closed {
+  // closing animation for accordion panels.
+  0% {
+    transform: translateY();
+  }
+}
+
+
 $primary: $yellow;
 $secondary: white;
 
@@ -92,9 +110,17 @@ $secondary: white;
           }
         }
       }
-    }
-    .cas-hidden {
-      display: none;
+
+      // accordion drawers
+      .cas-content-hidden {
+        height: 0;
+        display: none;
+      }
+
+      .cas-active {
+        height: auto;
+        transition: height 2s ease;
+      }
     }
   }
 }

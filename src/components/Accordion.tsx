@@ -1,6 +1,7 @@
 import * as React from "react";
 import AccordionProps from "../files/customTypes";
 import ArrowButton from "../files/ArrowButton";
+import { PhotoTicker, CommentWall } from './index';
 import { Stack } from "@mui/material";
 
 export default function Accordion(props: AccordionProps) {
@@ -10,27 +11,22 @@ export default function Accordion(props: AccordionProps) {
 
   React.useEffect(() => {}, [i]);
 
-  const handleActiveDrawers = (i: Array<number>) => {
-    // iterate through i and set the drawers where i=1 to active class
-    let temp = i;
-    temp.forEach((e, i) => {
-      if (e === 1) {
-        document
-          .querySelector(`.cas-hidden-content-${i}`)
-          ?.classList.add("cas-active");
-      } else {
-        document
-          .querySelector(`.cas-hidden-content-${i}`)
-          ?.classList.remove("cas-active");
-      }
-    });
+
+  const handleActiveDrawer = (index: number) => {
+        //check for active drawer, and add or remove active class
+        let activeDrawer = document.getElementById(`cas-content-${index}`);
+        if (activeDrawer) {
+            activeDrawer.classList.toggle("cas-content-hidden");
+        } else {
+            console.error('Drawer missing');
+        }
   };
 
   if (props.sections && props.sections.length >= 0) {
     const handleArrowClick = (index: number) => {
       let temp = [...i];
       temp[index] = temp[index] === 0 ? 1 : 0;
-      handleActiveDrawers(temp);
+    //   handleActiveDrawer(index);
       setI(temp);
     };
     return (
@@ -43,6 +39,7 @@ export default function Accordion(props: AccordionProps) {
                 className="cas-visible-content"
                 direction="column"
                 spacing={1}
+                onClick={() => handleActiveDrawer(sectionIndex)}
               >
                 <div className="cas-top-row">
                   <span className="cas-title-text">{section.name}</span>
@@ -64,7 +61,13 @@ export default function Accordion(props: AccordionProps) {
                   </p>
                 </div>{" "}
                 {/* end of cas-bottom-row */}
-                <div className={`cas-hidden cas-content-${sectionIndex}`}></div>
+                {/* hidden accordion content */}
+                <div className={`cas-content cas-content-hidden`} id={`cas-content-${sectionIndex}`}>
+                    {sectionIndex === 0 ? <PhotoTicker /> : null}
+                    {sectionIndex === 1 ? <CommentWall /> : null}
+                    {sectionIndex === 2 ? (<div> SoundCloud </div>) : null}
+                    {sectionIndex === 3 ? (<div> Socials </div>) : null}
+                </div>
               </Stack>
             </div>
           );
