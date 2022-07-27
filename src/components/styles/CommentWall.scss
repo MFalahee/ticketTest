@@ -1,0 +1,55 @@
+$pc: white;
+$sc: black;
+$bg: $yellow;
+$bc: black;
+
+.comment-wall-container {
+  display: flex;
+  min-width: 100%;
+  flex-direction: column;
+  .comment-row {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    overflow-x: hidden;
+    color: $pc;
+    border-color: $sc;
+    &:nth-child(odd) {
+      background-color: $bg;
+      color: $sc;
+      border-color: $pc;
+    }
+    .comment-row-comment {
+    padding-top: 0.5rem;
+    min-width: 100%;
+      font-size: 3rem;
+      line-height: 3rem;
+        text-align: center;
+        text-transform: uppercase;
+        white-space: nowrap;
+      .comment-row-comment-top {
+        width: 100%;
+        border-bottom: 0.2rem solid;
+      }
+      .comment-row-comment-bottom {
+        align-self: flex-end;
+        font-size: 1rem;
+        .comment-name,
+        .comment-date {
+          font-size: 1rem;;
+        }
+      }
+    }
+    &.row-left {
+        .comment-row-comment {
+            animation: left-slide 8s linear infinite;
+        }
+       
+    }
+    &.row-right {
+        .comment-row-comment {
+            animation: right-slide 8s linear infinite;
+        }
+    }
+  }
+}

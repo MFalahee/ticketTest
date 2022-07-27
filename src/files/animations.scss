@@ -1,0 +1,78 @@
+
+/* Animations 
+*/
+.fade-in {
+    -webkit-animation: fade-in 1s cubic-bezier(0.39, 0.575, 0.565, 1) both;
+    animation: fade-in 1s cubic-bezier(0.39, 0.575, 0.565, 1) both;
+  }
+  
+  @keyframes rotate-90-cw {
+    0% {
+      transform: rotate(0);
+    }
+    100% {
+      transform: rotate(90deg);
+    }
+  }
+  
+  @keyframes rotate-90-ccw {
+    0% {
+      transform: rotate(0);
+    }
+    100% {
+      transform: rotate(-90deg);
+    }
+  }
+  
+  @-webkit-keyframes fade-in {
+    0% {
+      opacity: 0;
+    }
+    100% {
+      opacity: 1;
+    }
+  }
+  @keyframes fade-in {
+    0% {
+      opacity: 0;
+    }
+    100% {
+      opacity: 1;
+    }
+  }
+
+  @keyframes slide-right {
+    0% {
+        transform: translateX(0);
+    }
+    100% {
+        transform: translateX(100%);
+    }
+  }
+
+  @keyframes bounce {
+    0% {
+        transform: rotateX(10deg);
+    }
+    100% {
+        transform: rotateY(0deg);
+    }
+  }
+
+  @keyframes right-slide {
+    0% {
+        transform: translateX(0);
+    }
+    100% {
+        transform: translateX(-100%);
+    }
+}
+
+@keyframes left-slide {
+    0% {
+        transform: translateX(-100%);
+    }
+    100% {
+        transform: translateX(0%);
+    }
+}

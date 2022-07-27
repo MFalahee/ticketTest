@@ -6,6 +6,7 @@
       position: absolute;
       width: 15px;
       height: 15px;
+      z-index: 0;
       #{$top-or-bottom}: 0;
       #{$left-or-right}: 0;
     }
@@ -29,34 +30,54 @@
   }
 }
 
+$primary: white;
+$secondary: black;
+$tertiary: $yellow;
+$background-def: $tertiary;
 
-$primary: $yellow;
-$secondary: white;
+// spacer above accordion for fixed positioning of ticket/header
+.fixed-top {
+  @extend .spacer-div;
+  height: 64vh;
+  @include for-mobile {
+    height: 45vh;
+  }
+  @include for-tablet {
+    height: 45vh;
+  }
+  @include for-desktop-up {
+    height: 67vh;
+  }
+}
 
 .custom-accordion {
   display: flex;
   flex-direction: column;
-  background: inherit;
+
   .custom-accordion-section {
     text-transform: uppercase;
-    border-color: $white;
-    color: $white;
-    &:nth-child(odd) {
-      border-color: black;
-      background: $yellow;
-      color: black;
+    background: $background-def;
+
+    &:nth-child(even) {
+      background: none;
+    }
+    &:nth-child(3) {
+      background: none;
+      .cas-visible-content {
+        .cas-top-row,
+        .cas-bottom-row {
+          background: $background-def;
+        }
+      }
     }
     .cas-visible-content {
-      z-index: 2;
       .cas-top-row {
         margin: 0;
-        margin-bottom: -10px;
         padding-top: 0.5rem;
         border-bottom: 0.2rem solid;
-        border-color: inherit;
         display: flex;
-        flex-direction: row;
         justify-content: center;
+        align-content: flex-end;
         height: 5rem;
         .cas-title-text {
           align-self: center;
@@ -67,35 +88,10 @@ $secondary: white;
           padding: 0;
           padding-right: 1rem;
         }
-        .cas-square-icon-container {
-          position: relative;
-          height: 4rem;
-          width: 4rem;
-          margin: 0;
-          padding: 0;
-        }
-        .MuiSvgIcon-root {
-          &.cas-arrow {
-            position: relative;
-            width: 30px;
-            height: 30px;
-            top: 30%;
-            z-index: inherit;
-            &:hover {
-              cursor: pointer;
-              color: $white;
-              animation: rotate-90-cw 400ms ease-in both;
-            }
-            &:active {
-              color: black;
-            }
-          }
-        }
       }
       .cas-bottom-row {
         margin: 0;
         padding: 0;
-        border-color: inherit;
         font-size: 1rem;
         .cas-subcategories {
           display: flex;
@@ -117,7 +113,23 @@ $secondary: white;
         display: none;
       }
 
+      .socials-container {
+        min-height: 30vh;
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        .discord-logo {
+          color: white;
+        }
+        .socials-logo {
+          color: white;
+        }
+      }
       .cas-active {
+        height: auto;
+        transition: height 2s ease;
+      }
+      .cas-content {
         height: auto;
         transition: height 2s ease;
       }

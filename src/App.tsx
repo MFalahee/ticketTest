@@ -34,22 +34,12 @@ function App() {
     <div className="App" id="app-container">
       <CssBaseline />
       <Crosshair />
-      <Grid
-        container
-        justifyContent="center"
-        spacing={1}
-        className="grid-container"
-      >
-        <Grid item xs={12}>
-          <Header />
-        </Grid>
-        <Grid item xs={12}>
-          <Ticket />
-        </Grid>
-        <Grid item xs={12}>
-          <Accordion sections={[...sectionsData]} />
-        </Grid>
-      </Grid>
+      {/* <div className="header-container">
+      <Header />
+      <Ticket />
+      </div> */}
+      <div className="spacer-div fixed-top" />
+      <Accordion sections={[...sectionsData]} />
       <Footer />
     </div>
   );

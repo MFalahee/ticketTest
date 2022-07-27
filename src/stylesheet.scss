@@ -31,11 +31,8 @@ $media-breakpoint-lg: 1200px;
 
 .App {
   background: url("./files/svgs/bg.svg");
-  background-attachment: fixed;
-  background-position: center;
-  background-color: black;
-  min-height: 100%;
-  max-width: 100%;
+  min-height: 100vh;
+  max-width: 100vw;
   /* resets */
   font-family: $font1;
   color: #fff9e6;
@@ -50,6 +47,17 @@ $media-breakpoint-lg: 1200px;
   text-indent: 0;
 }
 
+.header-container {
+  position: fixed;
+  background: url("./files/svgs/bg.svg");
+  width: 100%;
+  height: fit-content;
+  z-index: 1;
+}
+
+.spacer-div {
+  width: 100%;
+}
 /* 
 Colors and styles
 */
@@ -63,35 +71,5 @@ Colors and styles
 
 @import "./components/styles/index.scss";
 
-/* Animations 
-*/
-.fade-in {
-  -webkit-animation: fade-in 1s cubic-bezier(0.39, 0.575, 0.565, 1) both;
-  animation: fade-in 1s cubic-bezier(0.39, 0.575, 0.565, 1) both;
-}
-
-@keyframes rotate-90-cw {
-  0% {
-    transform: rotate(0);
-  }
-  100% {
-    transform: rotate(90deg);
-  }
-}
-
-@-webkit-keyframes fade-in {
-  0% {
-    opacity: 0;
-  }
-  100% {
-    opacity: 1;
-  }
-}
-@keyframes fade-in {
-  0% {
-    opacity: 0;
-  }
-  100% {
-    opacity: 1;
-  }
-}
+/* Animation import */
+@import './files/animations.scss';
