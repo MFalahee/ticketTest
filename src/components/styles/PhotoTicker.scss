@@ -46,7 +46,7 @@
             &:hover {
                 cursor: pointer;
                 opacity: 0.8;
-                animation: bounce 0.7s ease infinite;
+                // animation: bounce 0.7s ease infinite;
             }
         }
         &.next-photo, &.prev-photo {
@@ -57,7 +57,7 @@
             &:hover {
                 cursor: pointer;
                 opacity: 0.8;
-                animation: bounce 0.7s ease infinite;
+                // animation: bounce 0.7s ease infinite;
             }
             @include for-mobile {
                 display: none;

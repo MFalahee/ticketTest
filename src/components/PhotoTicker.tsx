@@ -16,21 +16,28 @@ export default function PhotoTicker() {
   const handlePhotoIndex = (index: number, prevIndex: number | null) => {
     console.log("handlePhotoIndex");
     console.log(`index: ${index}`, `prevIndex: ${prevIndex}`);
+    // reset tags
+    if (prevIndex !== null) { 
+      const prevPhoto = document.getElementsByClassName('prev-photo');
+      if (prevPhoto.length > 0) {
+        prevPhoto[0].classList.remove('prev-photo');
+      }
+      const nextPhoto = document.getElementsByClassName('next-photo');
+      if (nextPhoto.length > 0) {
+        nextPhoto[0].classList.remove('next-photo');
+      }
+    }
+
     if (prevIndex === null) {
-        // setup
-        console.log('slider setup==========================');
         document.getElementById(`img-${index}`)?.classList.add("active-photo");
+        hookPhotos(index)
     } else {
-      // reset classes on active/previous photos
+
       let prevPhoto = document.getElementById(`img-${prevIndex}`);
-      console.log(prevPhoto)
       prevPhoto?.classList.toggle("active-photo");
       let activePhoto = document.getElementById(`img-${index}`);
-      console.log(activePhoto)
       activePhoto?.classList.toggle("active-photo");
-        // hook side photos
-        hookPhotos(index);
-      // purge prev/next photos from view as well
+      hookPhotos(index)
       console.log("Setting index:", index);
       setPhotoIndex(index);
     }
@@ -46,44 +53,39 @@ export default function PhotoTicker() {
   };
 
   const handlePrevPhoto = (e: React.MouseEvent) => {
-    if (photoIndex === 0) {
+    let index = photoIndex;
+    if (index === 0) {
       handlePhotoIndex(arrLength - 1, 0);
     } else {
-      handlePhotoIndex(photoIndex - 1, photoIndex);
+      handlePhotoIndex(index - 1, index);
     }
   };
 
   React.useEffect(() => {
     console.log('index set to:', photoIndex);
-    // need to add side images to the left and right of the active photo
   }, [photoIndex]);
 
   const handlePhotoClick = () => {
     // opens a modal of the uncompressed photo
+    // TODO
   };
 
   const hookPhotos = (newIndex: number) => {
-    if (newIndex === 0) {
-      document
-        .getElementById(`img-${arrLength - 1}`)
-        ?.classList.add("prev-photo");
-      document
-        .getElementById(`img-${newIndex + 1}`)
-        ?.classList.add("next-photo");
-    } else if (newIndex === arrLength - 1) {
-      document
-        .getElementById(`img-${newIndex - 1}`)
-        ?.classList.add("prev-photo");
+    switch (newIndex) {
+    case 0:
+      document.getElementById(`img-${arrLength - 1}`)?.classList.add("prev-photo");
+      document.getElementById(`img-${newIndex + 1}`)?.classList.add("next-photo");
+      break;
+    case arrLength - 1:
+      document.getElementById(`img-${newIndex - 1}`)?.classList.add("prev-photo");
       document.getElementById(`img-${0}`)?.classList.add("next-photo");
-    } else {
-      document
-        .getElementById(`img-${newIndex - 1}`)
-        ?.classList.add("prev-photo");
-      document
-        .getElementById(`img-${newIndex + 1}`)
-        ?.classList.add("next-photo");
+      break;
+    default:
+      document.getElementById(`img-${newIndex - 1}`)?.classList.add("prev-photo");
+      document.getElementById(`img-${newIndex + 1}`)?.classList.add("next-photo");
+      break;
     }
-  };
+  }
 
   return (
     <div className="custom-photo-ticker">
