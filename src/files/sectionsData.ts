@@ -1,4 +1,4 @@
-import Section from './customTypes';
+import { Section } from './customTypes';
 
 let sections: Array<Section> = [
     {

@@ -1,8 +1,10 @@
 import * as React from "react";
-import AccordionProps from "../files/customTypes";
+import { AccordionProps } from "../files/customTypes";
 import ArrowButton from "../files/ArrowButton";
 import { PhotoTicker, CommentWall } from './index';
 import { Stack } from "@mui/material";
+import Discord from "../files/svgs/discord.svg";
+import Socials from "../files/svgs/socials.svg";
 
 export default function Accordion(props: AccordionProps) {
   let [state_index, setIndex] = React.useState<Array<number>>(
@@ -22,7 +24,6 @@ export default function Accordion(props: AccordionProps) {
             console.error('Drawer missing');
         }
   };
-
 
 
   if (props.sections && props.sections.length >= 0) {
@@ -60,8 +61,21 @@ export default function Accordion(props: AccordionProps) {
                 <div className={`cas-content cas-content-hidden`} id={`cas-content-${sectionIndex}`}>
                     {sectionIndex === 0 ? <PhotoTicker /> : null}
                     {sectionIndex === 1 ? <CommentWall /> : null}
-                    {sectionIndex === 2 ? (<div> SoundCloud </div>) : null}
-                    {sectionIndex === 3 ? (<div> Socials </div>) : null}
+                    {sectionIndex === 2 ? (<div id="sc-container">
+                    <iframe
+                      id="sc-widget"
+                      width="50%"
+                      height="322"
+                      scrolling="no"
+                      frameBorder="no"
+                      allow="autoplay"
+                      src="https://w.soundcloud.com/player/?url=https://api.soundcloud.com/users/10915053"
+                    ></iframe>
+                      </div>) : null}
+                    {sectionIndex === 3 ? (<div className="socials-container"> 
+                    <img src={Discord} alt="discord logo" className="discord-logo" />
+                    <img src={Socials} alt="socials logo" className="socials-logo" />
+                    </div>) : null}
                 </div>
               </Stack>
             </div>

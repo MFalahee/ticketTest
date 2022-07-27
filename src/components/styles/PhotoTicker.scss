@@ -1,13 +1,14 @@
 .custom-photo-ticker {
-    top: -0.5rem;
-    position: relative;
+    background-color: $yellow;
+  top: -0.5rem;
+  position: relative;
   display: flex;
   width: 100%;
-  flex-direction: row; 
+  flex-direction: row;
   justify-content: center;
   overflow-x: hidden;
-
-  .prev-b, .next-b {
+  .prev-b,
+  .next-b {
     cursor: pointer;
     position: absolute;
     top: 50%;
@@ -18,57 +19,59 @@
     opacity: 0.6;
     font-size: 5rem;
     &:hover {
-        opacity: 1;
+      opacity: 1;
     }
   }
 
-    .prev-b {
-        left: 28%;
-    }
-    .next-b {
-        right: 28%;
-    }
+  .prev-b {
+    left: 28%;
+  }
+  .next-b {
+    right: 28%;
+  }
   .custom-photo-ticker-photo {
     &:hover {
-        cursor: pointer;
+      cursor: pointer;
     }
     img {
-        display: none;
-        max-height: 40vw;
-        max-width: 100%;
-        &:active {
-            cursor: pointer;
-            opacity: 0.5;
+      display: none;
+      max-height: 30vw;
+      max-width: 100%;
+      background: none;
+      &:active {
+        cursor: pointer;
+        opacity: 0.5;
+      }
+      &.active-photo {
+        display: inline-block;
+        top: -0.5rem;
+        &:hover {
+          cursor: pointer;
+          opacity: 0.8;
+          // animation: bounce 0.7s ease infinite;
         }
-        &.active-photo {
-            display: inline-block;
-            top: -0.5rem;
-            &:hover {
-                cursor: pointer;
-                opacity: 0.8;
-                // animation: bounce 0.7s ease infinite;
-            }
+      }
+      &.next-photo,
+      &.prev-photo {
+        display: inline-block;
+        position: absolute;
+        width: auto;
+        max-height: 15vw;
+        &:hover {
+          cursor: pointer;
+          opacity: 0.8;
+          // animation: bounce 0.7s ease infinite;
         }
-        &.next-photo, &.prev-photo {
-            display: inline-block;
-            position: absolute;
-            width: auto;
-            max-height: 15vw;
-            &:hover {
-                cursor: pointer;
-                opacity: 0.8;
-                // animation: bounce 0.7s ease infinite;
-            }
-            @include for-mobile {
-                display: none;
-            }
+        @include for-mobile {
+          display: none;
         }
-        &.next-photo {
-            right: 3rem;
-        }
-        &.prev-photo {
-            left: 3rem;
-        }
+      }
+      &.next-photo {
+        right: 3rem;
+      }
+      &.prev-photo {
+        left: 3rem;
+      }
     }
   }
 }

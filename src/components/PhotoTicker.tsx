@@ -1,12 +1,14 @@
+import { jsx } from "@emotion/react";
 import * as React from "react";
 import photoArr from "../files/photoImport.js";
 
-const delay: number = 2500;
+const delay: number = 5000;
 
 export default function PhotoTicker() {
   const [photoIndex, setPhotoIndex] = React.useState(1);
   const [arrLength, setArrLength] = React.useState(photoArr.length);
 
+  const timeRef = React.useRef<NodeJS.Timeout>();
   React.useEffect(() => {
     // set initial active photos
     handlePhotoIndex(photoIndex, null);
@@ -14,7 +16,6 @@ export default function PhotoTicker() {
 
   //adds .active-photo class to new index, and removes from previous active index
   const handlePhotoIndex = (index: number, prevIndex: number | null) => {
-    console.log("handlePhotoIndex");
     console.log(`index: ${index}`, `prevIndex: ${prevIndex}`);
     // reset tags
     if (prevIndex !== null) { 
@@ -60,9 +61,34 @@ export default function PhotoTicker() {
       handlePhotoIndex(index - 1, index);
     }
   };
+  
+  function resetTimeout() {
+    if (timeRef.current) {
+      clearTimeout(timeRef.current);
+    }
+  }
 
   React.useEffect(() => {
-    console.log('index set to:', photoIndex);
+    resetTimeout();
+    timeRef.current = setTimeout(
+      () => {
+        switch (photoIndex) {
+          case 0:
+            handlePhotoIndex(1, 0);
+            break;
+           case arrLength - 1:
+            handlePhotoIndex(0, arrLength - 1)
+            break;
+            default: 
+            handlePhotoIndex(photoIndex + 1, photoIndex);
+            break;
+        }
+      },
+      delay
+    )
+      return () => {
+        resetTimeout();
+      }
   }, [photoIndex]);
 
   const handlePhotoClick = () => {
