@@ -36,9 +36,8 @@ export default function Accordion(props: AccordionProps) {
                 className="cas-visible-content"
                 direction="column"
                 spacing={1}
-                onClick={() => handleActiveDrawer(sectionIndex)}
               >
-                <div className="cas-top-row">
+                <div className="cas-top-row" onClick={() => handleActiveDrawer(sectionIndex)}>
                   <span className="cas-title-text">{section.name}</span>
                   <ArrowButton
                     index={sectionIndex}
