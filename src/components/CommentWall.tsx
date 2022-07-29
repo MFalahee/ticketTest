@@ -22,7 +22,7 @@ export default function CommentWall() {
    React.useEffect(() => {
     // set comments
     setComments(commentsIn);
-   }, [])
+   }, [commentsIn])
 
    return(
     <div className="comment-wall-container">

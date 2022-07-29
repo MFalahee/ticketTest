@@ -13,128 +13,81 @@
   }
 }
 
-@keyframes slide-open {
-  // opening animation for accordion panels.
-  0% {
-    transform: translateY(0);
-  }
-  100% {
-    transform: translateY(100%);
-  }
-}
 
-@keyframes slide-closed {
-  // closing animation for accordion panels.
-  0% {
-    transform: translateY();
-  }
-}
 
 $primary: white;
 $secondary: black;
 $tertiary: $yellow;
 $background-def: $tertiary;
 
-// spacer above accordion for fixed positioning of ticket/header
-.fixed-top {
-  @extend .spacer-div;
-  height: 64vh;
-  @include for-mobile {
-    height: 45vh;
-  }
-  @include for-tablet {
-    height: 45vh;
-  }
-  @include for-desktop-up {
-    height: 67vh;
-  }
-}
 
 .custom-accordion {
   display: flex;
   flex-direction: column;
-
-  .custom-accordion-section {
-    text-transform: uppercase;
-    background: $background-def;
-
-    &:nth-child(even) {
-      background: none;
-    }
-    &:nth-child(3) {
-      background: none;
-      .cas-visible-content {
-        .cas-top-row,
-        .cas-bottom-row {
-          background: $background-def;
-        }
+  &-section {
+      text-transform: uppercase;
+      background: $background-def;
+      color: $secondary;
+      &:nth-child(even) {
+        background: none;
+        color: $primary;
       }
-    }
-    .cas-visible-content {
-      .cas-top-row {
-        margin: 0;
-        padding-top: 0.5rem;
-        border-bottom: 0.2rem solid;
-        display: flex;
-        justify-content: center;
-        align-content: flex-end;
-        height: 5rem;
-        .cas-title-text {
-          align-self: center;
-          font-family: $font1;
-          font-size: 5rem;
-          font-weight: 150;
-          margin: 0;
-          padding: 0;
-          padding-right: 1rem;
-        }
-      }
-      .cas-bottom-row {
-        margin: 0;
-        padding: 0;
-        font-size: 1rem;
-        .cas-subcategories {
-          display: flex;
-          flex-direction: row;
-          justify-content: center;
-          span {
-            margin: 0 0.8rem;
-            &:hover {
-              cursor: pointer;
-              color: $white;
-            }
+      &:nth-child(3) {
+        background: none;
+        .cas-visible-content {
+          .cas-card {
+            background: $background-def;
           }
         }
       }
-
-      // accordion drawers
-      .cas-content-hidden {
-        height: 0;
-        display: none;
-      }
-
-      .socials-container {
-        min-height: 30vh;
-        display: flex;
-        flex-direction: row;
-        justify-content: center;
-        .discord-logo {
-          color: white;
+      .cas-visible-content {
+        .cas-card {
+          height: 100%;
+          cursor: pointer;
+          background-color: inherit;
+          .cas-top-row {
+            margin: 0;
+            padding-top: 0.5rem;
+            border-bottom: 0.2rem solid;
+            display: flex;
+            justify-content: center;
+            align-content: flex-end;
+            height: 5rem;
+            .cas-title-text {
+              align-self: center;
+              font-family: $font1;
+              font-size: 5rem;
+              font-weight: 150;
+              margin: 0;
+              padding: 0;
+              padding-right: 1rem;
+            }
+          }
+          .cas-bottom-row {
+            margin: 0;
+            padding: 0;
+            font-size: 1rem;
+            .cas-subcategories {
+              display: flex;
+              flex-direction: row;
+              justify-content: center;
+              span {
+                margin: 0 0.8rem;
+                &:hover {
+                  cursor: pointer;
+                  color: $white;
+                }
+              }
+            }
+          }
         }
-        .socials-logo {
-          color: white;
+        .cas-section-content {
+          max-height: 0;
+          transition: max-height 0.5s ease-out;
         }
-      }
-      .cas-active {
-        height: auto;
-        transition: height 2s ease;
-      }
-      .cas-content {
-        height: auto;
-        transition: height 2s ease;
-      }
-    }
-  }
+      
+      }}
+
 }
 
 @include square-icon-styling(0, top, left);

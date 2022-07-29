@@ -1,0 +1,17 @@
+.socials-container {
+    max-height: fit-content + 10rem;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    color: white;
+    background-color: none;
+    .socials-logo {
+        cursor: pointer;
+        &:hover {
+            opacity: 0.8;
+        }
+        &:active {
+            opacity: 0.5;
+        }
+    }
+}
