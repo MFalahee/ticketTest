@@ -14,6 +14,9 @@ $bc: black;
     color: $pc;
     border-color: $sc;
     &:nth-child(odd) {
+      .comment-row-comment {
+        background-color: $bg;
+      }
       background-color: $bg;
       color: $sc;
       border-color: $pc;
@@ -39,10 +42,10 @@ $bc: black;
       }
     }
     &.row-left {
-        // animation: left-slide 8s linear infinite;
+        animation: left-slide 8s linear infinite;
     }
     &.row-right {
-        // animation: right-slide 8s linear infinite;
+        animation: right-slide 8s linear infinite;
     }
   }
 }
