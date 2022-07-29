@@ -24,10 +24,12 @@
   }
 
   .prev-b {
-    left: 28%;
+    z-index: 2;
+    left: 27%;
   }
   .next-b {
-    right: 28%;
+    z-index:2;
+    right: 27%;
   }
   .custom-photo-ticker-photo {
     &:hover {

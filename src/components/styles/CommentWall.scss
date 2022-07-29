@@ -6,6 +6,7 @@ $bc: black;
 .comment-wall-container {
   display: flex;
   flex-direction: column;
+  height: 100%;
   .comment-row {
     display: flex;
     flex-direction: row;
@@ -18,19 +19,16 @@ $bc: black;
       border-color: $pc;
     }
     .comment-row-comment {
-      height: 5rem;
-      padding-top: 0.5rem;
       width: 100%;
       font-size: 3rem;
-      line-height: 3rem;
+      line-height: 3.5rem;
       text-align: center;
       text-transform: uppercase;
       white-space: nowrap;
-      .comment-row-comment-top {
-        width: 100%;
-        border-bottom: 0.2rem solid;
-      }
       .comment-row-comment-bottom {
+        padding: 0;
+        margin: 0;
+        border-top: 0.2rem solid black;
         cursor: pointer;
         align-self: flex-end;
         font-size: 1rem;
@@ -41,14 +39,10 @@ $bc: black;
       }
     }
     &.row-left {
-      .comment-row-comment {
-        animation: left-slide 8s linear infinite;
-      }
+        // animation: left-slide 8s linear infinite;
     }
     &.row-right {
-      .comment-row-comment {
-        animation: right-slide 8s linear infinite;
-      }
+        // animation: right-slide 8s linear infinite;
     }
   }
 }
