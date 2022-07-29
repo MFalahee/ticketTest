@@ -11,9 +11,25 @@ export default function PhotoTicker() {
     // set initial active photos
     handlePhotoIndex(photoIndex, null);
   },);
+  const hookPhotos = React.useCallback((newIndex: number) => {
+    switch (newIndex) {
+    case 0:
+      document.getElementById(`img-${arrLength - 1}`)?.classList.add("prev-photo");
+      document.getElementById(`img-${newIndex + 1}`)?.classList.add("next-photo");
+      break;
+    case arrLength - 1:
+      document.getElementById(`img-${newIndex - 1}`)?.classList.add("prev-photo");
+      document.getElementById(`img-${0}`)?.classList.add("next-photo");
+      break;
+    default:
+      document.getElementById(`img-${newIndex - 1}`)?.classList.add("prev-photo");
+      document.getElementById(`img-${newIndex + 1}`)?.classList.add("next-photo");
+      break;
+    }
+  }, [arrLength]);
 
   //adds .active-photo class to new index, and removes from previous active index
-  const handlePhotoIndex = (index: number, prevIndex: number | null) => {
+  const handlePhotoIndex = React.useCallback((index: number, prevIndex: number | null) => {
     // console.log(`index: ${index}`, `prevIndex: ${prevIndex}`);
     // reset tags
     if (prevIndex !== null) { 
@@ -40,7 +56,7 @@ export default function PhotoTicker() {
       // console.log("Setting index:", index);
       setPhotoIndex(index);
     }
-  };
+  }, [hookPhotos]);
 
   const handleNextPhoto = (e: React.MouseEvent) => {
     // console.log("handleNextPhoto");
@@ -89,47 +105,12 @@ export default function PhotoTicker() {
       }
   }, [photoIndex, arrLength, handlePhotoIndex]);
 
-  function photoAnimationListener() {
-    // console.log('click listener');
-    let photoContainer = document.getElementById('cpt')
-    // console.log('photoContainer:', photoContainer);
-    if (photoContainer && photoContainer !== null && photoContainer.classList !== null) {
-        photoContainer.addEventListener("click", () => {
-          if (photoContainer !== null) {
-            let a = photoContainer?.style.maxHeight.replace('px', '')
-          if (a === '0') {
-            photoContainer.style.maxHeight = '100%'
-          } else {
-            photoContainer.style.maxHeight = '0'
-          }
-          }
-         
-      }) 
-    } else {
-      // console.log("photoContainer is null");
-    }  }
   /*
   const handlePhotoClick = () => {
     // opens a modal of the uncompressed photo
     // TODO
   };
   */
-  const hookPhotos = (newIndex: number) => {
-    switch (newIndex) {
-    case 0:
-      document.getElementById(`img-${arrLength - 1}`)?.classList.add("prev-photo");
-      document.getElementById(`img-${newIndex + 1}`)?.classList.add("next-photo");
-      break;
-    case arrLength - 1:
-      document.getElementById(`img-${newIndex - 1}`)?.classList.add("prev-photo");
-      document.getElementById(`img-${0}`)?.classList.add("next-photo");
-      break;
-    default:
-      document.getElementById(`img-${newIndex - 1}`)?.classList.add("prev-photo");
-      document.getElementById(`img-${newIndex + 1}`)?.classList.add("next-photo");
-      break;
-    }
-  }
 
   return (
     <div className="custom-photo-ticker" id="cpt">

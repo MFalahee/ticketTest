@@ -10,9 +10,10 @@ import {
 import CssBaseline from "@mui/material/CssBaseline";
 import sections from "./files/sectionsData";
 function App() {
-  const [sectionsData, setSections] = React.useState(sections);
+  const [sectionsData] = React.useState(sections);
   React.useEffect(() => {
   }, []);
+
   return (
     <div className="App" id="app-container">
       <CssBaseline />
