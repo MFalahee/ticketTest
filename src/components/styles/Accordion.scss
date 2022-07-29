@@ -35,49 +35,57 @@ $background-def: $tertiary;
       &:nth-child(3) {
         background: none;
         .cas-visible-content {
-          .cas-top-row,
-          .cas-bottom-row {
+          .cas-card {
             background: $background-def;
           }
         }
       }
       .cas-visible-content {
-        z-index: 0;
-        .cas-top-row {
-          margin: 0;
-          padding-top: 0.5rem;
-          border-bottom: 0.2rem solid;
-          display: flex;
-          justify-content: center;
-          align-content: flex-end;
-          height: 5rem;
-          .cas-title-text {
-            align-self: center;
-            font-family: $font1;
-            font-size: 5rem;
-            font-weight: 150;
+        .cas-card {
+          height: 100%;
+          cursor: pointer;
+          background-color: inherit;
+          .cas-top-row {
+            margin: 0;
+            padding-top: 0.5rem;
+            border-bottom: 0.2rem solid;
+            display: flex;
+            justify-content: center;
+            align-content: flex-end;
+            height: 5rem;
+            .cas-title-text {
+              align-self: center;
+              font-family: $font1;
+              font-size: 5rem;
+              font-weight: 150;
+              margin: 0;
+              padding: 0;
+              padding-right: 1rem;
+            }
+          }
+          .cas-bottom-row {
             margin: 0;
             padding: 0;
-            padding-right: 1rem;
-          }
-        }
-        .cas-bottom-row {
-          margin: 0;
-          padding: 0;
-          font-size: 1rem;
-          .cas-subcategories {
-            display: flex;
-            flex-direction: row;
-            justify-content: center;
-            span {
-              margin: 0 0.8rem;
-              &:hover {
-                cursor: pointer;
-                color: $white;
+            font-size: 1rem;
+            .cas-subcategories {
+              display: flex;
+              flex-direction: row;
+              justify-content: center;
+              span {
+                margin: 0 0.8rem;
+                &:hover {
+                  cursor: pointer;
+                  color: $white;
+                }
               }
             }
           }
         }
+        .cas-section-content {
+          max-height: 0;
+          transition: max-height 0.5s ease-out;
+        }
+      
       }}
 
 }

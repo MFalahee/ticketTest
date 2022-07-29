@@ -29,6 +29,10 @@ $media-breakpoint-lg: 1200px;
   }
 }
 
+.svg-filter-for-yellow {
+  filter: invert(77%) sepia(42%) saturate(475%) hue-rotate(356deg) brightness(105%) contrast(104%);
+}
+
 .App {
   background: url("./files/svgs/bg.svg");
   min-height: 100vh;

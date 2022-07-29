@@ -2,7 +2,7 @@ import * as React from "react";
 import { AccordionProps, Section } from "../files/customTypes";
 import ArrowButton from "../files/ArrowButton";
 import { PhotoTicker, CommentWall, SoundCloudWidget, Socials } from "./index";
-import { Stack } from "@mui/material";
+import { boxSizing } from "@mui/system";
 
 export default function Accordion(props: AccordionProps) {
   const [openArr, setOpenArr] = React.useState([false, false, false, false]);
@@ -17,16 +17,16 @@ export default function Accordion(props: AccordionProps) {
   function handleSectionContent(index: number) {
     switch (index) {
       case 0:
-        return <PhotoTicker />;
+        return <div className="cas-section-content"><PhotoTicker /></div> ;
         break;
       case 1:
-        return <CommentWall />;
+        return <div className="cas-section-content"> <CommentWall /></div>;
         break;
       case 2:
-        return <SoundCloudWidget />;
+        return <div className="cas-section-content"><SoundCloudWidget /></div> ;
         break;
       case 3:
-        return <Socials />;
+        return <div className="cas-section-content"> <Socials /></div>;
         break;
     }
   }
@@ -34,7 +34,8 @@ export default function Accordion(props: AccordionProps) {
   function handleAccordionSectionTop(section: Section) {
     if (section !== null) {
       return (
-        <div className="cas-card">
+        <div className="cas-card"
+             onClick={() => accordionClickHandler(section.id)}>
           <div className="cas-top-row">
             <span className="cas-title-text">{section.name}</span>
             <ArrowButton index={section.id} />
@@ -57,22 +58,19 @@ export default function Accordion(props: AccordionProps) {
     }
   }
 
-  if (props.sections && props.sections.length >= 0) {
+  if (sections && sections.length >= 0) {
     return (
       <div className="custom-accordion">
-        {props.sections.map((section, key) => {
+        {sections.map((section, key) => {
           return (
-            <div key={key} className="custom-accordion-section cas">
-              <Stack
+            <div key={key} className={`custom-accordion-section cas cas-${key}`}>
+              <div
                 className="cas-visible-content"
-                direction="column"
-                spacing={1}
-                onClick={() => accordionClickHandler(key)}
               >
                 {handleAccordionSectionTop(section)}
                 {/* hidden accordion content */}
                 {openArr[key] ? handleSectionContent(key) : null}
-              </Stack>
+              </div>
             </div>
           );
         })}
