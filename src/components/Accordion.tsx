@@ -2,7 +2,6 @@ import * as React from "react";
 import { AccordionProps, Section } from "../files/customTypes";
 import ArrowButton from "../files/ArrowButton";
 import { PhotoTicker, CommentWall, SoundCloudWidget, Socials } from "./index";
-import { boxSizing } from "@mui/system";
 
 export default function Accordion(props: AccordionProps) {
   const [openArr, setOpenArr] = React.useState([false, false, false, false]);
@@ -14,23 +13,20 @@ export default function Accordion(props: AccordionProps) {
     setOpenArr(newOpenArr);
   }
 
+  // populates the bottom portion of the accordion with the appropriate content
   function handleSectionContent(index: number) {
     switch (index) {
       case 0:
         return <div className="cas-section-content"><PhotoTicker /></div> ;
-        break;
       case 1:
         return <div className="cas-section-content"> <CommentWall /></div>;
-        break;
       case 2:
         return <div className="cas-section-content"><SoundCloudWidget /></div> ;
-        break;
       case 3:
         return <div className="cas-section-content"> <Socials /></div>;
-        break;
     }
   }
-
+  // reusable function to create the accordion title sections
   function handleAccordionSectionTop(section: Section) {
     if (section !== null) {
       return (
@@ -57,6 +53,10 @@ export default function Accordion(props: AccordionProps) {
       console.error("failure to load accordion section", section);
     }
   }
+  // if sections change, we update our drawers
+  React.useEffect(() => {
+    setSections(props.sections);
+  }, [props.sections])
 
   if (sections && sections.length >= 0) {
     return (
