@@ -8,30 +8,41 @@ $bc: black;
   flex-direction: column;
   height: 100%;
   .comment-row {
-    display: flex;
-    flex-direction: row;
-    align-items: center;
     color: $pc;
     border-color: $sc;
     &:nth-child(odd) {
-      .comment-row-comment {
-        background-color: $bg;
+      .moving-part {
+        .comment-row-comment {
+          background-color: $bg;
+        }
       }
       background-color: $bg;
       color: $sc;
       border-color: $pc;
     }
+    .moving-part {
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+    }
     .comment-row-comment {
-      width: 100%;
       font-size: 3rem;
       line-height: 3.5rem;
       text-align: center;
       text-transform: uppercase;
       white-space: nowrap;
+      overflow: visible;
+      .comment-row-comment-top {
+        width: 100%;
+      }
+      .line-spacer {
+        min-width: 100%;
+        height: 0.2rem;
+        background-color: $sc;
+      }
       .comment-row-comment-bottom {
         padding: 0;
         margin: 0;
-        border-top: 0.2rem solid black;
         cursor: pointer;
         align-self: flex-end;
         font-size: 1rem;
@@ -42,10 +53,16 @@ $bc: black;
       }
     }
     &.row-left {
+      .moving-part {
         animation: left-slide 8s linear infinite;
+      }
+      
     }
     &.row-right {
+      .moving-part {
         animation: right-slide 8s linear infinite;
+      }
+      
     }
   }
 }
