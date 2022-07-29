@@ -14,13 +14,29 @@
       transform: rotate(90deg);
     }
   }
-  
+  @keyframes rotate-180-cw {
+    0% {
+      transform: rotate(0);
+    }
+    100% {
+      transform: rotate(180deg);
+    }
+  }
   @keyframes rotate-90-ccw {
     0% {
       transform: rotate(0);
     }
     100% {
       transform: rotate(-90deg);
+    }
+  }
+
+  @keyframes rotate-180-ccw {
+    0% {
+      transform: rotate(0);
+    }
+    100% {
+      transform: rotate(-180deg);
     }
   }
   
@@ -38,15 +54,6 @@
     }
     100% {
       opacity: 1;
-    }
-  }
-
-  @keyframes slide-right {
-    0% {
-        transform: translateX(0);
-    }
-    100% {
-        transform: translateX(100%);
     }
   }
 
@@ -75,4 +82,4 @@
     100% {
         transform: translateX(0%);
     }
-}
+  }

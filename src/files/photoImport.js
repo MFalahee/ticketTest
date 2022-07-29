@@ -11,7 +11,8 @@
     import concert9 from './photos/compressed/conc9comp.png';
     import concert10 from './photos/compressed/conc10comp.png';
 
-    export default [
+
+    let photos = [
         concert1,
         concert2,
         concert3,
@@ -23,3 +24,5 @@
         concert9,
         concert10
     ];
+
+    export default photos;

@@ -1,4 +1,3 @@
-import { jsx } from "@emotion/react";
 import * as React from "react";
 import photoArr from "../files/photoImport.js";
 
@@ -6,17 +5,16 @@ const delay: number = 5000;
 
 export default function PhotoTicker() {
   const [photoIndex, setPhotoIndex] = React.useState(1);
-  const [arrLength, setArrLength] = React.useState(photoArr.length);
-
+  const arrLength = photoArr.length
   const timeRef = React.useRef<NodeJS.Timeout>();
   React.useEffect(() => {
     // set initial active photos
     handlePhotoIndex(photoIndex, null);
-  }, []);
+  },);
 
   //adds .active-photo class to new index, and removes from previous active index
   const handlePhotoIndex = (index: number, prevIndex: number | null) => {
-    console.log(`index: ${index}`, `prevIndex: ${prevIndex}`);
+    // console.log(`index: ${index}`, `prevIndex: ${prevIndex}`);
     // reset tags
     if (prevIndex !== null) { 
       const prevPhoto = document.getElementsByClassName('prev-photo');
@@ -39,13 +37,13 @@ export default function PhotoTicker() {
       let activePhoto = document.getElementById(`img-${index}`);
       activePhoto?.classList.toggle("active-photo");
       hookPhotos(index)
-      console.log("Setting index:", index);
+      // console.log("Setting index:", index);
       setPhotoIndex(index);
     }
   };
 
   const handleNextPhoto = (e: React.MouseEvent) => {
-    console.log("handleNextPhoto");
+    // console.log("handleNextPhoto");
     let nextIndex = photoIndex + 1;
     if (nextIndex >= arrLength) {
       nextIndex = 1;
@@ -89,13 +87,33 @@ export default function PhotoTicker() {
       return () => {
         resetTimeout();
       }
-  }, [photoIndex]);
+  }, [photoIndex, arrLength, handlePhotoIndex]);
 
+  function photoAnimationListener() {
+    // console.log('click listener');
+    let photoContainer = document.getElementById('cpt')
+    // console.log('photoContainer:', photoContainer);
+    if (photoContainer && photoContainer !== null && photoContainer.classList !== null) {
+        photoContainer.addEventListener("click", () => {
+          if (photoContainer !== null) {
+            let a = photoContainer?.style.maxHeight.replace('px', '')
+          if (a === '0') {
+            photoContainer.style.maxHeight = '100%'
+          } else {
+            photoContainer.style.maxHeight = '0'
+          }
+          }
+         
+      }) 
+    } else {
+      // console.log("photoContainer is null");
+    }  }
+  /*
   const handlePhotoClick = () => {
     // opens a modal of the uncompressed photo
     // TODO
   };
-
+  */
   const hookPhotos = (newIndex: number) => {
     switch (newIndex) {
     case 0:
@@ -114,7 +132,7 @@ export default function PhotoTicker() {
   }
 
   return (
-    <div className="custom-photo-ticker">
+    <div className="custom-photo-ticker" id="cpt">
       <button
         className="prev-b"
         id={`prev-button`}
@@ -136,9 +154,9 @@ export default function PhotoTicker() {
           <div key={key} className="custom-photo-ticker-photo">
             <img
               src={photo}
-              alt="concert photo stub"
               className={`custom-photo-ticker-image`}
               id={`img-${key}`}
+              alt=""
             />
           </div>
         );

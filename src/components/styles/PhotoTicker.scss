@@ -1,12 +1,14 @@
 .custom-photo-ticker {
-    background-color: $yellow;
+  max-height: 0;
+  transition: max-height 0.5s ease-out;
+  background-color: $yellow;
   top: -0.5rem;
   position: relative;
   display: flex;
+  height: 100%;
   width: 100%;
   flex-direction: row;
   justify-content: center;
-  overflow-x: hidden;
   .prev-b,
   .next-b {
     cursor: pointer;
@@ -35,7 +37,7 @@
     }
     img {
       display: none;
-      max-height: 30vw;
+      max-height: 30vh;
       max-width: 100%;
       background: none;
       &:active {
@@ -56,7 +58,9 @@
         display: inline-block;
         position: absolute;
         width: auto;
-        max-height: 15vw;
+        padding: 0;
+        max-height: 30vh;
+        max-width: 30vw;
         &:hover {
           cursor: pointer;
           opacity: 0.8;
