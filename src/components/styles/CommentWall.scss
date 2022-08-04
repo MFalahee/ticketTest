@@ -1,69 +1,3 @@
-
-
-// .comment-wall-container {
-//   display: flex;
-//   flex-direction: column;
-//   height: 100%;
-//   .comment-row {
-//     color: $pc;
-//     border-color: $sc;
-//     &:nth-child(odd) {
-//       .moving-part {
-//         .comment-row-comment {
-//           background-color: $bg;
-//         }
-//       }
-//       background-color: $bg;
-//       color: $sc;
-//       border-color: $pc;
-//     }
-//     .moving-part {
-//       display: flex;
-//       flex-direction: row;
-//       align-items: center;
-//     }
-//     .comment-row-comment {
-//       font-size: 3rem;
-//       line-height: 3.5rem;
-//       text-align: center;
-//       text-transform: uppercase;
-//       white-space: nowrap;
-//       overflow: visible;
-//       .comment-row-comment-top {
-//         width: 100%;
-//       }
-//       .line-spacer {
-//         min-width: 100%;
-//         height: 0.2rem;
-//         background-color: $sc;
-//       }
-//       .comment-row-comment-bottom {
-//         padding: 0;
-//         margin: 0;
-//         cursor: pointer;
-//         align-self: flex-end;
-//         font-size: 1rem;
-//         .comment-name,
-//         .comment-date {
-//           font-size: 1rem;
-//         }
-//       }
-//     }
-//     &.row-left {
-//       .moving-part {
-//         animation: left-slide 8s linear infinite;
-//       }
-      
-//     }
-//     &.row-right {
-//       .moving-part {
-//         animation: right-slide 8s linear infinite;
-//       }
-      
-//     }
-//   }
-// }
-
 $pc: white;
 $sc: black;
 $bg: none;
@@ -84,6 +18,10 @@ $bg: none;
       background: $yellow;
       color: $sc;
       border-color: $sc;
+      animation-fill-mode: forwards;
+      animation-name: marquee-left;
+      animation-duration: 10s;
+
     }
     &-comment {
       margin: auto;
@@ -109,6 +47,15 @@ $bg: none;
         display: flex;
         flex-direction: row;
         justify-content: center;
+      }
+    }
+    // animations
+    .trying-something {
+     animation: marquee-right 5s linear infinite;
+      &:nth-of-type(odd) {
+        background-color: $yellow;
+        animation-name: marquee-left;
+        animation-duration: 10s;
       }
     }
   }

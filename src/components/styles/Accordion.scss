@@ -14,6 +14,19 @@
 }
 
 
+@keyframes accordion-open {
+  // I want this to slide the accordion open from the top
+
+  0% {
+    opacity: 0;
+    transform: translateY(-100%); 
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
 
 $primary: white;
 $secondary: black;
@@ -24,6 +37,7 @@ $background-def: $tertiary;
 .custom-accordion {
   display: flex;
   flex-direction: column;
+  overflow: hidden;
   &-section {
       text-transform: uppercase;
       background: $background-def;
@@ -81,11 +95,15 @@ $background-def: $tertiary;
             }
           }
         }
-        .cas-section-content {
-          max-height: 100%;
+        .active-cas-section {
+          overflow: hidden;
+          animation: accordion-open 0.5s ease-in-out forwards;
         }
       
-      }}
+      }
+    
+    // animations for accordion
+    }
 
 }
 

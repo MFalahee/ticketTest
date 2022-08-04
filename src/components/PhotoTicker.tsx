@@ -66,7 +66,7 @@ export default function PhotoTicker() {
     }
     handlePhotoIndex(nextIndex, photoIndex);
   };
-
+/* unused for now
   const handlePrevPhoto = (e: React.MouseEvent) => {
     let index = photoIndex;
     if (index === 0) {
@@ -75,6 +75,7 @@ export default function PhotoTicker() {
       handlePhotoIndex(index - 1, index);
     }
   };
+  */
   
   function resetTimeout() {
     if (timeRef.current) {

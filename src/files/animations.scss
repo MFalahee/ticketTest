@@ -93,3 +93,40 @@
     animation: marquee-left #{$time} linear infinite;
     animation-delay: #{$delay};
   }
+
+  
+@keyframes prev-photo {
+  0% {
+    transform: translateX(200%);
+  }
+  50% {
+    transform: translate(-75%);
+  }
+  100% {
+    transform: translateX(0);
+  }
+}
+
+@keyframes next-photo {
+  0% {
+    transform: translateX(200%);
+  }
+  50% {
+    transform: translate(-30%);
+  }
+  100% {
+    transform: translateX(0%);
+  }
+}
+
+@keyframes active-photo {
+  0% {
+    transform: translateX(-100%);
+  }
+  50% {
+    transform: translate(30%);
+  }
+  100% {
+    transform: translateX(0);
+  }
+}
