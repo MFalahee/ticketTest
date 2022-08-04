@@ -66,20 +66,30 @@
     }
   }
 
-  @keyframes right-slide {
+  @keyframes marquee-right {
     0% {
-        transform: translateX(0);
+        transform: translateX(100%);
     }
     100% {
         transform: translateX(-100%);
     }
 }
 
-@keyframes left-slide {
+@keyframes marquee-left {
     0% {
         transform: translateX(-100%);
     }
     100% {
-        transform: translateX(0%);
+        transform: translateX(100%);
     }
+  }
+
+  @mixin marquee-left ($time, $delay) {
+    animation: marquee-right #{$time} linear infinite;
+    animation-delay: #{$delay};
+  }
+
+  @mixin marquee-right ($time, $delay) {
+    animation: marquee-left #{$time} linear infinite;
+    animation-delay: #{$delay};
   }

@@ -1,31 +1,41 @@
-import { CommentRowProps } from '../files/customTypes';
+import { CommentRowProps } from "../files/customTypes";
+
+// https://www.googleapis.com/youtube/v3/commentThreads?key={your_api_key}&textFormat=plainText&part=snippet&videoId={video_id}&maxResults=100&pageToken={nextPageToken}
+// potentially grab comments from Tims yt videos and populate that way? I'd have to filter them somehow.
+// researched: https://developers.google.com/youtube/v3/docs/comments
+// https://www.youtube.com/c/iamtheelephante
 
 export default function CommentRow(props: CommentRowProps) {
-    // 3 random comments from the array of comments
-    if (props.comments) {
+  // 3 random comments from the array of comments
+  if (props.comments) {
     props.comments.sort(() => Math.random() - 0.5);
     let comments = props.comments.slice(0, 3);
-    return(
-        <div className={`comment-row row-${props.direction}`}>
-            <div className="moving-part" >
-            {comments.map((comment, key) => {
-                return(
-                    <div className="comment-row-comment" key={key}>
-                        <div className="comment-row-comment-top">
-                        <span className="comment-text">   {`"${comment.text}"`}   </span>
-                        </div>
-                        <div className='line-spacer'></div>
-                        <div className="comment-row-comment-bottom">
-                        <span className="comment-name">{`${comment.name}`}</span>
-                        <span> | </span>
-                        <span className="comment-date">{`${comment.date}`}</span>
-                        </div>
-                    </div>
-                )})}
+    return (
+      <div className={`comment-row`}>
+        {comments.map((comment, key) => {
+          return (
+            <div className="trying-something">
+              <div className="comment-row-comment-line-spacer"></div>
+              <div
+                className={`comment-row-comment move-${props.direction}`}
+                key={key}
+              >
+                <div className={`comment-row-comment-top`}>
+                  <span className="comment-text"> {`"${comment.text}"`} </span>
+                </div>
+
+                <div className={`comment-row-comment-bottom`}>
+                  <span className="comment-name">{`${comment.name}`}</span>
+                  <span> | </span>
+                  <span className="comment-date">{`${comment.date}`}</span>
+                </div>
+              </div>
             </div>
-        </div>
-        )
-                }
-                // if there are no comments, return null
-    return null;
-   }
+          );
+        })}
+      </div>
+    );
+  }
+  // if there are no comments, return null
+  return null;
+}
