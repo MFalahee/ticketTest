@@ -115,14 +115,6 @@ export default function PhotoTicker() {
   return (
     <div className="custom-photo-ticker" id="cpt">
       <button
-        className="prev-b"
-        id={`prev-button`}
-        onClick={(e) => handlePrevPhoto(e)}
-      >
-        {" "}
-        {"<"}{" "}
-      </button>
-      <button
         className="next-b"
         id={`next-button`}
         onClick={(e) => handleNextPhoto(e)}
@@ -130,18 +122,25 @@ export default function PhotoTicker() {
         {" "}
         {">"}{" "}
       </button>
+      <div className="custom-photo-ticker-photo-container">
       {photoArr?.map((photo, key) => {
         return (
           <div key={key} className="custom-photo-ticker-photo">
+          
             <img
               src={photo}
               className={`custom-photo-ticker-image`}
               id={`img-${key}`}
               alt=""
+              onMouseOut={(e) => {
+                e.preventDefault();
+              }}
             />
           </div>
         );
+
       })}
+         </div>
     </div>
   );
 }
