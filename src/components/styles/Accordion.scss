@@ -21,6 +21,12 @@
     opacity: 0;
     transform: translateY(-100%); 
   }
+  33% {
+    opacity: 0;
+  }
+  66% {
+    opacity: 0.8
+  }
   100% {
     opacity: 1;
     transform: translateY(0);
@@ -97,7 +103,7 @@ $background-def: $tertiary;
         }
         .active-cas-section {
           overflow: hidden;
-          animation: accordion-open 0.5s ease-in-out forwards;
+          animation: accordion-open 0.4s ease-out forwards;
         }
       
       }

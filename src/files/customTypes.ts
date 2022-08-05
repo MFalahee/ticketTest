@@ -9,6 +9,7 @@ export type Section = {
 
 export type AccordionProps = {
   sections?: Array<Section>
+  modalRef?: React.RefObject<HTMLDivElement>
 }
 
 
@@ -22,4 +23,8 @@ export type CommentRowProps = {
   comments?: AudienceComments[];
   index?: number;
   direction?: string;
+}
+
+export type PhotoTickerProps = {
+  modalRef?: React.RefObject<HTMLDivElement>;
 }
