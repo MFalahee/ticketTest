@@ -10,7 +10,6 @@ interface AudienceComments {
 
 export default function CommentWall() {
   const [comments, setComments] = React.useState<AudienceComments[]>();
-  const [isVisible, setIsVisible] = React.useState<Boolean>(false);
   const ref = React.useRef<HTMLDivElement>(null);
   let commentsIn = commentDB;
   /* 
@@ -28,7 +27,7 @@ export default function CommentWall() {
 
   React.useEffect(() => {
     startAnimation();
-  }, [ref.current]);
+  }, []);
 
   function startAnimation() {
     // start animation

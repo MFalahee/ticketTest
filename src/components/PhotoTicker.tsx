@@ -114,17 +114,17 @@ export default function PhotoTicker(props: PhotoTickerProps) {
     }
   }
 
-  function logParams(params: string[]) {
-    console.log('===========================')
-    params.forEach((e) => {
-      console.log('=====', e, '======')
-    })
-    console.log('===========================')
-  }
+  // function logParams(params: string[]) {
+  //   console.log('===========================')
+  //   params.forEach((e) => {
+  //     console.log('=====', e, '======')
+  //   })
+  //   console.log('===========================')
+  // }
 
   
   function renderModal() {
-    let modalParams = [modalToggle.toString(), modalIndex.toString()]
+    // let modalParams = [modalToggle.toString(), modalIndex.toString()]
     // logParams(modalParams)
     if (props.modalRef.current) {
       return(
@@ -161,7 +161,7 @@ export default function PhotoTicker(props: PhotoTickerProps) {
     } else {
       return
     }
-  }, [modalToggle]);
+  }, [modalToggle, props.modalRef]);
 
 
   return (
