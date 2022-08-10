@@ -3,29 +3,26 @@ $sc: black;
 $bg: none;
 // comment wall component
 .comment-wall {
-  width: 100%;
+  width: 200%;
   color: $pc;
   border-color: $sc;
-  display: flex;
-  flex-direction: column;
+  overflow: hidden;
   // comment component
   .comment-row {
+    width: 200%;
+    position: relative;
     display: flex;
     flex-direction: row;
-    align-items: flex-start;
     justify-content: baseline;
+    animation: marquee-right 10s infinite;
     &:nth-of-type(odd) {
       background: $yellow;
       color: $sc;
       border-color: $sc;
-      animation-fill-mode: forwards;
-      animation-name: marquee-left;
-      animation-duration: 10s;
-
+      animation: marquee-left 10s infinite;
     }
     &-comment {
       margin: auto;
-      display: flex;
       flex-direction: column;
       padding: 1rem 0rem;
       &-top {
@@ -35,27 +32,30 @@ $bg: none;
         text-transform: uppercase;
         white-space: nowrap;
         overflow: hidden;
+        padding-bottom: 0.5rem;
       }
       &-line-spacer {
         position: relative;
-        width: 100%;
+        // width: 100%;
         height: 0.2rem;
         border-top: 0.2rem solid;
       }
       &-bottom {
+        border-top: 0.2rem solid;
         font-size: 1rem;
         display: flex;
         flex-direction: row;
-        justify-content: center;
+        align-self: flex-start;
       }
     }
     // animations
     .trying-something {
-     animation: marquee-right 5s linear infinite;
+      width: 300%;
+    //  animation: marquee-right 5s linear infinite;
       &:nth-of-type(odd) {
-        background-color: $yellow;
-        animation-name: marquee-left;
-        animation-duration: 10s;
+        // background-color: $yellow;
+        // animation-name: marquee-left;
+        // animation-duration: 10s;
       }
     }
   }

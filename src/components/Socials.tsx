@@ -27,7 +27,7 @@ export default function Socials() {
                         alt="discord logo"
                         // TODO add real link to discord
                         className="discord-logo socials-logo svg-filter-for-yellow"
-                        onClick={(e) => linkOnClick("https://discord.gg/QWQWQWQ", e)}
+                        onClick={(e) => linkOnClick("https://discord.gg/XqewexqJnc", e)}
                       />
                       <img
                         src={facebookLogo}
