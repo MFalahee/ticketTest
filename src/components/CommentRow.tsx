@@ -14,12 +14,10 @@ export default function CommentRow(props: CommentRowProps) {
       <div className={`comment-row`}>
         {comments.map((comment, key) => {
           return (
-            <div className="trying-something">
+            <div key={key} className="trying-something">
               <div className="comment-row-comment-line-spacer"></div>
               <div
-                className={`comment-row-comment move-${props.direction}`}
-                key={key}
-              >
+                className={`comment-row-comment move-${props.direction}`}>
                 <div className={`comment-row-comment-top`}>
                   <span className="comment-text"> {`"${comment.text}"`} </span>
                 </div>

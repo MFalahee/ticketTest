@@ -10,6 +10,9 @@
     font-family: $font1;
     font-weight: 100;
     text-decoration: underline;
+    &:hover {
+      cursor: pointer;
+    }
     .footer-elephant-logo {
       max-width: 50%;
       max-height: 50%;

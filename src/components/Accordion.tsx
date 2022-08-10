@@ -17,7 +17,7 @@ export default function Accordion(props: AccordionProps) {
   function handleSectionContent(index: number) {
     switch (index) {
       case 0:
-        return <div className="cas-section-content active-cas-section"><PhotoTicker modalRef={props.modalRef} /></div> ;
+        return <div className="cas-section-content active-cas-section"><PhotoTicker modalRef={props.modalRef}/></div> ;
       case 1:
         return <div className="cas-section-content active-cas-section"> <CommentWall /></div>;
       case 2:

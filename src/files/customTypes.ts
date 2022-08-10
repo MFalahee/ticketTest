@@ -1,3 +1,5 @@
+import React from "react"
+
 export type Section = {
     name : string,
     subcategories?: Array<string>,
@@ -8,8 +10,8 @@ export type Section = {
   }
 
 export type AccordionProps = {
-  sections?: Array<Section>
-  modalRef?: React.RefObject<HTMLDivElement>
+  sections?: Array<Section>,
+  modalRef: React.RefObject<HTMLDivElement>
 }
 
 
@@ -23,8 +25,9 @@ export type CommentRowProps = {
   comments?: AudienceComments[];
   index?: number;
   direction?: string;
+  key?: number;
 }
 
 export type PhotoTickerProps = {
-  modalRef?: React.RefObject<HTMLDivElement>;
+  modalRef: React.RefObject<HTMLDivElement>
 }

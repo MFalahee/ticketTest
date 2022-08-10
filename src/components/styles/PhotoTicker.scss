@@ -11,25 +11,32 @@ $photo-ticker-delay: 0.5s;
   display: relative;
   .prev-b,
   .next-b {
+    padding: 1rem 0;
     z-index: 2;
     cursor: pointer;
-    position: absolute;
-    left: 65%;
-    bottom: 0;
+    position: relative;
     color: $white;
     text-decoration: none;
     border: none;
     background: none;
-    opacity: 0.6;
-    font-size: 5rem;
-    &:hover {
-      opacity: 1;
-      animation-play-state: paused;
-      scale: 1.5;
+    opacity: 1;
+    svg {
+      transform: scale(3, 3);
+      path {
+        color: black;
+        &:hover {
+          color: white;
+          &:hover {
+            opacity: 0.7;
+            animation-play-state: paused
+          }
+        }
+      }
     }
   }
   &-photo-container {
     position: relative;
+    
     .custom-photo-ticker-photo {
       &:hover {
         cursor: pointer;
@@ -41,6 +48,8 @@ $photo-ticker-delay: 0.5s;
           cursor: pointer;
           opacity: 0.5;
         }
+
+        // styling for center photo on tablet/desktop and only photo for mobile
         &.active-photo {
           position: absolute;
           top: 0;
@@ -49,6 +58,7 @@ $photo-ticker-delay: 0.5s;
           max-height: 50vh;
           box-sizing: border-box;
           display: inline-block;
+          padding: 1rem 1rem;
       
           opacity: 1;
           transition: opacity 0.75s ease-out;
@@ -57,7 +67,14 @@ $photo-ticker-delay: 0.5s;
             opacity: 0.8;
             animation: bounce 0.68s ease infinite;
           }
+
+          @include for-mobile {
+            right:0;
+            width: 100%;
+          }
         }
+
+        // styling photos on left and right
         &.next-photo,
         &.prev-photo {
           position: absolute;

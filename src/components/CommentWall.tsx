@@ -47,15 +47,15 @@ export default function CommentWall() {
 
   return (
     <div ref={ref} className="comment-wall">
-      <CommentRow comments={comments} index={0} direction="left" />
+      <CommentRow comments={comments} index={0} key={Math.random()} direction="left" />
       {/* <div className='comment-wall-row'></div> */}
-      <CommentRow comments={comments} index={1} direction="right" />
+      <CommentRow comments={comments} index={1} key={Math.random()} direction="right" />
       {/* <div className='comment-wall-row'></div> */}
-      <CommentRow comments={comments} index={2} direction="left" />
+      <CommentRow comments={comments} index={2} key={Math.random()} direction="left" />
       {/* <div className='comment-wall-row'></div> */}
-      <CommentRow comments={comments} index={3} direction="right" />
+      <CommentRow comments={comments} index={3} key={Math.random()}direction="right" />
       {/* <div className='comment-wall-row'></div> */}
-      <CommentRow comments={comments} index={4} direction="left" />
+      <CommentRow comments={comments} index={4} key={Math.random()} direction="left" />
     </div>
   );
 }
