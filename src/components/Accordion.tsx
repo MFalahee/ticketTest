@@ -17,13 +17,13 @@ export default function Accordion(props: AccordionProps) {
   function handleSectionContent(index: number) {
     switch (index) {
       case 0:
-        return <div className="cas-section-content"><PhotoTicker /></div> ;
+        return <div className="cas-section-content active-cas-section"><PhotoTicker modalRef={props.modalRef}/></div> ;
       case 1:
-        return <div className="cas-section-content"> <CommentWall /></div>;
+        return <div className="cas-section-content active-cas-section"> <CommentWall /></div>;
       case 2:
-        return <div className="cas-section-content"><SoundCloudWidget /></div> ;
+        return <div className="cas-section-content active-cas-section"><SoundCloudWidget /></div> ;
       case 3:
-        return <div className="cas-section-content"> <Socials /></div>;
+        return <div className="cas-section-content active-cas-section"> <Socials /></div>;
     }
   }
   // reusable function to create the accordion title sections

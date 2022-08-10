@@ -1,68 +1,62 @@
 $pc: white;
 $sc: black;
-$bg: $yellow;
-$bc: black;
-
-.comment-wall-container {
-  display: flex;
-  flex-direction: column;
-  height: 100%;
+$bg: none;
+// comment wall component
+.comment-wall {
+  width: 200%;
+  color: $pc;
+  border-color: $sc;
+  overflow: hidden;
+  // comment component
   .comment-row {
-    color: $pc;
-    border-color: $sc;
-    &:nth-child(odd) {
-      .moving-part {
-        .comment-row-comment {
-          background-color: $bg;
-        }
-      }
-      background-color: $bg;
+    width: 200%;
+    position: relative;
+    display: flex;
+    flex-direction: row;
+    justify-content: baseline;
+    animation: marquee-right 10s forwards infinite ease-in;
+    &:nth-of-type(odd) {
+      background: $yellow;
       color: $sc;
-      border-color: $pc;
+      border-color: $sc;
+      animation: marquee-left 10s forwards infinite ease-in;
     }
-    .moving-part {
-      display: flex;
-      flex-direction: row;
-      align-items: center;
-    }
-    .comment-row-comment {
-      font-size: 3rem;
-      line-height: 3.5rem;
-      text-align: center;
-      text-transform: uppercase;
-      white-space: nowrap;
-      overflow: visible;
-      .comment-row-comment-top {
-        width: 100%;
+    &-comment {
+      margin: auto;
+      flex-direction: column;
+      padding: 1rem 0rem;
+      &-top {
+        font-size: 3rem;
+        line-height: 3rem;
+        text-align: start;
+        text-transform: uppercase;
+        white-space: nowrap;
+        overflow: hidden;
+        padding-bottom: 0.5rem;
       }
-      .line-spacer {
-        min-width: 100%;
+      &-line-spacer {
+        position: relative;
+        // width: 100%;
         height: 0.2rem;
-        background-color: $sc;
+        border-top: 0.2rem solid;
       }
-      .comment-row-comment-bottom {
-        padding: 0;
-        margin: 0;
-        cursor: pointer;
-        align-self: flex-end;
+      &-bottom {
+        border-top: 0.2rem solid;
         font-size: 1rem;
-        .comment-name,
-        .comment-date {
-          font-size: 1rem;
-        }
+        display: flex;
+        flex-direction: row;
+        align-self: flex-start;
       }
     }
-    &.row-left {
-      .moving-part {
-        animation: left-slide 8s linear infinite;
+    // animations
+    .trying-something {
+      width: 300%;
+    //  animation: marquee-right 5s linear infinite;
+      &:nth-of-type(odd) {
+        // background-color: $yellow;
+        // animation-name: marquee-left;
+        // animation-duration: 10s;
       }
-      
-    }
-    &.row-right {
-      .moving-part {
-        animation: right-slide 8s linear infinite;
-      }
-      
     }
   }
 }

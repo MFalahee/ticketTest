@@ -11,18 +11,24 @@
     import concert9 from './photos/compressed/conc9comp.png';
     import concert10 from './photos/compressed/conc10comp.png';
 
+  // import raws for modal from /src/files/photos/raw
+ 
 
-    let photos = [
-        concert1,
-        concert2,
-        concert3,
-        concert4,
-        concert5,
-        concert6,
-        concert7,
-        concert8,
-        concert9,
-        concert10
-    ];
+    import worldphoto from './photos/raw/worldphoto.jpg';
 
-    export default photos;
+
+    const photos = [
+      concert1,
+      concert2,
+      concert3,
+      concert4,
+      concert5,
+      concert6,
+      concert7,
+      concert8,
+      concert9,
+      concert10
+  ];
+
+
+    export default photos; 
