@@ -5,6 +5,7 @@ import instagramLogo from "../files/svgs/insta.svg";
 import twitterLogo from "../files/svgs/twitter.svg";
 import tiktokLogo from "../files/svgs/tiktok.svg";
 import snapchatLogo from "../files/svgs/snapchat.svg";
+import pointingHands from '../files/svgs/pointinghands.svg';
 /*
 // https://twitter.com/iamtheELEPHANTE
 // youtube: https://www.youtube.com/c/iamtheelephante
@@ -21,14 +22,22 @@ export default function Socials() {
         window.open(link);
     }
     return(
-        <div className="socials-container">
-                    <img
+        <div className="socials">
+          <div className="socials-top-section">
+            <div className="socials-top-section-spinner" >
+            <img color={'white'} src={pointingHands} className="socials-top-section-spinner-img" alt="a spinner centered around the discord logo to generate attention" />
+            </div>
+            
+            <img
                         src={discordLogo}
                         alt="discord logo"
                         // TODO add real link to discord
                         className="discord-logo socials-logo svg-filter-for-yellow"
                         onClick={(e) => linkOnClick("https://discord.gg/XqewexqJnc", e)}
                       />
+            <h3 className="discord-text">This one is fun and new!</h3>
+            </div> 
+          <div className="socials-bottom-section">
                       <img
                         src={facebookLogo}
                         alt="facebook logo"
@@ -59,6 +68,8 @@ export default function Socials() {
                         className="snapchat-logo socials-logo svg-filter-for-yellow"
                         onClick={(e) => linkOnClick("https://www.snapchat.com/add/iamtheelephante", e)}
                         />
+                      
+          </div>
         </div>
     )
 }

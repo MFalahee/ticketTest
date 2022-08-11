@@ -14,7 +14,7 @@
   // import raws for modal from /src/files/photos/raw
  
 
-    import worldphoto from './photos/raw/worldphoto.jpg';
+    // import worldphoto from './photos/raw/worldphoto.jpg';
 
 
     const photos = [
