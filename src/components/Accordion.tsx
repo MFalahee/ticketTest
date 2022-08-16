@@ -24,11 +24,10 @@ export default function Accordion(props: AccordionProps) {
         return <div className="cas-section-content"><SoundCloudWidget /></div> ;
       case 3:
         return <div className="cas-section-content"> <Socials /></div>;
-      case 4: 
-      window.open('http://www.elephantemusic.com/tour')
-      return <div className="cas-section content">= Current Tour =</div>;
+      case 4:
+      return <div className="cas-section-content"> Tour </div>
       default:
-        return <div>Failed to load content.</div>
+        return <div className="cas-section-content">Failed to load content.</div>
 
     }
   }
