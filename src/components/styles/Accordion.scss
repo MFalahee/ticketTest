@@ -90,14 +90,8 @@ $background-def: $tertiary;
             .cas-subcategories {
               display: flex;
               flex-direction: row;
+              align-content: center;
               justify-content: center;
-              span {
-                margin: 0 0.8rem;
-                &:hover {
-                  cursor: pointer;
-                  color: $white;
-                }
-              }
             }
           }
         }

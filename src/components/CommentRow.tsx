@@ -9,7 +9,7 @@ export default function CommentRow(props: CommentRowProps) {
   // 3 random comments from the array of comments
   if (props.comments) {
     props.comments.sort(() => Math.random() - 0.5);
-    let comments = props.comments.slice(0, 3);
+    let comments = props.comments.slice(0, 5);
     return (
       <div className={`comment-row`}>
         {comments.map((comment, key) => {

@@ -51,15 +51,13 @@ $photo-ticker-delay: 0.5s;
 
         // styling for center photo on tablet/desktop and only photo for mobile
         &.active-photo {
-          position: absolute;
+          position: relative;
           top: 0;
-          right: 37%;
           left: auto;
           max-height: 50vh;
           box-sizing: border-box;
           display: inline-block;
           padding: 1rem 1rem;
-      
           opacity: 1;
           transition: opacity 0.75s ease-out;
           &:hover {
@@ -70,7 +68,7 @@ $photo-ticker-delay: 0.5s;
 
           @include for-mobile {
             right:0;
-            width: 100%;
+            width: auto;
           }
         }
 
@@ -93,6 +91,7 @@ $photo-ticker-delay: 0.5s;
           }
         }
         &.next-photo {
+          top: 0;
           right: 10%;
           animation: next-photo $photo-ticker-delay forwards;
         } 

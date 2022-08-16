@@ -17,7 +17,7 @@ function App() {
 
   return (
     <div className="App" id="app-container">
-      <div ref={modalRef} id="modal-div"> </div>
+      {/* <div ref={modalRef} id="modal-div"> </div> */}
       <CssBaseline />
       <Crosshair />
       <div className="header-container">
@@ -25,7 +25,6 @@ function App() {
       <Ticket />
     
       </div>
-      {/* <div className="spacer-div fixed-top" /> */}
       <Accordion sections={[...sectionsData]} modalRef={modalRef}/>
       <Footer />
     </div>

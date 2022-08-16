@@ -3,7 +3,7 @@ import { Section } from './customTypes';
 let sections: Array<Section> = [
     {
         name: 'Photos',
-        subcategories: ['View Gallery', 'Relive Memories'],
+        subcategories: ['Relive Memories'],
         photos: [
             '/files/photos/conc1comp.png',
             '/files/photos/conc2comp.png',
@@ -20,26 +20,32 @@ let sections: Array<Section> = [
         id: 0,
     },
     {
-        name: 'Words',
-        subcategories: ['Comment Wall', 'Party Voices'],
+        name: 'VOICES',
+        subcategories: ['Comment Wall'],
         // need clarification on the Party Voices section
         description: 'Section to display comments from the crowds  @ the events, and to watch videos of the crowd',
         id: 1,
     },
     {
-        name: 'Listen',
-        subcategories: ['Private Streams', 'Secret Music'],
+        name: 'Sounds',
+        subcategories: ['Secret Music'],
         description: 'Section to display private streams and secret music -- Soundcloud embeds and YouTube embeds? ',
         id: 2,
     },
     {
-        name: 'World',
+        name: 'Worlds',
         photos: [],
-        subcategories: ['Social + Discord', 'Join Us !!'],
+        subcategories: ['Join us'],
         // Promote community and other NFT ticket websites potentially? Could incorporate 3d model if we want to be ambitious?
         description: 'Section to display social media and discord channels.',
         id: 3,
-    }
+    },
+    {
+        name: 'Shows',
+        subcategories: ['Run it Back'],
+        description: "section to link to current tour page.",
+        id: 4,
+    }   
 ]
 
 /*

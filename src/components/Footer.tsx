@@ -12,7 +12,7 @@ export default function Footer() {
             onClick={(e) => {
               linkOnClick('http://www.elephantemusic.com/', e)
             }}
-      > ELEPHANTMUSIC.COM </span>
+      > ELEPHANTEMUSIC.COM </span>
       <span className="footer-item">
         {" "}
         <img

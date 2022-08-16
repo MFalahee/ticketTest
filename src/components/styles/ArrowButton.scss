@@ -12,6 +12,7 @@
 }
   .MuiSvgIcon-root {
     &.cas-arrow {
+      z-index: 2;
       cursor: pointer;
       position: relative;
       width: 30px;
