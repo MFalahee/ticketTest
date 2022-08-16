@@ -14,17 +14,19 @@ $bg: none;
     display: flex;
     flex-direction: row;
     justify-content: baseline;
-    animation: marquee-right 10s forwards infinite ease-in;
+    animation: marquee-right 30s both infinite;
+    animation-timing-function: linear;
     &:nth-of-type(odd) {
       background: $yellow;
       color: $sc;
       border-color: $sc;
-      animation: marquee-left 10s forwards infinite ease-in;
+      animation: marquee-left 30s both infinite;
     }
     &-comment {
       margin: auto;
       flex-direction: column;
-      padding: 1rem 0rem;
+      padding: 0.5rem 0rem;
+      box-sizing: content-box;
       &-top {
         font-size: 3rem;
         line-height: 3rem;
@@ -33,30 +35,29 @@ $bg: none;
         white-space: nowrap;
         overflow: hidden;
         padding-bottom: 0.5rem;
+        padding-top: 0.5rem;
       }
       &-line-spacer {
-        position: relative;
-        // width: 100%;
-        height: 0.2rem;
-        border-top: 0.2rem solid;
+        top: 60%;
+        position: absolute;
+        width: 100%;
+        border-top: 0.4rem solid;
       }
       &-bottom {
         border-top: 0.2rem solid;
         font-size: 1rem;
         display: flex;
+        padding-left: 2rem;
         flex-direction: row;
         align-self: flex-start;
+        :nth-child(2) {
+          padding: 0 0.5rem;
+        }
       }
     }
     // animations
     .trying-something {
       width: 300%;
-    //  animation: marquee-right 5s linear infinite;
-      &:nth-of-type(odd) {
-        // background-color: $yellow;
-        // animation-name: marquee-left;
-        // animation-duration: 10s;
-      }
     }
   }
 }

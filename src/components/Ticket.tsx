@@ -8,7 +8,6 @@ export default function Ticket() {
         alt="ticket stub"
         className="custom-ticket-image"
       />
-      <p className="custom-ticket-text">YOUR TICKET</p>
     </div>
   );
 }

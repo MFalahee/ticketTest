@@ -1,6 +1,6 @@
 import * as React from "react";
-import * as ReactDOM from 'react-dom';
-import { PhotoModal } from "./index";
+// import * as ReactDOM from 'react-dom';
+// import { PhotoModal } from "./index";
 import photoArr from "../files/photoImport.js";
 import {PhotoTickerProps}from "../files/customTypes";
 import NavigateNextOutlinedIcon from '@mui/icons-material/NavigateNextOutlined';
@@ -8,8 +8,8 @@ import NavigateNextOutlinedIcon from '@mui/icons-material/NavigateNextOutlined';
 const delay: number = 5000;
 export default function PhotoTicker(props: PhotoTickerProps) {
   const [photoIndex, setPhotoIndex] = React.useState(1);
-  const [modalToggle, setModalToggle] = React.useState(false);
-  const [modalIndex, setModalIndex] = React.useState(0);
+  // const [modalToggle, setModalToggle] = React.useState(false);
+  // const [modalIndex, setModalIndex] = React.useState(0);
   const arrLength = photoArr.length;
   const timeRef = React.useRef<NodeJS.Timeout>();
   React.useEffect(() => {
@@ -98,15 +98,15 @@ export default function PhotoTicker(props: PhotoTickerProps) {
     console.log("Photo ", photoIndex, " clicked.")
     // controls z-index
     props.modalRef.current?.classList.toggle('active-modal');
-    setModalIndex(Number(photoIndex));
-    setModalToggle(!modalToggle);
+    // setModalIndex(Number(photoIndex));
+    // setModalToggle(!modalToggle);
     }
 
 
-    const handlePhotoModalClose = () => {
-      setModalToggle(false);
-      props.modalRef.current?.classList.toggle('active-modal');
-    }
+    // const handlePhotoModalClose = () => {
+    //   setModalToggle(false);
+    //   props.modalRef.current?.classList.toggle('active-modal');
+    // }
     
   function resetTimeout() {
     if (timeRef.current) {
@@ -123,16 +123,16 @@ export default function PhotoTicker(props: PhotoTickerProps) {
   // }
 
   
-  function renderModal() {
-    // let modalParams = [modalToggle.toString(), modalIndex.toString()]
-    // logParams(modalParams)
-    if (props.modalRef.current) {
-      return(
-      ReactDOM.createPortal(<PhotoModal visible={modalToggle} index={modalIndex} onClose={handlePhotoModalClose} />, props.modalRef.current)
-      )
-    }
-    else console.error('Failed to render modal.')
-  }
+  // function renderModal() {
+  //   // let modalParams = [modalToggle.toString(), modalIndex.toString()]
+  //   // logParams(modalParams)
+  //   if (props.modalRef.current) {
+  //     return(
+  //     ReactDOM.createPortal(<PhotoModal visible={modalToggle} index={modalIndex} onClose={handlePhotoModalClose} />, props.modalRef.current)
+  //     )
+  //   }
+  //   else console.error('Failed to render modal.')
+  // }
   // auto progress slideshow of photos
   React.useEffect(() => {
     resetTimeout();
@@ -155,13 +155,13 @@ export default function PhotoTicker(props: PhotoTickerProps) {
   }, [photoIndex, arrLength, handlePhotoIndex]);
   // modal listener 
 
-  React.useEffect(() => {
-    if (modalToggle && props.modalRef.current) {
-      console.log(props.modalRef.current);
-    } else {
-      return
-    }
-  }, [modalToggle, props.modalRef]);
+  // React.useEffect(() => {
+  //   if (modalToggle && props.modalRef.current) {
+  //     console.log(props.modalRef.current);
+  //   } else {
+  //     return
+  //   }
+  // }, [modalToggle, props.modalRef]);
 
 
   return (
@@ -190,7 +190,7 @@ export default function PhotoTicker(props: PhotoTickerProps) {
             </div>
           );
         })}
-      {(props.modalRef.current) ? renderModal() : null}
+      {/* {(props.modalRef.current) ? renderModal() : null} */}
       </div>
     </div>
   );
