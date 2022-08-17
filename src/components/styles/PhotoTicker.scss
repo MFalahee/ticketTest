@@ -68,7 +68,9 @@ $photo-ticker-delay: 0.5s;
 
           @include for-mobile {
             right:0;
-            width: auto;
+            padding: 0;
+            max-height: 100%;
+            max-width: 100%;
           }
         }
 

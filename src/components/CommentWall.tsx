@@ -54,7 +54,6 @@ export default function CommentWall() {
       {/* <div className='comment-wall-row'></div> */}
       <CommentRow comments={comments} index={3} key={Math.random()}direction="right" />
       {/* <div className='comment-wall-row'></div> */}
-      <CommentRow comments={comments} index={4} key={Math.random()} direction="left" />
     </div>
   );
 }
