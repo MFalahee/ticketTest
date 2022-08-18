@@ -13,18 +13,17 @@
   }
 }
 
-
 @keyframes accordion-open {
   // I want this to slide the accordion open from the top
   0% {
     opacity: 0;
-    transform: translateY(-100%); 
+    transform: translateY(-100%);
   }
   33% {
     opacity: 0;
   }
   66% {
-    opacity: 0.8
+    opacity: 0.8;
   }
   100% {
     opacity: 1;
@@ -40,74 +39,73 @@ $background-def: $tertiary;
   flex-direction: column;
   overflow: hidden;
   &-section {
-      text-transform: uppercase;
-      background: $background-def;
-      color: $secondary;
-      &:nth-child(even) {
-        background: none;
-        color: $primary;
-      }
-      &:nth-child(3) {
-        background: none;
-        .cas-visible-content {
-          .cas-card {
-            background: $background-def;
-          }
-          .cas-bottom-row {
-            // bottom padding for subcategories
-            &:last-child {
-              padding-bottom: 0.5rem;
-            }
-          }
-        }
-      }
+    text-transform: uppercase;
+    background: $background-def;
+    color: $secondary;
+    &:nth-child(even) {
+      background: none;
+      color: $primary;
+    }
+    &:nth-child(3) {
+      background: none;
       .cas-visible-content {
         .cas-card {
-          height: 100%;
-          cursor: pointer;
-          background-color: inherit;
-          .cas-top-row {
-            z-index: 1;
-            margin: 0;
-            padding-top: 0.5rem;
-            border-bottom: 0.2rem solid;
-            display: flex;
-            justify-content: center;
-            align-content: flex-end;
-            height: 5rem;
-            .cas-title-text {
-              align-self: center;
-              font-family: $font1;
-              font-size: 5rem;
-              font-weight: 150;
-              margin: 0;
-              padding: 0;
-              padding-right: 1rem;
-            }
+          background: $background-def;
+        }
+        .cas-bottom-row {
+          // bottom padding for subcategories
+          &:last-child {
+            padding-bottom: 0.5rem;
           }
-          .cas-bottom-row {
+        }
+      }
+    }
+    .cas-visible-content {
+      .cas-card {
+        height: 100%;
+        cursor: pointer;
+        background-color: inherit;
+        .cas-top-row {
+          z-index: 1;
+          margin: 0;
+          padding-top: 0.5rem;
+          border-bottom: 0.2rem solid;
+          display: flex;
+          justify-content: center;
+          align-content: flex-end;
+          height: 5rem;
+          .cas-title-text {
+            align-self: center;
+            font-family: $font1;
+            font-size: 5rem;
+            font-weight: 150;
             margin: 0;
             padding: 0;
-            font-size: 1rem;
-            .cas-subcategories {
-              display: flex;
-              flex-direction: row;
-              align-content: center;
-              justify-content: center;
-            }
+            padding-right: 1rem;
           }
         }
-        .active-cas-section {
-          overflow: hidden;
-          animation: accordion-open 1s ease-out forwards;
+        .cas-bottom-row {
+          margin: 0;
+          padding: 0;
+          font-size: 1rem;
+          .cas-subcategories {
+            display: flex;
+            flex-direction: row;
+            align-content: center;
+            justify-content: center;
+          }
         }
-      
       }
+      .active-cas-section {
+        overflow: hidden;
+        animation: accordion-open 1s ease-out forwards;
+      }
+    }
     // SHOWS bottom-padding
     &:last-child {
       padding-bottom: 3rem;
     }
-    }
+  }
 }
 
 @include square-icon-styling(0, top, left);

@@ -30,7 +30,8 @@ $media-breakpoint-lg: 1200px;
 }
 
 .svg-filter-for-yellow {
-  filter: invert(77%) sepia(42%) saturate(475%) hue-rotate(356deg) brightness(105%) contrast(104%);
+  filter: invert(77%) sepia(42%) saturate(475%) hue-rotate(356deg)
+    brightness(105%) contrast(104%);
 }
 
 .App {
@@ -56,7 +57,7 @@ $media-breakpoint-lg: 1200px;
   background: url("./files/svgs/bg.svg");
   width: 100%;
   z-index: 1;
-} 
+}
 
 .spacer-div {
   width: 100%;
@@ -75,4 +76,4 @@ Colors and styles
 @import "./components/styles/index.scss";
 
 /* Animation import */
-@import './files/animations.scss';
+@import "./files/animations.scss";

@@ -67,10 +67,11 @@ export default function Accordion(props: AccordionProps) {
   function handleAccordionSectionHeader(section: Section) {
     if (section !== null) {
       return (
-        <div
-          className='cas-card'
-        >
-          <div className='cas-top-row'  onClick={() => accordionClickHandler(section.id)}>
+        <div className='cas-card'>
+          <div
+            className='cas-top-row'
+            onClick={() => accordionClickHandler(section.id)}
+          >
             <span className='cas-title-text'>{section.name}</span>
             <ArrowButton index={section.id} />
           </div>
@@ -93,19 +94,21 @@ export default function Accordion(props: AccordionProps) {
   }
 
   // will toggle class to correct arrow
-  
+
   function handleArrowAnimation() {
     openArr.forEach((ele, key) => {
       let t = document.getElementById(`cas-arrow-${key}`)
       if (t !== null) {
         if (ele) {
-         if (!t.classList.contains('active-drawer')) t.classList.toggle('active-drawer')
+          if (!t.classList.contains("active-drawer"))
+            t.classList.toggle("active-drawer")
         } else {
-          if (t.classList.contains('active-drawer')) t.classList.toggle('active-drawer')
+          if (t.classList.contains("active-drawer"))
+            t.classList.toggle("active-drawer")
         }
       }
     })
-    return;
+    return
   }
 
   let arrowAnimCB = React.useCallback(handleArrowAnimation, [openArr])
@@ -116,7 +119,7 @@ export default function Accordion(props: AccordionProps) {
   }, [props.sections])
 
   React.useEffect(() => {
-    arrowAnimCB();
+    arrowAnimCB()
   }, [openArr, arrowAnimCB])
 
   if (sections && sections.length >= 0) {
