@@ -7,12 +7,16 @@ export default function Accordion(props: AccordionProps) {
   const [openArr, setOpenArr] = React.useState([false, false, false, false])
   const [sections, setSections] = React.useState(props.sections)
 
+  // index = which drawer was clicked
   function accordionClickHandler(index: number) {
+    // SHOWS opens a link
     if (index === 4) {
       window.open("http://www.elephantemusic.com/tour")
     }
+    // toggle our state obj
     let newOpenArr = [...openArr]
     newOpenArr[index] = !newOpenArr[index]
+    // park it
     setOpenArr(newOpenArr)
   }
 
@@ -60,14 +64,13 @@ export default function Accordion(props: AccordionProps) {
   }
 
   // reusable function to create the accordion title sections
-  function handleAccordionSectionTop(section: Section) {
+  function handleAccordionSectionHeader(section: Section) {
     if (section !== null) {
       return (
         <div
           className='cas-card'
-          onClick={() => accordionClickHandler(section.id)}
         >
-          <div className='cas-top-row'>
+          <div className='cas-top-row'  onClick={() => accordionClickHandler(section.id)}>
             <span className='cas-title-text'>{section.name}</span>
             <ArrowButton index={section.id} />
           </div>
@@ -126,7 +129,7 @@ export default function Accordion(props: AccordionProps) {
               className={`custom-accordion-section cas cas-${key}`}
             >
               <div className='cas-visible-content'>
-                {handleAccordionSectionTop(section)}
+                {handleAccordionSectionHeader(section)}
                 {/* hidden accordion content */}
                 {openArr[key] ? handleSectionContent(key) : null}
               </div>

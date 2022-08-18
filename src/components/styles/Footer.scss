@@ -6,6 +6,7 @@
   display: flex;
   justify-content: center;
   .footer-item {
+    z-index: 1;
     padding-top: 0.5rem;
     font-family: $font1;
     font-weight: 100;
@@ -18,4 +19,5 @@
       max-height: 50%;
     }
   }
+
 }
