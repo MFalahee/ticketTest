@@ -1,6 +1,14 @@
 import * as React from "react";
 
 export default function SoundCloudWidget() {
+  console.log(process.env.NODE_ENV);
+  console.log(process.env)
+  let link
+  if (process.env.NODE_ENV === 'production') {
+    link = process.env.REACT_APP_SECRET_URL
+  } else {
+    link = "https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/playlists/1482547189%3Fsecret_token%3Ds-8DtQOIkYrrS&color=%230e161a&auto_play=false&hide_related=false&show_comments=true&show_user=true&show_reposts=false&show_teaser=true&visual=false"
+  }
   return (
     <div className="sc-widget">
       <iframe
@@ -11,12 +19,10 @@ export default function SoundCloudWidget() {
         scrolling="no"
         frameBorder="no"
         allow="autoplay"
-        src="https://w.soundcloud.com/player/?url=https://api.soundcloud.com/users/10915053"
+        src={link}
       />
     </div>
 )}
-
-// https://soundcloud.com/iamtheelephante/sets/heavy-glow-tour-vips/s-8DtQOIkYrrS?si=a79f6faf75144bf1974c4c8a6cf38d75
-
-// prev vers
-// "https://w.soundcloud.com/player/?url=https://api.soundcloud.com/users/10915053"
+/*
+src="https://w.soundcloud.com/player/?url=https://api.soundcloud.com/users/10915053"
+*/
