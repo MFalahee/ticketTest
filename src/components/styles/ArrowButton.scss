@@ -1,4 +1,5 @@
 .cas-square-icon-container {
+    z-index: 3;
     position: relative;
     height: 4rem;
     width: 4rem;
@@ -12,25 +13,26 @@
 }
   .MuiSvgIcon-root {
     &.cas-arrow {
-      z-index: 2;
+      z-index: 3;
       cursor: pointer;
       position: relative;
       width: 30px;
       height: 30px;
       top: 30%;
-      &:not(.clicked-arrow){
-        &:hover {
-          cursor: pointer;
-          color: $white;
-          animation: rotate-90-cw 0.3s ease-out both;
-        }
-      }
-    &.clicked-arrow {
-       transform: rotate(-90deg);
-       &:hover {
-        color: $white;
-        transform: rotate(-90deg);
-       }
+    }
+  }
+
+  @mixin active-arrow($id) {
+    #cas-arrow-#{$id} {
+      transition-property: rotate;
+      &.active-drawer {
+        rotate: 90deg;
       }
     }
   }
+
+  @include active-arrow(0);
+  @include active-arrow(1);
+  @include active-arrow(2);
+  @include active-arrow(3);
+  @include active-arrow(4);

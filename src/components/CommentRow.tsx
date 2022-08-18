@@ -15,7 +15,6 @@ export default function CommentRow(props: CommentRowProps) {
         {comments.map((comment, key) => {
           return (
             <div key={key} className="trying-something">
-              <div className="comment-row-comment-line-spacer"></div>
               <div
                 className={`comment-row-comment move-${props.direction}`}>
                 <div className={`comment-row-comment-top`}>

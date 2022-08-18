@@ -32,14 +32,10 @@
     transform: translateY(0);
   }
 }
-
-
 $primary: white;
 $secondary: black;
 $tertiary: $yellow;
 $background-def: $tertiary;
-
-
 .custom-accordion {
   display: flex;
   flex-direction: column;
@@ -57,6 +53,12 @@ $background-def: $tertiary;
         .cas-visible-content {
           .cas-card {
             background: $background-def;
+          }
+          .cas-bottom-row {
+            // bottom padding for subcategories
+            &:last-child {
+              padding-bottom: 0.5rem;
+            }
           }
         }
       }
@@ -101,10 +103,11 @@ $background-def: $tertiary;
         }
       
       }
-    
-    // animations for accordion
+    // SHOWS bottom-padding
+    &:last-child {
+      padding-bottom: 3rem;
     }
-
+    }
 }
 
 @include square-icon-styling(0, top, left);
