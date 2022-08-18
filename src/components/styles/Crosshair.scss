@@ -33,14 +33,14 @@
   .crosshair-left {
     position: fixed;
     top: 20%;
-    z-index: 1;
+    z-index: 2;
     left: 0;
     @include crosshair-sizing();
   }
   .crosshair-right {
     top: 20%;
     position: fixed;
-    z-index: 1;
+    z-index: 2;
     right: 0;
     transform: rotate(180deg);
     @include crosshair-sizing();

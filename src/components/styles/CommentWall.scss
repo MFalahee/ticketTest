@@ -23,18 +23,20 @@ $bg: none;
       animation: marquee-left 30s both infinite;
     }
     &-comment {
+      text-align: start;
       margin: auto;
       flex-direction: column;
       box-sizing: content-box;
       &-top {
+ 
         font-size: 1.6rem;
         line-height: 3rem;
         text-transform: uppercase;
         white-space: nowrap;
         overflow: hidden;
-        padding-left: 1.2rem;
         padding-right: 1.2rem;
         border-right: 0.5rem solid;
+        padding-left: 1rem;
         padding-top: 0.5rem;
       }
       &-line-spacer {
@@ -45,9 +47,9 @@ $bg: none;
       }
       &-bottom {
         border-top: 0.2rem solid;
+        padding-left: 1rem;
         font-size: 1rem;
         display: flex;
-        padding-left: 1.2rem;
         flex-direction: row;
         :nth-child(2) {
           padding: 0 0.5rem;
@@ -57,6 +59,19 @@ $bg: none;
     // animations
     .trying-something {
       width: 300%;
+    }
+  }
+
+  @include for-desktop-up {
+    .comment-row {
+      &-comment {
+        &-top {
+          font-size: 2rem;
+        }
+        &-bottom {
+          font-size: 1.3rem;
+        }
+      }
     }
   }
 }

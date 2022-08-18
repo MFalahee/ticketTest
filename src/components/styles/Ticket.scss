@@ -22,7 +22,7 @@
       max-width: 70%;
     }
     @include for-desktop-up {
-      max-width: 40%;
+      max-width: 50%;
     }
   }
   .custom-ticket-text {
@@ -38,4 +38,8 @@
       font-size: 0.8rem;
     }
   }
+}
+
+@keyframes ticket-grow {
+
 }
