@@ -1,5 +1,4 @@
 .App-header {
-
   .header-art {
     position: absolute;
     width: 100%;
@@ -27,7 +26,7 @@
       top: -1.2rem;
     }
     @include for-desktop-up {
-    top: -2.1rem;
+      top: -2.1rem;
     }
   }
 }
