@@ -1,0 +1,11 @@
+.static-footer {
+  z-index: 3;
+  position: relative;
+  bottom: 0;
+  width: 100%;
+  height: fit-content;
+  &-art {
+    width: 100%;
+    height: auto;
+  }
+}

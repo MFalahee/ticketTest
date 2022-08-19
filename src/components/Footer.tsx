@@ -2,12 +2,15 @@ import * as React from "react"
 import elephantLogo from "../files/svgs/elephantLogo.svg"
 
 export default function Footer() {
+  const footerRef = React.useRef(null)
   function linkOnClick(link: string, e: React.MouseEvent) {
     e.preventDefault()
     window.open(link)
   }
+
   return (
-    <div className='footer-container'>
+    <div ref={footerRef} className='footer-container'>
+      <div className='footer-background'></div>
       <span
         className='footer-item'
         onClick={(e) => {
