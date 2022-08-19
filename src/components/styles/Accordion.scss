@@ -12,26 +12,6 @@
     }
   }
 }
-
-@keyframes accordion-open {
-  // I want this to slide the accordion open from the top
-  0% {
-    opacity: 0;
-    transform: translateY(-100%);
-  }
-  33% {
-    opacity: 0;
-  }
-  66% {
-    opacity: 0.8;
-  }
-  100% {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-$primary: white;
-$secondary: black;
 $tertiary: $yellow;
 $background-def: $tertiary;
 .custom-accordion {
