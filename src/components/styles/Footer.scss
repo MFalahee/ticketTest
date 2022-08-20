@@ -6,7 +6,7 @@
   .footer-elephant-logo-container {
     z-index: 4;
     position: absolute;
-    left: 48%;
+    left: 50%;
     right: auto;
     top: 0;
     .footer-elephant-logo {
@@ -25,7 +25,7 @@
   .footer-item-container {
     width: 100%;
     display: flex;
-    justify-content: space-evenly;
+    justify-content: center;
     padding: 1rem 0;
     .footer-item {
       padding: 0 0.3rem;
@@ -39,6 +39,9 @@
         opacity: 0.8;
       }
     }
+    :first-child {
+      padding-right: 5rem;
+    }
   }
 
   /*
@@ -46,27 +49,39 @@
   */
   &.footer-at-bottom {
     position: fixed;
+    bottom: 0;
     background: none;
-    height: 120px;
-    justify-content: center;
-    flex-direction: column;
     .footer-background {
       display: none;
     }
     .footer-item-container {
-      justify-content: space-between;
+      position: relative;
+      justify-content: space-evenly;
       z-index: 4;
       .footer-item {
+        line-height: 1rem;
+        background: white;
+        text-decoration: none;
+        border-color: grey;
+        border-style: inset;
+        border-radius: 3rem;
+        bottom: 80px;
+        margin: 0;
         padding: 0 1rem;
         z-index: 4;
         color: black;
         position: relative;
+      }
+      :first-child {
+        margin-right: 30%;
       }
     }
     .footer-elephant-logo-container {
       position: absolute;
       .footer-elephant-logo {
         position: relative;
+        scale: 1.2;
+        bottom: 20px;
       }
     }
   }
@@ -76,11 +91,15 @@
 
   @include for-tablet {
     &.footer-at-bottom {
-      height: 200px;
+      .footer-item-container {
+        .footer-item {
+          bottom: 120px;
+        }
+      }
       .footer-elephant-logo-container {
-        top: 20px;
         .footer-elephant-logo {
-          scale: 1.3;
+          bottom: 2rem;
+          scale: 1.5;
         }
       }
     }
@@ -90,10 +109,12 @@
       .footer-item-container {
         .footer-item {
           font-size: 1.3rem;
+          bottom: 300px;
         }
       }
       .footer-elephant-logo-container {
         .footer-elephant-logo {
+          bottom: 5rem;
           scale: 2;
         }
       }
