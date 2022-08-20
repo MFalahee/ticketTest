@@ -5,6 +5,7 @@ import {
   Ticket,
   Accordion,
   Crosshair,
+  StaticFooter,
   Footer,
 } from "./components/index"
 import CssBaseline from "@mui/material/CssBaseline"
@@ -12,7 +13,55 @@ import sections from "./files/sectionsData"
 function App() {
   const [sectionsData] = React.useState(sections)
   const modalRef = React.createRef<HTMLDivElement>()
-  React.useEffect(() => {}, [])
+  const timeRef = React.useRef<NodeJS.Timeout>()
+  const delay = 500
+
+  function resetTimeout() {
+    if (timeRef.current) {
+      clearTimeout(timeRef.current)
+    }
+  }
+  function scrollListener() {
+    onscroll = () => {
+      let heightD
+      let docHeight = document.scrollingElement?.scrollHeight
+      let toggleTarget = document.getElementById("moving-footer")
+
+      if (docHeight) {
+        heightD = docHeight - window.innerHeight
+      }
+      if (heightD && window.scrollY >= heightD) {
+        //  need to acknowledge hitting the bottom
+        //  toggle
+
+        let target = document.getElementById("static-footer")
+        if (
+          target &&
+          document.scrollingElement &&
+          !toggleTarget?.classList.contains("footer-at-bottom")
+        ) {
+          document.scrollingElement.scrollTop = target.offsetTop
+          toggleTarget?.classList.toggle("footer-at-bottom")
+          // console.log(`targetOffsetTop: ${target.offsetTop}`)
+        }
+      } else {
+        if (toggleTarget?.classList.contains("footer-at-bottom"))
+          toggleTarget.classList.remove("footer-at-bottom")
+      }
+    }
+  }
+
+  React.useEffect(() => {
+    scrollListener()
+  }, [])
+
+  React.useEffect(() => {
+    resetTimeout()
+    timeRef.current = setTimeout(() => {}, delay)
+    return () => {
+      resetTimeout()
+    }
+  }, [])
 
   return (
     <div className='App' id='app-container'>
@@ -23,8 +72,10 @@ function App() {
         <Header />
         <Ticket />
       </div>
+
       <Accordion sections={[...sectionsData]} modalRef={modalRef} />
       <Footer />
+      <StaticFooter />
     </div>
   )
 }
