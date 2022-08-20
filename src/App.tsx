@@ -22,6 +22,7 @@ function App() {
     }
   }
   function scrollListener() {
+    // need to reset these on resize!
     onscroll = () => {
       let heightD
       let docHeight = document.scrollingElement?.scrollHeight
@@ -31,9 +32,6 @@ function App() {
         heightD = docHeight - window.innerHeight
       }
       if (heightD && window.scrollY >= heightD) {
-        //  need to acknowledge hitting the bottom
-        //  toggle
-
         let target = document.getElementById("static-footer")
         if (
           target &&
@@ -42,7 +40,6 @@ function App() {
         ) {
           document.scrollingElement.scrollTop = target.offsetTop
           toggleTarget?.classList.toggle("footer-at-bottom")
-          // console.log(`targetOffsetTop: ${target.offsetTop}`)
         }
       } else {
         if (toggleTarget?.classList.contains("footer-at-bottom"))
