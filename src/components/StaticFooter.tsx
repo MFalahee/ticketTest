@@ -8,9 +8,7 @@ export default function StaticFooter() {
     window.open(link)
   }
   return (
-    <div
-      className='static-footer'
-    >
+    <div id='static-footer' className='static-footer'>
       <img
         src={headerImg}
         className='static-footer-art'

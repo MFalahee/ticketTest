@@ -152,7 +152,6 @@ export default function PhotoTicker(props: PhotoTickerProps) {
     }
   }, [photoIndex, arrLength, handlePhotoIndex])
   // modal listener
-
   // React.useEffect(() => {
   //   if (modalToggle && props.modalRef.current) {
   //     console.log(props.modalRef.current);

@@ -10,68 +10,47 @@ import {
 } from "./components/index"
 import CssBaseline from "@mui/material/CssBaseline"
 import sections from "./files/sectionsData"
+import { ConstructionOutlined } from "@mui/icons-material"
 function App() {
   const [sectionsData] = React.useState(sections)
   const [scrollHeight, setScrollHeight] = React.useState<number>()
   const modalRef = React.createRef<HTMLDivElement>()
   const timeRef = React.useRef<NodeJS.Timeout>()
-  const delay = 100
-
-  function getDocHeight() {
-    console.log(`
-    ===== 
-    doc  scrollHeight ${document.documentElement.scrollHeight} 
-    body scrollHeight ${document.body.scrollHeight} \n
-    doc  offsetHeight ${document.documentElement.offsetHeight}  
-    body offsetHeight ${document.body.offsetHeight} \n
-    doc  clientHeight ${document.documentElement.clientHeight}
-    body clientHeight ${document.body.clientHeight}
-    =====
-    `)
-    return Math.max(
-      document.body.scrollHeight,
-      document.documentElement.scrollHeight,
-      document.body.offsetHeight,
-      document.documentElement.offsetHeight,
-      document.body.clientHeight,
-      document.documentElement.clientHeight
-    )
-  }
+  const delay = 500
 
   function resetTimeout() {
     if (timeRef.current) {
       clearTimeout(timeRef.current)
     }
   }
-
+  // window.pageYOffset === window.scrollY
   function scrollListener() {
-    console.log("=== scrollListener FIRED ===")
+    console.log(`window.innerHeight: ${window.innerHeight} \n`)
+    console.log(`window.scrollY: ${window.scrollY} \n`)
     onscroll = (event) => {
-      console.log(window.scrollY)
+      let currentPixelHeight = window.scrollY
+      // target should be last accordion piece? we want a threshold.
+      let target = document.getElementById("static-footer")
+      console.log(target?.offsetTop)
+      console.log(Math.round((window.scrollY / window.innerHeight) * 100))
     }
     return
   }
 
-  function resizeListener() {
-    let w = window
-    w.onresize = (e) => {
-      console.log(e)
-    }
-    return
-  }
+  // function resizeListener() {
+  //   let w = window
+  //   w.onresize = (e) => {
+  //   }
+  //   return
+  // }
 
   React.useEffect(() => {
     scrollListener()
-    resizeListener()
-  }, [scrollListener, resizeListener])
+  }, [scrollListener])
 
   React.useEffect(() => {
-    console.log(getDocHeight())
     resetTimeout()
-    timeRef.current = setTimeout(() => {
-      console.log("=== setTimeout FIRED ===")
-      console.log(document.scrollingElement)
-    }, delay)
+    timeRef.current = setTimeout(() => {}, delay)
     return () => {
       resetTimeout()
     }
