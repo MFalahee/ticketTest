@@ -10,10 +10,8 @@ import {
 } from "./components/index"
 import CssBaseline from "@mui/material/CssBaseline"
 import sections from "./files/sectionsData"
-import { ConstructionOutlined } from "@mui/icons-material"
 function App() {
   const [sectionsData] = React.useState(sections)
-  const [scrollHeight, setScrollHeight] = React.useState<number>()
   const modalRef = React.createRef<HTMLDivElement>()
   const timeRef = React.useRef<NodeJS.Timeout>()
   const delay = 500
@@ -23,30 +21,39 @@ function App() {
       clearTimeout(timeRef.current)
     }
   }
-  // window.pageYOffset === window.scrollY
   function scrollListener() {
-    console.log(`window.innerHeight: ${window.innerHeight} \n`)
-    console.log(`window.scrollY: ${window.scrollY} \n`)
-    onscroll = (event) => {
-      let currentPixelHeight = window.scrollY
-      // target should be last accordion piece? we want a threshold.
-      let target = document.getElementById("static-footer")
-      console.log(target?.offsetTop)
-      console.log(Math.round((window.scrollY / window.innerHeight) * 100))
-    }
-    return
-  }
+    onscroll = () => {
+      let heightD
+      let docHeight = document.scrollingElement?.scrollHeight
+      let toggleTarget = document.getElementById("moving-footer")
 
-  // function resizeListener() {
-  //   let w = window
-  //   w.onresize = (e) => {
-  //   }
-  //   return
-  // }
+      if (docHeight) {
+        heightD = docHeight - window.innerHeight
+      }
+      if (heightD && window.scrollY >= heightD) {
+        //  need to acknowledge hitting the bottom
+        //  toggle
+
+        let target = document.getElementById("static-footer")
+        if (
+          target &&
+          document.scrollingElement &&
+          !toggleTarget?.classList.contains("footer-at-bottom")
+        ) {
+          document.scrollingElement.scrollTop = target.offsetTop
+          toggleTarget?.classList.toggle("footer-at-bottom")
+          // console.log(`targetOffsetTop: ${target.offsetTop}`)
+        }
+      } else {
+        if (toggleTarget?.classList.contains("footer-at-bottom"))
+          toggleTarget.classList.remove("footer-at-bottom")
+      }
+    }
+  }
 
   React.useEffect(() => {
     scrollListener()
-  }, [scrollListener])
+  }, [])
 
   React.useEffect(() => {
     resetTimeout()

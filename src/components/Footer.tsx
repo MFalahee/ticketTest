@@ -9,26 +9,27 @@ export default function Footer() {
   }
 
   return (
-    <div ref={footerRef} className='footer-container'>
-      <div className='footer-background'></div>
-      <span
-        className='footer-item'
-        onClick={(e) => {
-          linkOnClick("http://www.elephantemusic.com/", e)
-        }}
-      >
-        {" "}
-        ELEPHANTEMUSIC.COM{" "}
-      </span>
-      <span className='footer-item'>
-        {" "}
+    <div ref={footerRef} id='moving-footer' className='footer-container'>
+      <div className='footer-elephant-logo-container'>
         <img
           className='footer-elephant-logo'
           src={elephantLogo}
           alt='mini-elephant-logo'
         />
-      </span>
-      <span className='footer-item'> LEGAL TERMS </span>
+      </div>
+      <div className='footer-background'></div>
+      <div className='footer-item-container'>
+        <span
+          className='footer-item'
+          onClick={(e) => {
+            linkOnClick("http://www.elephantemusic.com/", e)
+          }}
+        >
+          {" "}
+          ELEPHANTEMUSIC.COM{" "}
+        </span>
+        <span className='footer-item'> LEGAL TERMS </span>
+      </div>
     </div>
   )
 }
