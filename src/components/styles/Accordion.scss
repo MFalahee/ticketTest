@@ -76,14 +76,14 @@ $background-def: $tertiary;
           }
         }
       }
-      .active-cas-section {
-        overflow: hidden;
-        animation: accordion-open 1s ease-out forwards;
+      .cas-section-content {
+        animation: open-accordion 0.7s;
+        animation-timing-function: cubic-bezier(0, 0.8, 0, 1);
       }
     }
     // SHOWS bottom-padding
     &:last-child {
-      padding-bottom: 3rem;
+      padding-bottom: 1rem;
     }
   }
 }

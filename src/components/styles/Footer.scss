@@ -51,25 +51,17 @@
     position: fixed;
     bottom: 0;
     background: none;
-    .footer-background {
-      display: none;
-    }
     .footer-item-container {
       position: relative;
       justify-content: space-evenly;
       z-index: 4;
+      align-items: flex-end;
       .footer-item {
-        line-height: 1rem;
-        background: white;
-        text-decoration: none;
-        border-color: grey;
-        border-style: inset;
-        border-radius: 3rem;
-        bottom: 80px;
         margin: 0;
-        padding: 0 1rem;
+        padding: 0 0.3rem;
+        text-overflow: nowrap;
+        flex-wrap: nowrap;
         z-index: 4;
-        color: black;
         position: relative;
       }
       :first-child {
@@ -93,13 +85,10 @@
     &.footer-at-bottom {
       .footer-item-container {
         .footer-item {
-          bottom: 120px;
         }
       }
       .footer-elephant-logo-container {
         .footer-elephant-logo {
-          bottom: 2rem;
-          scale: 1.5;
         }
       }
     }
@@ -109,13 +98,10 @@
       .footer-item-container {
         .footer-item {
           font-size: 1.3rem;
-          bottom: 300px;
         }
       }
       .footer-elephant-logo-container {
         .footer-elephant-logo {
-          bottom: 5rem;
-          scale: 2;
         }
       }
     }
