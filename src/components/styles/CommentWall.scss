@@ -14,13 +14,15 @@ $bg: none;
     display: flex;
     flex-direction: row;
     justify-content: baseline;
-    animation: marquee-right 5s forwards ease-in infinite;
+    animation: marquee-left 14s infinite alternate;
+    // animation: marquee-right 5s forwards ease-in infinite;
     animation-timing-function: linear;
     &:nth-of-type(odd) {
       background: $yellow;
       color: $sc;
       border-color: $sc;
-      animation: marquee-left 5s forwards ease-in infinite;
+      animation: marquee-left 12s infinite alternate;
+      animation-fill-mode: none;
     }
     &-comment {
       text-align: start;
@@ -45,6 +47,7 @@ $bg: none;
         border-top: 0.4rem solid;
       }
       &-bottom {
+        border-right: 0.5rem solid;
         border-top: 0.2rem solid;
         padding-left: 1rem;
         font-size: 1rem;

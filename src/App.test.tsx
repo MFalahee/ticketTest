@@ -1,5 +1,6 @@
 import React from "react"
 import { render, screen } from "@testing-library/react"
+import {} from './components/index';
 import App from "./App"
 
 test("renders the app correctly", () => {
@@ -8,7 +9,8 @@ test("renders the app correctly", () => {
   expect(welcomeText).toBeInTheDocument()
 })
 
-test("renders the header correctly", () => {})
+test("renders the header correctly", () => {
+})
 
 test("renders the ticket section correctly", () => {})
 

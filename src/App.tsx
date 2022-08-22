@@ -21,6 +21,8 @@ function App() {
       clearTimeout(timeRef.current)
     }
   }
+
+  // this listens for scrolling on the document and changes footer class based on that.
   function scrollListener() {
     // need to reset these on resize!
     onscroll = () => {
@@ -54,7 +56,12 @@ function App() {
 
   React.useEffect(() => {
     resetTimeout()
-    timeRef.current = setTimeout(() => {}, delay)
+    timeRef.current = setTimeout(() => {
+      // check for resize?
+      window.onresize = () => {
+        scrollListener()
+      }
+    }, delay)
     return () => {
       resetTimeout()
     }
@@ -72,7 +79,6 @@ function App() {
 
       <Accordion sections={[...sectionsData]} modalRef={modalRef} />
       <Footer />
-      <StaticFooter />
     </div>
   )
 }
