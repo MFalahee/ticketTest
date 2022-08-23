@@ -1,77 +1,100 @@
 $pc: white;
 $sc: black;
 $bg: none;
+
 // comment wall component
+// .comment-wall {
+//   --total-comment-rows: 4;
+//   --total-marquee-items-per-row: 5;
+//   border: 1px solid red;
+//   line-height: 1.5rem;
+//   font-size: 1.5rem;
+//   text-align: center;
+//   overflow: hidden;
+//   color: $pc;
+//   border-color: $sc;
+//   .comment-row {
+//     &-comment-container {
+//       &-comment-top {
+//       }
+//       &-comment-bottom {
+//       }
+//     }
+//     &:nth-of-type(odd) {
+//       background: $yellow;
+//       color: $sc;
+//       border-color: $sc;
+//       animation-fill-mode: none;
+//     }
+//       &-bottom {
+//         // border-right: 0.5rem solid;
+//         // border-top: 0.2rem solid;
+//         // padding-left: 1rem;
+//         // font-size: 1rem;
+//         // display: flex;
+//         // justify-content: center;
+//         // flex-direction: row;
+//         // :nth-child(2) {
+//         //   padding: 0 0.5rem;
+//         // }
+//       }
+//     }
+//   }
 .comment-wall {
-  width: 200%;
-  color: $pc;
-  border-color: $sc;
-  overflow: hidden;
-  // comment component
-  .comment-row {
-    width: 200%;
-    position: relative;
-    display: flex;
-    flex-direction: row;
-    justify-content: baseline;
-    animation: marquee-left 14s infinite alternate;
-    // animation: marquee-right 5s forwards ease-in infinite;
-    animation-timing-function: linear;
-    &:nth-of-type(odd) {
+  text-transform: uppercase;
+  .marquee-wrapper {
+    text-align: start;
+    white-space: nowrap;
+    overflow: hidden;
+    &:nth-of-type(even) {
       background: $yellow;
       color: $sc;
       border-color: $sc;
-      animation: marquee-left 12s infinite alternate;
       animation-fill-mode: none;
     }
-    &-comment {
-      text-align: start;
-      margin: auto;
-      flex-direction: column;
-      box-sizing: content-box;
-      &-top {
-        font-size: 1.6rem;
-        line-height: 3rem;
-        text-transform: uppercase;
-        white-space: nowrap;
-        overflow: hidden;
-        padding-right: 1.2rem;
-        border-right: 0.5rem solid;
-        padding-left: 1rem;
-        padding-top: 0.5rem;
+    .container {
+      overflow: hidden;
+    }
+    .marquee-inner {
+      display: block;
+      width: 200%;
+      position: absolute;
+      &-span {
+        float: left;
+        width: 50%;
       }
-      &-line-spacer {
-        top: 60%;
-        position: absolute;
-        width: 100%;
-        border-top: 0.4rem solid;
-      }
-      &-bottom {
-        border-right: 0.5rem solid;
-        border-top: 0.2rem solid;
-        padding-left: 1rem;
-        font-size: 1rem;
+      animation: marquee-left 20s linear infinite;
+    }
+    .marquee-block {
+      margin-top: 0.5rem;
+      height: 5rem;
+      --total-marquee-items: 5;
+      width: calc(250px * (var(--total-marquee-items)));
+      overflow: hidden;
+      box-sizing: border-box;
+      position: relative;
+    }
+    .marquee-item {
+      min-width: 300px;
+      height: auto;
+      display: inline-block;
+      transition: all 0.2s ease-out;
+      line-height: 1.6rem;
+      height: auto;
+      .comment-style-div {
         display: flex;
-        flex-direction: row;
-        :nth-child(2) {
-          padding: 0 0.5rem;
+        flex-direction: column;
+        .comment-row-comment-top {
+          font-size: 1.6rem;
+          list-style: none;
+          height: 3rem;
+          padding: 0 1rem;
+          border-bottom: 0.2rem solid;
+          border-left: 0.4rem solid;
         }
-      }
-    }
-    // animations
-    .trying-something {
-      width: 300%;
-    }
-  }
-
-  @include for-desktop-up {
-    .comment-row {
-      &-comment {
-        &-top {
-          font-size: 2rem;
-        }
-        &-bottom {
-          font-size: 1.3rem;
+        .comment-row-comment-bottom {
+          padding: 0 1rem;
+          border-left: 0.4rem solid;
         }
       }
     }
