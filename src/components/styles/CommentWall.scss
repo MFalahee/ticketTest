@@ -101,6 +101,7 @@ $border-colors: (
       border: 1px solid;
       &:nth-of-type(#{$i}) {
         .marquee-inner {
+          animation-play-state: playing;
           animation: slide-#{$i} 25s linear infinite;
           animation-fill-mode: backwards;
           animation-delay: calc(#{$i * math.random() * 0.2s});
