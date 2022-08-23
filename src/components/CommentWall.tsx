@@ -20,64 +20,37 @@ export default function CommentWall() {
         each row will alternate direction for scrolling/speed
     */
   React.useEffect(() => {
-    // set comments
     commentsIn.sort(() => Math.random() - 0.5)
+    // need to do the logic to insert db here I believe.
     setComments(commentsIn)
   }, [commentsIn])
 
-  React.useEffect(() => {
-    startAnimation()
-  }, [])
-
-  function startAnimation() {
-    // start animation
-    // hook comment rows via DOM
-    // row-left and row-right are the classes for the rows
-    let rowLeft = document.getElementsByClassName("move-left")
-    let rowRight = document.getElementsByClassName("move-right")
-    if (rowLeft && rowRight) {
-      // iterate through each arrow of rows and add an animation class to each
-      for (let i = 0; i < rowLeft.length; i++) {
-        rowLeft[i]?.classList.add("marquee-left")
-        rowRight[i]?.classList.add("marquee-right")
-      }
-    }
-  }
-
   return (
     <div ref={ref} className='comment-wall'>
-      <div className='marquee-wrapper'>
-        <CommentRow
-          comments={comments}
-          index={0}
-          key={Math.random()}
-          direction='left'
-        />
-      </div>
-      <div className='marquee-wrapper'>
-        <CommentRow
-          comments={comments}
-          index={1}
-          key={Math.random()}
-          direction='right'
-        />
-      </div>
-      <div className='marquee-wrapper'>
-        <CommentRow
-          comments={comments}
-          index={2}
-          key={Math.random()}
-          direction='left'
-        />
-      </div>
-      <div className='marquee-wrapper'>
-        <CommentRow
-          comments={comments}
-          index={3}
-          key={Math.random()}
-          direction='right'
-        />
-      </div>
+      <CommentRow
+        comments={comments}
+        index={0}
+        key={Math.random()}
+        direction='left'
+      />
+      <CommentRow
+        comments={comments}
+        index={1}
+        key={Math.random()}
+        direction='right'
+      />
+      <CommentRow
+        comments={comments}
+        index={2}
+        key={Math.random()}
+        direction='left'
+      />
+      <CommentRow
+        comments={comments}
+        index={3}
+        key={Math.random()}
+        direction='right'
+      />
     </div>
   )
 }

@@ -70,19 +70,22 @@
     left: -100%;
   }
   100% {
-    left: 0%;
+    left: 0;
   }
 }
 
 @keyframes marquee-left {
   0% {
-    left: 0%;
+    left: 10%;
   }
   100% {
     left: -100%;
   }
 }
 
+@mixin marquee-ni-mix() {
+
+}
 @keyframes prev-photo {
   0% {
     transform: translateX(200%);
