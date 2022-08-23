@@ -76,16 +76,16 @@
 
 @keyframes marquee-left {
   0% {
-    left: 10%;
+    left: 50%;
+  }
+  10% {
+    left: 25%;
   }
   100% {
     left: -100%;
   }
 }
 
-@mixin marquee-ni-mix() {
-
-}
 @keyframes prev-photo {
   0% {
     transform: translateX(200%);

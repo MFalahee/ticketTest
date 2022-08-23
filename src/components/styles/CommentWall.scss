@@ -7,11 +7,11 @@ $bg: none;
   .marquee-wrapper {
     text-align: start;
     white-space: nowrap;
+    animation-fill-mode: backwards;
     &:nth-of-type(even) {
       background: $yellow;
       color: $sc;
       border-color: $sc;
-      animation-fill-mode: none;
     }
     .container {
       overflow: hidden;
@@ -24,7 +24,7 @@ $bg: none;
         float: left;
         width: 50%;
       }
-      animation: marquee-left 20s linear infinite;
+      animation: marquee-left 25s linear infinite;
     }
     .marquee-block {
       margin: 20px auto;
@@ -40,7 +40,7 @@ $bg: none;
       margin: 0 10px;
       height: auto;
       display: inline-block;
-      transition: all 0.2s ease-out;
+      transition: all 0.1s ease-out;
       line-height: 1.6rem;
       height: auto;
       .comment-style-div {
@@ -80,4 +80,10 @@ $bg: none;
       }
     }
   }
+}
+
+@include for-tablet {
+}
+
+@include for-desktop-up {
 }
