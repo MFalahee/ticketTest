@@ -1,7 +1,15 @@
 $pc: white;
 $sc: black;
 $bg: none;
+$border-colors: (
+  1: blue,
+  2: orange,
+  3: purple,
+  4: cyan,
+);
 
+@use "sass:map";
+@use "sass:math";
 .comment-wall {
   text-transform: uppercase;
   .marquee-wrapper {
@@ -24,10 +32,9 @@ $bg: none;
         float: left;
         width: 50%;
       }
-      animation: marquee-left 25s linear infinite;
     }
     .marquee-block {
-      margin: 20px auto;
+      // margin: 20px auto;
       height: 5rem;
       --total-marquee-items: 5;
       width: calc(1080px * (var(--total-marquee-items)));
@@ -40,7 +47,7 @@ $bg: none;
       margin: 0 10px;
       height: auto;
       display: inline-block;
-      transition: all 0.1s ease-out;
+      transition: all 0.5s ease-in;
       line-height: 1.6rem;
       height: auto;
       .comment-style-div {
@@ -69,13 +76,34 @@ $bg: none;
   }
 }
 
+@mixin marquee-mixin($name, $start, $delta, $end) {
+  @keyframes #{$name} {
+    0% {
+      left: $start;
+    }
+    15% {
+      left: $delta;
+    }
+    100% {
+      left: $end;
+    }
+  }
+}
+
+@include marquee-mixin(slide-1, 30%, 10%, -100%);
+@include marquee-mixin(slide-2, 50%, 20%, -100%);
+@include marquee-mixin(slide-3, 30%, 0%, -100%);
+@include marquee-mixin(slide-4, 40%, 10%, -100%);
+
 .comment-wall {
   .marquee-wrapper {
-    @for $i from 2 through 4 {
+    @for $i from 1 through 4 {
+      border: 1px solid;
       &:nth-of-type(#{$i}) {
         .marquee-inner {
+          animation: slide-#{$i} 25s linear infinite;
           animation-fill-mode: backwards;
-          animation-delay: (#{$i * 1.5s});
+          animation-delay: calc(#{$i * math.random() * 0.2s});
         }
       }
     }
