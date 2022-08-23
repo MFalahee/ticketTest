@@ -5,7 +5,6 @@ import {
   Ticket,
   Accordion,
   Crosshair,
-  StaticFooter,
   Footer,
 } from "./components/index"
 import CssBaseline from "@mui/material/CssBaseline"
