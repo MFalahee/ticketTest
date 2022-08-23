@@ -70,13 +70,16 @@
     left: -100%;
   }
   100% {
-    left: 0%;
+    left: 0;
   }
 }
 
 @keyframes marquee-left {
   0% {
-    left: 0%;
+    left: 50%;
+  }
+  10% {
+    left: 25%;
   }
   100% {
     left: -100%;
