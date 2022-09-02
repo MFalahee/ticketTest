@@ -7,6 +7,8 @@ $border-colors: (
   3: purple,
   4: cyan,
 );
+$first_value: default;
+$second_value: default;
 
 @use "sass:map";
 @use "sass:math";
@@ -75,36 +77,36 @@ $border-colors: (
     }
   }
 }
-
-@mixin marquee-mixin($name, $start, $delta, $end) {
+@mixin marquee-mixin($name, $id, $start, $delta, $end) {
   @keyframes #{$name} {
     0% {
-      left: $start;
+      left: calc(#{$start - math.random($limit: $id)});
     }
-    15% {
-      left: $delta;
+    50% {
+      left: calc(#{$delta - math.random($limit: $id)});
     }
     100% {
-      left: $end;
+      left: calc(#{$end - math.random($limit: $id)});
     }
   }
 }
 
-@include marquee-mixin(slide-1, 30%, 10%, -100%);
-@include marquee-mixin(slide-2, 50%, 20%, -100%);
-@include marquee-mixin(slide-3, 30%, 0%, -100%);
-@include marquee-mixin(slide-4, 40%, 10%, -100%);
+@include marquee-mixin(slide-1, 1, 30%, -30%, -90%);
+@include marquee-mixin(slide-2, 2, 20%, -35%, -90%);
+@include marquee-mixin(slide-3, 3, 30%, -30%, -90%);
+@include marquee-mixin(slide-4, 4, 20%, -30%, -90%);
 
 .comment-wall {
+  animation-play-state: running;
   .marquee-wrapper {
     @for $i from 1 through 4 {
       border: 1px solid;
       &:nth-of-type(#{$i}) {
         .marquee-inner {
-          animation-play-state: playing;
           animation: slide-#{$i} 25s linear infinite;
-          animation-fill-mode: backwards;
-          animation-delay: calc(#{$i * math.random() * 0.2s});
+          animation-play-state: running;
+          animation-fill-mode: both;
+          animation-delay: calc(#{$i * math.random($limit: 100) * 0.001s});
         }
       }
     }
@@ -112,7 +114,15 @@ $border-colors: (
 }
 
 @include for-tablet {
+  @include marquee-mixin(slide-1, 1, 30%, 0%, -93%);
+  @include marquee-mixin(slide-2, 2, 30%, 15%, -93%);
+  @include marquee-mixin(slide-3, 3, 40%, 10%, -93%);
+  @include marquee-mixin(slide-4, 4, 20%, 5%, -93%);
 }
 
 @include for-desktop-up {
+  @include marquee-mixin(slide-1, 1, 73%, -10%, -83%);
+  @include marquee-mixin(slide-2, 2, 73%, -10%, -83%);
+  @include marquee-mixin(slide-3, 3, 73%, -10%, -83%);
+  @include marquee-mixin(slide-4, 4, 73%, -10%, -83%);
 }

@@ -11,3 +11,4 @@ export default function Ticket() {
     </div>
   )
 }
+// TODO ADD TO MONGO FOR FASTER LOAD

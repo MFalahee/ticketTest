@@ -18,6 +18,8 @@ $background-def: $tertiary;
   display: flex;
   flex-direction: column;
   overflow: hidden;
+  animation-play-state: running;
+
   &-section {
     text-transform: uppercase;
     background: $background-def;

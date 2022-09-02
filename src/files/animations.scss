@@ -132,19 +132,15 @@
 
 @keyframes open-accordion {
   0% {
-    translate: 0 -45%;
     transform: scale(1, -1);
   }
   33% {
-    translate: 0 -43%;
     transform: scale(1, -0.1);
   }
   67% {
-    translate: 0 -43%;
     transform: scale(1, -0.01);
   }
   100% {
-    translate: 0;
     transform: scale(1, 1);
   }
 }
