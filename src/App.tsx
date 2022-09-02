@@ -1,5 +1,6 @@
 import "./stylesheet.scss"
 import * as React from "react"
+
 import {
   Header,
   Ticket,
@@ -9,12 +10,13 @@ import {
 } from "./components/index"
 import CssBaseline from "@mui/material/CssBaseline"
 import sections from "./files/sectionsData"
+
 function App() {
   const [sectionsData] = React.useState(sections)
   const modalRef = React.createRef<HTMLDivElement>()
   const timeRef = React.useRef<NodeJS.Timeout>()
   const delay = 500
-
+  const cityCode = process.env.REACT_APP_CITY_CODE
   function resetTimeout() {
     if (timeRef.current) {
       clearTimeout(timeRef.current)
@@ -56,7 +58,6 @@ function App() {
   React.useEffect(() => {
     resetTimeout()
     timeRef.current = setTimeout(() => {
-      // check for resize?
       window.onresize = () => {
         scrollListener()
       }
@@ -68,7 +69,6 @@ function App() {
 
   return (
     <div className='App' id='app-container'>
-      {/* <div ref={modalRef} id="modal-div"> </div> */}
       <CssBaseline />
       <Crosshair />
       <div className='header-container'>
@@ -76,7 +76,11 @@ function App() {
         <Ticket />
       </div>
 
-      <Accordion sections={[...sectionsData]} modalRef={modalRef} />
+      <Accordion
+        cityCode={cityCode}
+        sections={[...sectionsData]}
+        modalRef={modalRef}
+      />
       <Footer />
     </div>
   )

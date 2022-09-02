@@ -1,17 +1,13 @@
 import * as React from "react"
-import commentDB from "../files/comments"
 import CommentRow from "./CommentRow"
+import { AudienceComments, CommentWallProps } from "../files/customTypes"
 
-interface AudienceComments {
-  name: string
-  text: string
-  date: string
-}
-
-export default function CommentWall() {
-  const [comments, setComments] = React.useState<AudienceComments[]>()
+export default function CommentWall(props: CommentWallProps) {
+  const [comments, setComments] = React.useState<AudienceComments[]>(
+    props.comments
+  )
+  const [count, setCount] = React.useState<number>(0)
   const ref = React.useRef<HTMLDivElement>(null)
-  let commentsIn = commentDB
   /* 
         this component will be used to display the comments from the database
         there will be four rows of comments, each row will have multiple comments scrolling across the page
@@ -20,37 +16,38 @@ export default function CommentWall() {
         each row will alternate direction for scrolling/speed
     */
   React.useEffect(() => {
-    commentsIn.sort(() => Math.random() - 0.5)
-    // need to do the logic to insert db here I believe.
-    setComments(commentsIn)
-  }, [commentsIn])
-
+    if (comments.length > 0) {
+      // split the comments into chunks for each row. Maximum 10 comments per row, defaults to 5.
+      let comArr = props.comments
+      let len = comArr.length
+      for (let i = 0; i <= 10; i++) {
+        if (len % i === 0) {
+          setCount(i)
+        } else {
+          setCount(i)
+        }
+      }
+    }
+  }, [])
+  function breakUpComments(row: number) {
+    let c = comments
+    let num = count
+    if (c && num) {
+      if (row === 0) {
+        let t = c.slice(0, num - 1)
+        return t
+      } else {
+        let t = c.slice(row * num - 1, row * 2 * num - 1)
+        return t
+      }
+    }
+  }
   return (
     <div ref={ref} className='comment-wall'>
-      <CommentRow
-        comments={comments}
-        index={0}
-        key={Math.random()}
-        direction='left'
-      />
-      <CommentRow
-        comments={comments}
-        index={1}
-        key={Math.random()}
-        direction='right'
-      />
-      <CommentRow
-        comments={comments}
-        index={2}
-        key={Math.random()}
-        direction='left'
-      />
-      <CommentRow
-        comments={comments}
-        index={3}
-        key={Math.random()}
-        direction='right'
-      />
+      <CommentRow comments={breakUpComments(0)} index={0} />
+      <CommentRow comments={breakUpComments(1)} index={1} />
+      <CommentRow comments={breakUpComments(2)} index={2} />
+      <CommentRow comments={breakUpComments(3)} index={3} />
     </div>
   )
 }

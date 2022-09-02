@@ -12,21 +12,26 @@ export type Section = {
 export type AccordionProps = {
   sections?: Array<Section>
   modalRef: React.RefObject<HTMLDivElement>
+  cityCode?: string
 }
 
 export type AudienceComments = {
   name: string
-  text: string
-  date: string
+  message: string
+  created_at: Date
+  city: string
+  id: number
 }
 
 export type CommentRowProps = {
   comments?: AudienceComments[]
   index?: number
-  direction?: string
   key?: number
 }
 
 export type PhotoTickerProps = {
   modalRef: React.RefObject<HTMLDivElement>
+}
+export type CommentWallProps = {
+  comments: AudienceComments[]
 }

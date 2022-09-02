@@ -1,12 +1,26 @@
 import * as React from "react"
-import { AccordionProps, Section } from "../files/customTypes"
+import getComments from "../files/comments"
+import { AccordionProps, AudienceComments, Section } from "../files/customTypes"
 import ArrowButton from "../files/ArrowButton"
 import { PhotoTicker, CommentWall, SoundCloudWidget, Socials } from "./index"
 
 export default function Accordion(props: AccordionProps) {
   const [openArr, setOpenArr] = React.useState([false, false, false, false])
   const [sections, setSections] = React.useState(props.sections)
+  const [comments, setComments] = React.useState<AudienceComments[]>([])
 
+  React.useEffect(() => {
+    const fetchComments = async () => {
+      if (comments.length === 0) {
+        await getComments().then((result) => {
+          setComments(result)
+        })
+      }
+    }
+    fetchComments().catch((error) => {
+      console.log(error)
+    })
+  }, [])
   // index = which drawer was clicked
   function accordionClickHandler(index: number) {
     // SHOWS opens a link
@@ -25,26 +39,26 @@ export default function Accordion(props: AccordionProps) {
     switch (index) {
       case 0:
         return (
-          <div className='cas-section-content'>
+          <div className='cas-section-content animate-accordion-open'>
             <PhotoTicker modalRef={props.modalRef} />
           </div>
         )
       case 1:
         return (
-          <div className='cas-section-content'>
+          <div className='cas-section-content animate-accordion-open'>
             {" "}
-            <CommentWall />
+            <CommentWall comments={comments} />
           </div>
         )
       case 2:
         return (
-          <div className='cas-section-content'>
+          <div className='cas-section-content animate-accordion-open'>
             <SoundCloudWidget />
           </div>
         )
       case 3:
         return (
-          <div className='cas-section-content'>
+          <div className='cas-section-content animate-accordion-open'>
             {" "}
             <Socials />
           </div>
@@ -52,13 +66,15 @@ export default function Accordion(props: AccordionProps) {
       case 4:
         // SHOWS section- left blank intentionally
         return (
-          <div className='cas-section-content'>
+          <div className='cas-section-content animate-accordion-open'>
             {/* put anything here in SHOWS? */}
           </div>
         )
       default:
         return (
-          <div className='cas-section-content'>Failed to load content.</div>
+          <div className='cas-section-content animate-accordion-open'>
+            Failed to load content.
+          </div>
         )
     }
   }
@@ -71,6 +87,7 @@ export default function Accordion(props: AccordionProps) {
           <div
             className='cas-top-row'
             onClick={() => accordionClickHandler(section.id)}
+            onChange={(e) => console.log("change fired", e)}
           >
             <span className='cas-title-text'>{section.name}</span>
             <ArrowButton index={section.id} />
