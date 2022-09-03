@@ -65,10 +65,11 @@ import axios from "axios"
 //   { name: `Emily`, text: `💛💛💛💛💛`, date: `8/5/2022` },
 // ]
 let local = `http://localhost:${process.env.REACT_APP_API_PORT}/comments/city?name=${process.env.REACT_APP_U}&password=${process.env.REACT_APP_P}&secretPhrase=${process.env.REACT_APP_S}`
-let productionKey = ``
+let productionKey = `${process.env.REACT_APP_API_BOO}`
 async function getComments() {
   let t: AudienceComments[] = []
   try {
+    console.log(process.env.NODE_ENV)
     if (process.env.NODE_ENV !== "production") {
       await axios
         .get(`${local}`)
@@ -80,7 +81,7 @@ async function getComments() {
         })
     } else if (process.env.NODE_ENV === "production") {
       await axios
-        .get(`${productionKey}`)
+        .get(`http://${productionKey}/`)
         .then((res) => {
           t = res.data.data
         })
