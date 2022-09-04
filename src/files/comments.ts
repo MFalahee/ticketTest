@@ -81,7 +81,7 @@ async function getComments() {
         })
     } else if (process.env.NODE_ENV === "production") {
       await axios
-        .get(`http://${productionKey}/`)
+        .get(`https://${productionKey}/`)
         .then((res) => {
           t = res.data.data
         })
