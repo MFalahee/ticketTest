@@ -3,9 +3,7 @@ import CommentRow from "./CommentRow"
 import { AudienceComments, CommentWallProps } from "../files/customTypes"
 
 export default function CommentWall(props: CommentWallProps) {
-  const [comments, setComments] = React.useState<AudienceComments[]>(
-    props.comments
-  )
+  const [comments] = React.useState<AudienceComments[]>(props.comments)
   const [count, setCount] = React.useState<number>(0)
   const ref = React.useRef<HTMLDivElement>(null)
   /* 
@@ -28,7 +26,10 @@ export default function CommentWall(props: CommentWallProps) {
         }
       }
     }
-  }, [])
+  }, [comments.length, props.comments])
+
+  // will need to add functionality for changing cities?
+
   function breakUpComments(row: number) {
     let c = comments
     let num = count

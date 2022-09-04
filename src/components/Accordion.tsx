@@ -20,7 +20,7 @@ export default function Accordion(props: AccordionProps) {
     fetchComments().catch((error) => {
       console.log(error)
     })
-  }, [])
+  }, [comments.length])
   // index = which drawer was clicked
   function accordionClickHandler(index: number) {
     // SHOWS opens a link
