@@ -1,6 +1,6 @@
 import "./stylesheet.scss"
 import * as React from "react"
-
+import { useParams } from "react-router-dom"
 import {
   Header,
   Ticket,
@@ -11,12 +11,12 @@ import {
 import CssBaseline from "@mui/material/CssBaseline"
 import sections from "./files/sectionsData"
 
-function App() {
+function App(props: { city?: string }) {
   const [sectionsData] = React.useState(sections)
-  const modalRef = React.createRef<HTMLDivElement>()
   const timeRef = React.useRef<NodeJS.Timeout>()
   const delay = 500
-  const cityCode = process.env.REACT_APP_CITY_CODE
+  const { city } = useParams()
+  console.log(city)
   function resetTimeout() {
     if (timeRef.current) {
       clearTimeout(timeRef.current)
@@ -73,14 +73,9 @@ function App() {
       <Crosshair />
       <div className='header-container'>
         <Header />
-        <Ticket />
+        <Ticket city={city} />
       </div>
-
-      <Accordion
-        cityCode={cityCode}
-        sections={[...sectionsData]}
-        modalRef={modalRef}
-      />
+      <Accordion city={city} sections={[...sectionsData]} />
       <Footer />
     </div>
   )

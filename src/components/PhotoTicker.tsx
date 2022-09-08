@@ -1,17 +1,15 @@
 import * as React from "react"
-// import * as ReactDOM from 'react-dom';
-// import { PhotoModal } from "./index";
-import photoArr from "../files/photoImport.js"
 import { PhotoTickerProps } from "../files/customTypes"
 import NavigateNextOutlinedIcon from "@mui/icons-material/NavigateNextOutlined"
+import getAPIPhotos from "../files/photoImport"
 
 const delay: number = 5000
 export default function PhotoTicker(props: PhotoTickerProps) {
+  const [photos, setPhotos] = React.useState([])
   const [photoIndex, setPhotoIndex] = React.useState(1)
-  // const [modalToggle, setModalToggle] = React.useState(false);
-  // const [modalIndex, setModalIndex] = React.useState(0);
-  const arrLength = photoArr.length
+  let arrLength = photos?.length
   const timeRef = React.useRef<NodeJS.Timeout>()
+
   React.useEffect(() => {
     // set initial active photos
     handlePhotoIndex(photoIndex, null)
@@ -87,50 +85,12 @@ export default function PhotoTicker(props: PhotoTickerProps) {
     handlePhotoIndex(nextIndex, photoIndex)
   }
 
-  // on click for images to trigger modal
-  const handlePhotoClick = (e: React.MouseEvent) => {
-    const photoIndex = e.currentTarget.id.split("-")[1]
-    // pause photo ticker when clicked
-    if (timeRef.current) {
-      clearTimeout(timeRef.current)
-    }
-    // show modal
-    console.log("Photo ", photoIndex, " clicked.")
-    // controls z-index
-    props.modalRef.current?.classList.toggle("active-modal")
-    // setModalIndex(Number(photoIndex));
-    // setModalToggle(!modalToggle);
-  }
-
-  // const handlePhotoModalClose = () => {
-  //   setModalToggle(false);
-  //   props.modalRef.current?.classList.toggle('active-modal');
-  // }
-
   function resetTimeout() {
     if (timeRef.current) {
       clearTimeout(timeRef.current)
     }
   }
 
-  // function logParams(params: string[]) {
-  //   console.log('===========================')
-  //   params.forEach((e) => {
-  //     console.log('=====', e, '======')
-  //   })
-  //   console.log('===========================')
-  // }
-
-  // function renderModal() {
-  //   // let modalParams = [modalToggle.toString(), modalIndex.toString()]
-  //   // logParams(modalParams)
-  //   if (props.modalRef.current) {
-  //     return(
-  //     ReactDOM.createPortal(<PhotoModal visible={modalToggle} index={modalIndex} onClose={handlePhotoModalClose} />, props.modalRef.current)
-  //     )
-  //   }
-  //   else console.error('Failed to render modal.')
-  // }
   // auto progress slideshow of photos
   React.useEffect(() => {
     resetTimeout()
@@ -151,15 +111,8 @@ export default function PhotoTicker(props: PhotoTickerProps) {
       resetTimeout()
     }
   }, [photoIndex, arrLength, handlePhotoIndex])
-  // modal listener
-  // React.useEffect(() => {
-  //   if (modalToggle && props.modalRef.current) {
-  //     console.log(props.modalRef.current);
-  //   } else {
-  //     return
-  //   }
-  // }, [modalToggle, props.modalRef]);
 
+  console.log(getAPIPhotos(props.city))
   return (
     <div className='custom-photo-ticker' id='cpt'>
       <button
@@ -169,7 +122,7 @@ export default function PhotoTicker(props: PhotoTickerProps) {
       >
         <NavigateNextOutlinedIcon color={"inherit"} />
       </button>
-      <div className='custom-photo-ticker-photo-container'>
+      {/* <div className='custom-photo-ticker-photo-container'>
         {photoArr?.map((photo, key) => {
           return (
             <div key={key} className='custom-photo-ticker-photo'>
@@ -178,7 +131,6 @@ export default function PhotoTicker(props: PhotoTickerProps) {
                 className={`custom-photo-ticker-image`}
                 id={`img-${key}`}
                 alt=''
-                onClick={(e) => handlePhotoClick(e)}
                 onMouseOut={(e) => {
                   e.preventDefault()
                 }}
@@ -186,8 +138,7 @@ export default function PhotoTicker(props: PhotoTickerProps) {
             </div>
           )
         })}
-        {/* {(props.modalRef.current) ? renderModal() : null} */}
-      </div>
+      </div> */}
     </div>
   )
 }

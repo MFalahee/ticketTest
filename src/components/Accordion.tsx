@@ -40,14 +40,14 @@ export default function Accordion(props: AccordionProps) {
       case 0:
         return (
           <div className='cas-section-content animate-accordion-open'>
-            <PhotoTicker modalRef={props.modalRef} />
+            <PhotoTicker city={props.city} />
           </div>
         )
       case 1:
         return (
           <div className='cas-section-content animate-accordion-open'>
             {" "}
-            <CommentWall comments={comments} />
+            <CommentWall comments={comments} city={props.city} />
           </div>
         )
       case 2:

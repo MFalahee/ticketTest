@@ -1,5 +1,3 @@
-import React from "react"
-
 export type Section = {
   name: string
   subcategories?: Array<string>
@@ -11,8 +9,7 @@ export type Section = {
 
 export type AccordionProps = {
   sections?: Array<Section>
-  modalRef: React.RefObject<HTMLDivElement>
-  cityCode?: string
+  city?: string
 }
 
 export type AudienceComments = {
@@ -30,8 +27,13 @@ export type CommentRowProps = {
 }
 
 export type PhotoTickerProps = {
-  modalRef: React.RefObject<HTMLDivElement>
+  city?: string
 }
 export type CommentWallProps = {
   comments: AudienceComments[]
+  city?: string
+}
+
+export type TicketProps = {
+  city?: string
 }
