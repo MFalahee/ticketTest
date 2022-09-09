@@ -36,8 +36,23 @@ $media-breakpoint-lg: 1200px;
     brightness(105%) contrast(104%);
 }
 
+.errorPageContainer {
+  display: flex;
+  height: 100vh;
+  width: 100%;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  p {
+    display: block;
+    font-size: 4rem;
+    color: white;
+  }
+  background: url("https://concertsbucket.s3.amazonaws.com/otherAssets/bg.svg");
+}
+
 .App {
-  background: url("./files/svgs/bg.svg");
+  background: url("https://concertsbucket.s3.amazonaws.com/otherAssets/bg.svg");
   /* resets */
   font-family: $font1;
   color: #fff9e6;
@@ -55,7 +70,7 @@ $media-breakpoint-lg: 1200px;
 
 .header-container {
   position: relative;
-  background: url("./files/svgs/bg.svg");
+  background: url("https://concertsbucket.s3.amazonaws.com/otherAssets/bg.svg");
   width: 100%;
   z-index: 1;
 }

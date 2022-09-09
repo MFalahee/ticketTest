@@ -6,27 +6,27 @@ import App from "./App"
 
 const root = ReactDOM.createRoot(document.getElementById("root") as HTMLElement)
 
+const ErrorPage = () => {
+  return (
+    <div className='errorPageContainer'>
+      <p>@@@ Page not found @@@</p>
+      <img
+        src={"phlogo.png"}
+        alt={
+          "elephante logo art that is basically a squiggly looking elephant - the dev"
+        }
+      />
+    </div>
+  )
+}
 root.render(
   <React.StrictMode>
     <BrowserRouter>
       <Routes>
-        <Route path='glow'>
+        <Route path='/glow'>
           <Route path=':city' element={<App />} />
         </Route>
-        <Route
-          path='/'
-          element={
-            <div>
-              <p> Default page for Heavy Glow Tour</p>
-              <img
-                src={"./public/phlogo.png"}
-                alt={
-                  "elephante logo art that is basically a squiggly looking elephant - the dev"
-                }
-              />
-            </div>
-          }
-        ></Route>
+        <Route path='*' element={<ErrorPage />} />
       </Routes>
     </BrowserRouter>
   </React.StrictMode>
