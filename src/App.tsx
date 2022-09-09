@@ -1,6 +1,6 @@
 import "./stylesheet.scss"
 import * as React from "react"
-
+import { useParams } from "react-router-dom"
 import {
   Header,
   Ticket,
@@ -10,13 +10,50 @@ import {
 } from "./components/index"
 import CssBaseline from "@mui/material/CssBaseline"
 import sections from "./files/sectionsData"
+import photoAPI from "./files/photoAPI"
+// const ticketCities = {
+//   atlanta: "atlanta",
+//   boston: "boston",
+//   chicago: "chicago",
+//   dallas: "dallas",
+//   dc: "dc",
+//   houston: "houston",
+//   losangeles: "losangeles",
+//   nyc: "nyc",
+//   portland: "portland",
+//   sanfrancisco: "sanfrancisco",
+//   seattle: "seattle",
+// }
 
-function App() {
+// const concertCities = {
+//   atlanta: "atlanta",
+//   boston: "boston",
+//   charlestonTrio: "charlestonTrio",
+//   chicago: "chicago",
+//   dallas: "dallas",
+//   dc: "dc",
+//   denver: "denver",
+//   fortLauderdale: "fortLauderdale",
+//   honolulu: "honolulu",
+//   houston: "houston",
+//   kansasCity: "kansasCity",
+//   la: "la",
+//   nyc: "nyc",
+//   philly: "philly",
+//   portland: "portland",
+//   sacramento: "sacramento",
+//   sanMarcos: "sanMarcos",
+//   seattle: "seattle",
+//   sf: "sf",
+// }
+
+function App(props: { city?: string }) {
   const [sectionsData] = React.useState(sections)
-  const modalRef = React.createRef<HTMLDivElement>()
+  const [photos, setPhotos] = React.useState(new Array(10).fill("placeholder"))
+  const params = useParams()
   const timeRef = React.useRef<NodeJS.Timeout>()
   const delay = 500
-  const cityCode = process.env.REACT_APP_CITY_CODE
+
   function resetTimeout() {
     if (timeRef.current) {
       clearTimeout(timeRef.current)
@@ -52,8 +89,22 @@ function App() {
   }
 
   React.useEffect(() => {
+    async function fetchPhotoURLs(city: string) {
+      const photos = await photoAPI(params.city)
+      if (photos !== null && photos.keyArr !== null) {
+        let output = photos.keyArr.map((element: string) => {
+          return `${process.env.REACT_APP_IMAGE_URL}${element}`
+        })
+        setPhotos(output)
+      }
+    }
+    if (params && params.city) {
+      fetchPhotoURLs(params.city)
+    }
     scrollListener()
-  }, [])
+  }, [params])
+
+  React.useEffect(() => {}, [])
 
   React.useEffect(() => {
     resetTimeout()
@@ -73,14 +124,15 @@ function App() {
       <Crosshair />
       <div className='header-container'>
         <Header />
-        <Ticket />
+        {params ? <Ticket city={params.city} /> : null}
       </div>
-
-      <Accordion
-        cityCode={cityCode}
-        sections={[...sectionsData]}
-        modalRef={modalRef}
-      />
+      {params ? (
+        <Accordion
+          city={params.city}
+          sections={[...sectionsData]}
+          photos={[...photos]}
+        />
+      ) : null}
       <Footer />
     </div>
   )

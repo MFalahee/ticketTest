@@ -69,7 +69,6 @@ let productionKey = `${process.env.REACT_APP_API_BOO}`
 async function getComments() {
   let t: AudienceComments[] = []
   try {
-    console.log(process.env.NODE_ENV)
     if (process.env.NODE_ENV !== "production") {
       await axios
         .get(`${local}`)

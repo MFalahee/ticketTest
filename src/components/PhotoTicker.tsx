@@ -1,16 +1,13 @@
 import * as React from "react"
-// import * as ReactDOM from 'react-dom';
-// import { PhotoModal } from "./index";
-import photoArr from "../files/photoImport.js"
+import { ConcertPhoto } from "./index"
 import { PhotoTickerProps } from "../files/customTypes"
 import NavigateNextOutlinedIcon from "@mui/icons-material/NavigateNextOutlined"
 
 const delay: number = 5000
 export default function PhotoTicker(props: PhotoTickerProps) {
+  const [photos] = React.useState<string[]>(props.photos)
   const [photoIndex, setPhotoIndex] = React.useState(1)
-  // const [modalToggle, setModalToggle] = React.useState(false);
-  // const [modalIndex, setModalIndex] = React.useState(0);
-  const arrLength = photoArr.length
+  let arrLength = photos?.length
   const timeRef = React.useRef<NodeJS.Timeout>()
   React.useEffect(() => {
     // set initial active photos
@@ -45,7 +42,6 @@ export default function PhotoTicker(props: PhotoTickerProps) {
     },
     [arrLength]
   )
-
   //adds .active-photo class to new index, and removes from previous active index
   // .active-photo is the center photo for desktop/tablet, and the only photo visible on mobile.
   const handlePhotoIndex = React.useCallback(
@@ -87,50 +83,12 @@ export default function PhotoTicker(props: PhotoTickerProps) {
     handlePhotoIndex(nextIndex, photoIndex)
   }
 
-  // on click for images to trigger modal
-  const handlePhotoClick = (e: React.MouseEvent) => {
-    const photoIndex = e.currentTarget.id.split("-")[1]
-    // pause photo ticker when clicked
-    if (timeRef.current) {
-      clearTimeout(timeRef.current)
-    }
-    // show modal
-    console.log("Photo ", photoIndex, " clicked.")
-    // controls z-index
-    props.modalRef.current?.classList.toggle("active-modal")
-    // setModalIndex(Number(photoIndex));
-    // setModalToggle(!modalToggle);
-  }
-
-  // const handlePhotoModalClose = () => {
-  //   setModalToggle(false);
-  //   props.modalRef.current?.classList.toggle('active-modal');
-  // }
-
   function resetTimeout() {
     if (timeRef.current) {
       clearTimeout(timeRef.current)
     }
   }
 
-  // function logParams(params: string[]) {
-  //   console.log('===========================')
-  //   params.forEach((e) => {
-  //     console.log('=====', e, '======')
-  //   })
-  //   console.log('===========================')
-  // }
-
-  // function renderModal() {
-  //   // let modalParams = [modalToggle.toString(), modalIndex.toString()]
-  //   // logParams(modalParams)
-  //   if (props.modalRef.current) {
-  //     return(
-  //     ReactDOM.createPortal(<PhotoModal visible={modalToggle} index={modalIndex} onClose={handlePhotoModalClose} />, props.modalRef.current)
-  //     )
-  //   }
-  //   else console.error('Failed to render modal.')
-  // }
   // auto progress slideshow of photos
   React.useEffect(() => {
     resetTimeout()
@@ -151,14 +109,6 @@ export default function PhotoTicker(props: PhotoTickerProps) {
       resetTimeout()
     }
   }, [photoIndex, arrLength, handlePhotoIndex])
-  // modal listener
-  // React.useEffect(() => {
-  //   if (modalToggle && props.modalRef.current) {
-  //     console.log(props.modalRef.current);
-  //   } else {
-  //     return
-  //   }
-  // }, [modalToggle, props.modalRef]);
 
   return (
     <div className='custom-photo-ticker' id='cpt'>
@@ -170,23 +120,9 @@ export default function PhotoTicker(props: PhotoTickerProps) {
         <NavigateNextOutlinedIcon color={"inherit"} />
       </button>
       <div className='custom-photo-ticker-photo-container'>
-        {photoArr?.map((photo, key) => {
-          return (
-            <div key={key} className='custom-photo-ticker-photo'>
-              <img
-                src={photo}
-                className={`custom-photo-ticker-image`}
-                id={`img-${key}`}
-                alt=''
-                onClick={(e) => handlePhotoClick(e)}
-                onMouseOut={(e) => {
-                  e.preventDefault()
-                }}
-              />
-            </div>
-          )
+        {photos?.map((photo, key) => {
+          return <ConcertPhoto photo={photo} id={key} key={key} />
         })}
-        {/* {(props.modalRef.current) ? renderModal() : null} */}
       </div>
     </div>
   )
