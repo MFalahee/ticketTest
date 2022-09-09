@@ -10,6 +10,7 @@ export type Section = {
 export type AccordionProps = {
   sections?: Array<Section>
   city?: string
+  photos: Array<string>
 }
 
 export type AudienceComments = {
@@ -28,6 +29,7 @@ export type CommentRowProps = {
 
 export type PhotoTickerProps = {
   city?: string
+  photos: Array<string>
 }
 export type CommentWallProps = {
   comments: AudienceComments[]

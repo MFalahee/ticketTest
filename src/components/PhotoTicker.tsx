@@ -1,15 +1,14 @@
 import * as React from "react"
+import { ConcertPhoto } from "./index"
 import { PhotoTickerProps } from "../files/customTypes"
 import NavigateNextOutlinedIcon from "@mui/icons-material/NavigateNextOutlined"
-import photoAPI from "../files/photoAPI"
 
 const delay: number = 5000
 export default function PhotoTicker(props: PhotoTickerProps) {
-  const [photos, setPhotos] = React.useState([])
+  const [photos, setPhotos] = React.useState<string[]>(props.photos)
   const [photoIndex, setPhotoIndex] = React.useState(1)
   let arrLength = photos?.length
   const timeRef = React.useRef<NodeJS.Timeout>()
-
   React.useEffect(() => {
     // set initial active photos
     handlePhotoIndex(photoIndex, null)
@@ -43,7 +42,6 @@ export default function PhotoTicker(props: PhotoTickerProps) {
     },
     [arrLength]
   )
-
   //adds .active-photo class to new index, and removes from previous active index
   // .active-photo is the center photo for desktop/tablet, and the only photo visible on mobile.
   const handlePhotoIndex = React.useCallback(
@@ -112,17 +110,6 @@ export default function PhotoTicker(props: PhotoTickerProps) {
     }
   }, [photoIndex, arrLength, handlePhotoIndex])
 
-  React.useEffect(() => {
-    async function deliverPhotos() {
-      const photos = await photoAPI(props?.city)
-      if (photos != null) {
-        console.log(photos)
-        return photos
-      }
-    }
-    deliverPhotos()
-  }, [])
-
   return (
     <div className='custom-photo-ticker' id='cpt'>
       <button
@@ -132,23 +119,11 @@ export default function PhotoTicker(props: PhotoTickerProps) {
       >
         <NavigateNextOutlinedIcon color={"inherit"} />
       </button>
-      {/* <div className='custom-photo-ticker-photo-container'>
-        {photoArr?.map((photo, key) => {
-          return (
-            <div key={key} className='custom-photo-ticker-photo'>
-              <img
-                src={photo}
-                className={`custom-photo-ticker-image`}
-                id={`img-${key}`}
-                alt=''
-                onMouseOut={(e) => {
-                  e.preventDefault()
-                }}
-              />
-            </div>
-          )
+      <div className='custom-photo-ticker-photo-container'>
+        {photos?.map((photo, key) => {
+          return <ConcertPhoto photo={photo} id={key} key={key} />
         })}
-      </div> */}
+      </div>
     </div>
   )
 }

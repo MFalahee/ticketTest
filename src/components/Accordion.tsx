@@ -40,7 +40,7 @@ export default function Accordion(props: AccordionProps) {
       case 0:
         return (
           <div className='cas-section-content animate-accordion-open'>
-            <PhotoTicker city={props.city} />
+            <PhotoTicker city={props.city} photos={props.photos} />
           </div>
         )
       case 1:
