@@ -1,6 +1,6 @@
 import React from "react"
 import ReactDOM from "react-dom/client"
-import { BrowserRouter, Routes, Route } from "react-router-dom"
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom"
 import "./index.css"
 import App from "./App"
 
@@ -20,16 +20,15 @@ const ErrorPage = () => {
   )
 }
 root.render(
-  <React.StrictMode>
-    <BrowserRouter>
-      <Routes>
-        <Route path='/glow'>
-          <Route path=':city' element={<App />} />
-        </Route>
-        <Route path='*' element={<ErrorPage />} />
-      </Routes>
-    </BrowserRouter>
-  </React.StrictMode>
+  <Router>
+    <Routes>
+      <Route path='glow'>
+        <Route path=':city' element={<App />} />
+      </Route>
+      <Route path='home' />
+      <Route path='*' element={<ErrorPage />} />
+    </Routes>
+  </Router>
 )
 
 // reportWebVitals(console.log)
