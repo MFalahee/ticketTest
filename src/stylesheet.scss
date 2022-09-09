@@ -6,6 +6,8 @@ $font3: "Roboto", sans-serif;
 
 $yellow: #fedc71;
 $white: #fff9e6;
+$primary: white;
+$secondary: black;
 
 $media-breakpoint-sm: 768px;
 $media-breakpoint-md: 992px;
@@ -30,13 +32,27 @@ $media-breakpoint-lg: 1200px;
 }
 
 .svg-filter-for-yellow {
-  filter: invert(77%) sepia(42%) saturate(475%) hue-rotate(356deg) brightness(105%) contrast(104%);
+  filter: invert(77%) sepia(42%) saturate(475%) hue-rotate(356deg)
+    brightness(105%) contrast(104%);
+}
+
+.errorPageContainer {
+  display: flex;
+  height: 100vh;
+  width: 100%;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  p {
+    display: block;
+    font-size: 4rem;
+    color: white;
+  }
+  background: url("https://concertsbucket.s3.amazonaws.com/otherAssets/bg.svg");
 }
 
 .App {
-  background: url("./files/svgs/bg.svg");
-  min-height: 100vh;
-  max-width: 100vw;
+  background: url("https://concertsbucket.s3.amazonaws.com/otherAssets/bg.svg");
   /* resets */
   font-family: $font1;
   color: #fff9e6;
@@ -49,14 +65,15 @@ $media-breakpoint-lg: 1200px;
   text-shadow: none;
   text-decoration: none;
   text-indent: 0;
+  height: 100%;
 }
 
 .header-container {
   position: relative;
-  background: url("./files/svgs/bg.svg");
+  background: url("https://concertsbucket.s3.amazonaws.com/otherAssets/bg.svg");
   width: 100%;
   z-index: 1;
-} 
+}
 
 .spacer-div {
   width: 100%;
@@ -75,4 +92,4 @@ Colors and styles
 @import "./components/styles/index.scss";
 
 /* Animation import */
-@import './files/animations.scss';
+@import "./files/animations.scss";

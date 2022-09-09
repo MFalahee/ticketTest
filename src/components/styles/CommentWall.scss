@@ -1,62 +1,128 @@
 $pc: white;
 $sc: black;
 $bg: none;
-// comment wall component
+$border-colors: (
+  1: blue,
+  2: orange,
+  3: purple,
+  4: cyan,
+);
+$first_value: default;
+$second_value: default;
+
+@use "sass:map";
+@use "sass:math";
 .comment-wall {
-  width: 200%;
-  color: $pc;
-  border-color: $sc;
-  overflow: hidden;
-  // comment component
-  .comment-row {
-    width: 200%;
-    position: relative;
-    display: flex;
-    flex-direction: row;
-    justify-content: baseline;
-    animation: marquee-right 10s forwards infinite ease-in;
-    &:nth-of-type(odd) {
+  text-transform: uppercase;
+  .marquee-wrapper {
+    text-align: start;
+    white-space: nowrap;
+    animation-fill-mode: backwards;
+    &:nth-of-type(even) {
       background: $yellow;
       color: $sc;
       border-color: $sc;
-      animation: marquee-left 10s forwards infinite ease-in;
     }
-    &-comment {
-      margin: auto;
-      flex-direction: column;
-      padding: 1rem 0rem;
-      &-top {
-        font-size: 3rem;
-        line-height: 3rem;
-        text-align: start;
-        text-transform: uppercase;
-        white-space: nowrap;
-        overflow: hidden;
-        padding-bottom: 0.5rem;
+    .container {
+      overflow: hidden;
+    }
+    .marquee-inner {
+      display: block;
+      width: 200%;
+      position: absolute;
+      &-span {
+        float: left;
+        width: 50%;
       }
-      &-line-spacer {
-        position: relative;
-        // width: 100%;
-        height: 0.2rem;
-        border-top: 0.2rem solid;
-      }
-      &-bottom {
-        border-top: 0.2rem solid;
-        font-size: 1rem;
+    }
+    .marquee-block {
+      // margin: 20px auto;
+      height: 5rem;
+      --total-marquee-items: 5;
+      width: calc(1080px * (var(--total-marquee-items)));
+      overflow: hidden;
+      box-sizing: border-box;
+      position: relative;
+    }
+    .marquee-item {
+      width: 1060px;
+      margin: 0 10px;
+      height: auto;
+      display: inline-block;
+      transition: all 0.5s ease-in;
+      line-height: 1.6rem;
+      height: auto;
+      .comment-style-div {
         display: flex;
-        flex-direction: row;
-        align-self: flex-start;
+        flex-direction: column;
+        align-items: flex-start;
+        overflow: hidden;
+        // align-items: baseline;
+        .comment-row-comment-top {
+          font-size: 1.6rem;
+          list-style: none;
+          height: 3rem;
+          padding: 0.5rem 1rem;
+          width: 100%;
+          border-bottom: 0.2rem solid;
+          border-left: 0.4rem solid;
+        }
+        .comment-row-comment-bottom {
+          padding: 0 1rem;
+          border-left: 0.4rem solid;
+        }
       }
+
+      // add animation delay once I have them working properly to make it look better.
     }
-    // animations
-    .trying-something {
-      width: 300%;
-    //  animation: marquee-right 5s linear infinite;
-      &:nth-of-type(odd) {
-        // background-color: $yellow;
-        // animation-name: marquee-left;
-        // animation-duration: 10s;
+  }
+}
+@mixin marquee-mixin($name, $id, $start, $delta, $end) {
+  @keyframes #{$name} {
+    0% {
+      left: calc(#{$start - math.random($limit: $id)});
+    }
+    50% {
+      left: calc(#{$delta - math.random($limit: $id)});
+    }
+    100% {
+      left: calc(#{$end - math.random($limit: $id)});
+    }
+  }
+}
+
+@include marquee-mixin(slide-1, 1, 30%, -30%, -90%);
+@include marquee-mixin(slide-2, 2, 20%, -35%, -90%);
+@include marquee-mixin(slide-3, 3, 30%, -30%, -90%);
+@include marquee-mixin(slide-4, 4, 20%, -30%, -90%);
+
+.comment-wall {
+  animation-play-state: running;
+  .marquee-wrapper {
+    @for $i from 1 through 4 {
+      border: 1px solid;
+      &:nth-of-type(#{$i}) {
+        .marquee-inner {
+          animation: slide-#{$i} 25s linear infinite;
+          animation-play-state: running;
+          animation-fill-mode: both;
+          animation-delay: calc(#{$i * math.random($limit: 100) * 0.001s});
+        }
       }
     }
   }
+}
+
+@include for-tablet {
+  @include marquee-mixin(slide-1, 1, 30%, 0%, -93%);
+  @include marquee-mixin(slide-2, 2, 30%, 15%, -93%);
+  @include marquee-mixin(slide-3, 3, 40%, 10%, -93%);
+  @include marquee-mixin(slide-4, 4, 20%, 5%, -93%);
+}
+
+@include for-desktop-up {
+  @include marquee-mixin(slide-1, 1, 73%, -10%, -83%);
+  @include marquee-mixin(slide-2, 2, 73%, -10%, -83%);
+  @include marquee-mixin(slide-3, 3, 73%, -10%, -83%);
+  @include marquee-mixin(slide-4, 4, 73%, -10%, -83%);
 }

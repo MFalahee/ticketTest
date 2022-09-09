@@ -1,0 +1,16 @@
+.static-footer {
+  z-index: 2;
+  position: relative;
+  bottom: 0;
+  width: 100%;
+  height: auto;
+  &-art {
+    width: 100%;
+  }
+
+  @include for-desktop-up {
+    &-art {
+      width: 100%;
+    }
+  }
+}

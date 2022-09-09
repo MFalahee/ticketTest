@@ -1,21 +1,109 @@
 .footer-container {
-  background: url("../../files/svgs/bg.svg");
+  z-index: 3;
   bottom: 0;
   position: fixed;
   width: 100%;
-  display: flex;
-  justify-content: center;
-  .footer-item {
-    padding-top: 0.5rem;
-    font-family: $font1;
-    font-weight: 100;
-    text-decoration: underline;
-    &:hover {
-      cursor: pointer;
-    }
+  .footer-elephant-logo-container {
+    z-index: 4;
+    position: absolute;
+    left: 50%;
+    right: auto;
+    top: 0;
     .footer-elephant-logo {
-      max-width: 50%;
-      max-height: 50%;
+      position: relative;
+      left: 10px;
+      scale: 0.7;
+    }
+  }
+  .footer-background {
+    background: url("../../files/svgs/bg.svg");
+    position: fixed;
+    bottom: 0;
+    height: 4.5rem;
+    width: 100%;
+  }
+  .footer-item-container {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    padding: 1rem 0;
+    .footer-item {
+      padding: 0 0.3rem;
+      position: relative;
+      z-index: 4;
+      font-family: $font1;
+      font-size: 1rem;
+      text-decoration: underline;
+      &:hover {
+        cursor: pointer;
+        opacity: 0.8;
+      }
+    }
+    :first-child {
+      padding-right: 5rem;
+    }
+  }
+
+  /*
+    dynamic class for bottom of the page
+  */
+  &.footer-at-bottom {
+    position: fixed;
+    bottom: 0;
+    background: none;
+    .footer-item-container {
+      position: relative;
+      justify-content: space-evenly;
+      z-index: 4;
+      align-items: flex-end;
+      .footer-item {
+        margin: 0;
+        padding: 0 0.3rem;
+        text-overflow: nowrap;
+        flex-wrap: nowrap;
+        z-index: 4;
+        position: relative;
+      }
+      :first-child {
+        margin-right: 30%;
+      }
+    }
+    .footer-elephant-logo-container {
+      position: absolute;
+      .footer-elephant-logo {
+        position: relative;
+        scale: 1.2;
+        bottom: 20px;
+      }
+    }
+  }
+  /* 
+    responsive styling
+  */
+
+  @include for-tablet {
+    &.footer-at-bottom {
+      .footer-item-container {
+        .footer-item {
+        }
+      }
+      .footer-elephant-logo-container {
+        .footer-elephant-logo {
+        }
+      }
+    }
+  }
+  @include for-desktop-up {
+    &.footer-at-bottom {
+      .footer-item-container {
+        .footer-item {
+          font-size: 1.3rem;
+        }
+      }
+      .footer-elephant-logo-container {
+        .footer-elephant-logo {
+        }
+      }
     }
   }
 }
