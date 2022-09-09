@@ -1,7 +1,7 @@
 import * as React from "react"
 import { PhotoTickerProps } from "../files/customTypes"
 import NavigateNextOutlinedIcon from "@mui/icons-material/NavigateNextOutlined"
-import getAPIPhotos from "../files/photoImport"
+import photoAPI from "../files/photoAPI"
 
 const delay: number = 5000
 export default function PhotoTicker(props: PhotoTickerProps) {
@@ -112,7 +112,17 @@ export default function PhotoTicker(props: PhotoTickerProps) {
     }
   }, [photoIndex, arrLength, handlePhotoIndex])
 
-  console.log(getAPIPhotos(props.city))
+  React.useEffect(() => {
+    async function deliverPhotos() {
+      const photos = await photoAPI(props?.city)
+      if (photos != null) {
+        console.log(photos)
+        return photos
+      }
+    }
+    deliverPhotos()
+  }, [])
+
   return (
     <div className='custom-photo-ticker' id='cpt'>
       <button
