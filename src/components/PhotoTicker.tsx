@@ -5,7 +5,7 @@ import NavigateNextOutlinedIcon from "@mui/icons-material/NavigateNextOutlined"
 
 const delay: number = 5000
 export default function PhotoTicker(props: PhotoTickerProps) {
-  const [photos, setPhotos] = React.useState<string[]>(props.photos)
+  const [photos] = React.useState<string[]>(props.photos)
   const [photoIndex, setPhotoIndex] = React.useState(1)
   let arrLength = photos?.length
   const timeRef = React.useRef<NodeJS.Timeout>()
