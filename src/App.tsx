@@ -11,17 +11,54 @@ import {
 import CssBaseline from "@mui/material/CssBaseline"
 import sections from "./files/sectionsData"
 
+let cityString = {
+  atlanta: "atlanta",
+  boston: "boston",
+  chicago: "chicago",
+  dallas: "dallas",
+  dc: "dc",
+  houston: "houston",
+  losangeles: "losangeles",
+  nyc: "nyc",
+  portland: "portland",
+  sanfrancisco: "sanfrancisco",
+  seattle: "seattle",
+}
+
+let concertString = {
+  atlanta: "atlanta",
+  boston: "boston",
+  charlestonTrio: "charlestonTrio",
+  chicago: "chicago",
+  dallas: "dallas",
+  dc: "dc",
+  denver: "denver",
+  fortLauderdale: "fortLauderdale",
+  honolulu: "honolulu",
+  houston: "houston",
+  kansasCity: "kansasCity",
+  la: "la",
+  nyc: "nyc",
+  philly: "philly",
+  portland: "portland",
+  sacramento: "sacramento",
+  sanMarcos: "sanMarcos",
+  seattle: "seattle",
+  sf: "sf",
+}
+
 function App(props: { city?: string }) {
   const [sectionsData] = React.useState(sections)
   const timeRef = React.useRef<NodeJS.Timeout>()
   const delay = 500
   const { city } = useParams()
-  console.log(city)
   function resetTimeout() {
     if (timeRef.current) {
       clearTimeout(timeRef.current)
     }
   }
+
+  function startAWS() {}
 
   // this listens for scrolling on the document and changes footer class based on that.
   function scrollListener() {
@@ -73,7 +110,7 @@ function App(props: { city?: string }) {
       <Crosshair />
       <div className='header-container'>
         <Header />
-        <Ticket city={city} />
+        {city ? <Ticket city={city} /> : null}
       </div>
       <Accordion city={city} sections={[...sectionsData]} />
       <Footer />

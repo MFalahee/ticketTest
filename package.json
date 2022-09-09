@@ -1,5 +1,5 @@
 {
-  "name": "Test-Ticket-Site",
+  "name": "Heavy Glow Tour - Ticket Hub",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
@@ -15,6 +15,7 @@
     "@types/node": "^16.11.45",
     "@types/react": "^18.0.15",
     "@types/react-dom": "^18.0.6",
+    "aws-sdk": "^2.1212.0",
     "axios": "^0.27.2",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
