@@ -10,14 +10,14 @@ root.render(
   <React.StrictMode>
     <BrowserRouter>
       <Routes>
-        <Route path='glow'>
-          <Route path=':city' element={<App />} />
+        <Route path='/glow'>
+          <Route path='/:city' element={<App />} />
         </Route>
         <Route
-          path='/'
+          path='*'
           element={
             <div>
-              <p> Default page for Heavy Glow Tour</p>
+              <p>@@@ Page not found @@@</p>
               <img
                 src={"./public/phlogo.png"}
                 alt={
@@ -26,7 +26,7 @@ root.render(
               />
             </div>
           }
-        ></Route>
+        />
       </Routes>
     </BrowserRouter>
   </React.StrictMode>
