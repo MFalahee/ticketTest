@@ -11,7 +11,7 @@ export default function Accordion(props: AccordionProps) {
 
   React.useEffect(() => {
     const fetchComments = async () => {
-      if (comments.length === 0) {
+      if (comments && comments.length === 0) {
         await getComments().then((result) => {
           setComments(result)
         })
@@ -20,7 +20,7 @@ export default function Accordion(props: AccordionProps) {
     fetchComments().catch((error) => {
       console.log(error)
     })
-  }, [comments.length])
+  }, [comments])
   // index = which drawer was clicked
   function accordionClickHandler(index: number) {
     // SHOWS opens a link
