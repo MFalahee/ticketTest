@@ -45,7 +45,9 @@ export default function Accordion(props: AccordionProps) {
         return (
           <div className='cas-section-content animate-accordion-open'>
             {" "}
-            <CommentWall comments={comments} city={props.city} />
+            {comments ? (
+              <CommentWall comments={comments} city={props.city} />
+            ) : null}
           </div>
         )
       case 2:
