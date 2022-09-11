@@ -44,11 +44,23 @@ $media-breakpoint-lg: 1200px;
   justify-content: center;
   align-items: center;
   p {
+    padding: 0;
+    margin: 0;
+    margin-bottom: 1rem;
+    border-top: 2rem solid $yellow;
+    border-bottom: 2rem solid $yellow;
+    font-family: $font2;
     display: block;
-    font-size: 4rem;
+    font-size: 3rem;
     color: white;
   }
   background: url("https://concertsbucket.s3.amazonaws.com/otherAssets/bg.svg");
+
+  img {
+    &:hover {
+      cursor: pointer;
+    }
+  }
 }
 
 .App {
