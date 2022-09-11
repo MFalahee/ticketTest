@@ -8,17 +8,23 @@ export default function Accordion(props: AccordionProps) {
   const [openArr, setOpenArr] = React.useState([false, false, false, false])
   const [sections, setSections] = React.useState(props.sections)
   const [comments, setComments] = React.useState<AudienceComments[]>([])
+  const [apiAttempts, setApiAttempts] = React.useState<number>(0)
 
   React.useEffect(() => {
     const fetchComments = setTimeout(async () => {
-      if (comments && comments.length === 0) {
-        await getComments().then((result) => {
+      if (comments && comments.length === 0 && apiAttempts <= 2) {
+        await getComments(props.city).then((result) => {
+          console.log("Comment attempts: ", apiAttempts)
           setComments(result)
         })
       }
-    }, 5000)
-    return () => clearTimeout(fetchComments)
-  }, [comments])
+    }, 1000)
+    return () => {
+      console.log("fetching comments")
+      clearTimeout(fetchComments)
+      setApiAttempts(apiAttempts + 1)
+    }
+  }, [comments, apiAttempts, props.city])
   // index = which drawer was clicked
   function accordionClickHandler(index: number) {
     // SHOWS opens a link
