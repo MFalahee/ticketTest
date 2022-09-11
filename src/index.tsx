@@ -20,6 +20,10 @@ const ErrorPage = () => {
   )
 }
 root.render(
+  // This will have to be changed to be a central landing point and then a redirect based on Auth. It's not working on
+  // the hosted version.
+
+  // reformatting this into App might fix that? I'm pretty sure that could help.
   <Router>
     <Routes>
       <Route path='glow'>
