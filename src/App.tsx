@@ -58,6 +58,7 @@ function App(props: { city?: string }) {
     async function fetchPhotoURLs(city: string) {
       const apiResult = await photoAPI(city)
       if (apiResult && apiResult !== null && apiResult.keyArr !== null) {
+      
         let output = apiResult.keyArr.map((element: string) => {
           return `${process.env.REACT_APP_IMAGE_URL}/${element}`
         })
