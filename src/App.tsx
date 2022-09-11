@@ -105,7 +105,7 @@ function App(props: { city?: string }) {
       fetchPhotoURLs(params.city)
     }
     scrollListener()
-  }, [params])
+  }, [params, photos])
 
   React.useEffect(() => {}, [])
 

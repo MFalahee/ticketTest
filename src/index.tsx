@@ -1,6 +1,6 @@
 import React from "react"
 import ReactDOM from "react-dom/client"
-import { BrowserRouter as Router, Routes, Route, Link } from "react-router-dom"
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom"
 import "./index.css"
 import App from "./App"
 
@@ -12,7 +12,7 @@ const ErrorPage = () => {
       <p>Page not found</p>
       <img
         src={"phlogo.png"}
-        onClick={()=> window.open('http://www.elephantemusic.com/')}
+        onClick={() => window.open("http://www.elephantemusic.com/")}
         alt={
           "elephante logo art that is basically a squiggly looking elephant - the dev"
         }
