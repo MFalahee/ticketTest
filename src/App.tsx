@@ -91,14 +91,17 @@ function App(props: { city?: string }) {
   React.useEffect(() => {
     async function fetchPhotoURLs(city: string) {
       const photos = await photoAPI(params.city)
-      if (photos !== null && photos.keyArr !== null) {
+      if (photos && photos !== null && photos.keyArr !== null) {
         let output = photos.keyArr.map((element: string) => {
           return `${process.env.REACT_APP_IMAGE_URL}${element}`
         })
         setPhotos(output)
+      } else {
+        console.log("no photoss")
       }
     }
-    if (params && params.city) {
+
+    if (params && params.city && !photos) {
       fetchPhotoURLs(params.city)
     }
     scrollListener()

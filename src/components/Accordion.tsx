@@ -10,16 +10,14 @@ export default function Accordion(props: AccordionProps) {
   const [comments, setComments] = React.useState<AudienceComments[]>([])
 
   React.useEffect(() => {
-    const fetchComments = async () => {
+    const fetchComments = setTimeout(async () => {
       if (comments && comments.length === 0) {
         await getComments().then((result) => {
           setComments(result)
         })
       }
-    }
-    fetchComments().catch((error) => {
-      console.log(error)
-    })
+    }, 5000)
+    return () => clearTimeout(fetchComments)
   }, [comments])
   // index = which drawer was clicked
   function accordionClickHandler(index: number) {
