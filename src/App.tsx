@@ -11,46 +11,12 @@ import {
 import CssBaseline from "@mui/material/CssBaseline"
 import sections from "./files/sectionsData"
 import photoAPI from "./files/photoAPI"
-// const ticketCities = {
-//   atlanta: "atlanta",
-//   boston: "boston",
-//   chicago: "chicago",
-//   dallas: "dallas",
-//   dc: "dc",
-//   houston: "houston",
-//   losangeles: "losangeles",
-//   nyc: "nyc",
-//   portland: "portland",
-//   sanfrancisco: "sanfrancisco",
-//   seattle: "seattle",
-// }
-
-// const concertCities = {
-//   atlanta: "atlanta",
-//   boston: "boston",
-//   charlestonTrio: "charlestonTrio",
-//   chicago: "chicago",
-//   dallas: "dallas",
-//   dc: "dc",
-//   denver: "denver",
-//   fortLauderdale: "fortLauderdale",
-//   honolulu: "honolulu",
-//   houston: "houston",
-//   kansasCity: "kansasCity",
-//   la: "la",
-//   nyc: "nyc",
-//   philly: "philly",
-//   portland: "portland",
-//   sacramento: "sacramento",
-//   sanMarcos: "sanMarcos",
-//   seattle: "seattle",
-//   sf: "sf",
-// }
 
 function App(props: { city?: string }) {
   const [sectionsData] = React.useState(sections)
   const [photos, setPhotos] = React.useState(new Array(10).fill("placeholder"))
-  const params = useParams()
+  let d = useParams()
+  const [params] = React.useState(d)
   const timeRef = React.useRef<NodeJS.Timeout>()
   const delay = 500
 
@@ -90,24 +56,19 @@ function App(props: { city?: string }) {
 
   React.useEffect(() => {
     async function fetchPhotoURLs(city: string) {
-      const photos = await photoAPI(params.city)
-      if (photos && photos !== null && photos.keyArr !== null) {
-        let output = photos.keyArr.map((element: string) => {
-          return `${process.env.REACT_APP_IMAGE_URL}${element}`
+      const apiResult = await photoAPI(city)
+      if (apiResult && apiResult !== null && apiResult.keyArr !== null) {
+        let output = apiResult.keyArr.map((element: string) => {
+          return `${process.env.REACT_APP_IMAGE_URL}/${element}`
         })
         setPhotos(output)
       } else {
-        console.log("no photoss")
+        console.log("no photos")
       }
     }
-
-    if (params && params.city && !photos) {
-      fetchPhotoURLs(params.city)
-    }
+    if (params && params.city) fetchPhotoURLs(params.city)
     scrollListener()
-  }, [params, photos])
-
-  React.useEffect(() => {}, [])
+  }, [params])
 
   React.useEffect(() => {
     resetTimeout()

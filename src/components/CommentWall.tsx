@@ -14,7 +14,7 @@ export default function CommentWall(props: CommentWallProps) {
         each row will alternate direction for scrolling/speed
     */
   React.useEffect(() => {
-    if (comments.length > 0) {
+    if (comments && comments.length > 0) {
       // split the comments into chunks for each row. Maximum 10 comments per row, defaults to 5.
       let comArr = props.comments
       let len = comArr.length
@@ -26,7 +26,7 @@ export default function CommentWall(props: CommentWallProps) {
         }
       }
     }
-  }, [comments.length, props.comments])
+  }, [comments, props.comments])
 
   // will need to add functionality for changing cities?
 
