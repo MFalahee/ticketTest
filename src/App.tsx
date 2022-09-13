@@ -12,11 +12,10 @@ import CssBaseline from "@mui/material/CssBaseline"
 import sections from "./files/sectionsData"
 import photoAPI from "./files/photoAPI"
 
-function App(props: { city?: string }) {
+function App() {
   const [sectionsData] = React.useState(sections)
   const [photos, setPhotos] = React.useState(new Array(10).fill("placeholder"))
-  let d = useParams()
-  const [params] = React.useState(d)
+  const [params] = React.useState(useParams())
   const timeRef = React.useRef<NodeJS.Timeout>()
   const delay = 500
 
@@ -58,9 +57,8 @@ function App(props: { city?: string }) {
     async function fetchPhotoURLs(city: string) {
       const apiResult = await photoAPI(city)
       if (apiResult && apiResult !== null && apiResult.keyArr !== null) {
-      
         let output = apiResult.keyArr.map((element: string) => {
-          return `${process.env.REACT_APP_IMAGE_URL}/${element}`
+          return `${process.env.REACT_APP_IMGIX}/${element}?w=690&h=690&auto=format&q=60`
         })
         setPhotos(output)
       } else {
@@ -89,9 +87,9 @@ function App(props: { city?: string }) {
       <Crosshair />
       <div className='header-container'>
         <Header />
-        {params ? <Ticket city={params.city} /> : null}
+        {params !== null ? <Ticket city={params.city} /> : null}
       </div>
-      {params ? (
+      {params !== null ? (
         <Accordion
           city={params.city}
           sections={[...sectionsData]}
