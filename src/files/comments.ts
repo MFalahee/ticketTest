@@ -9,7 +9,6 @@ async function getComments(cityIn: string | undefined) {
   let t: AudienceComments[] = []
   try {
     if (process.env.NODE_ENV !== "production") {
-      console.log("getcomments", process.env.NODE_ENV, city)
       await axios
         .get(`${local}/${city}`)
         .then((res) => {
@@ -31,7 +30,6 @@ async function getComments(cityIn: string | undefined) {
   } catch (err) {
     console.log(err)
   }
-  console.log(t)
   return t
 }
 export default getComments
