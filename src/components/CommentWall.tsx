@@ -28,8 +28,6 @@ export default function CommentWall(props: CommentWallProps) {
     }
   }, [comments, props.comments])
 
-  // will need to add functionality for changing cities?
-
   function breakUpComments(row: number) {
     let c = comments
     let num = count

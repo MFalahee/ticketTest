@@ -106,7 +106,7 @@ $second_value: default;
           animation: slide-#{$i} 25s linear infinite;
           animation-play-state: running;
           animation-fill-mode: both;
-          animation-delay: calc(#{$i * math.random($limit: 100) * 0.001s});
+          animation-delay: calc(#{$i + 5 * math.random($limit: 100) * 0.001s});
         }
       }
     }

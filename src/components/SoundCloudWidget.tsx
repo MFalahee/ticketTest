@@ -1,8 +1,6 @@
 import * as React from "react"
 
 export default function SoundCloudWidget() {
-  // console.log(process.env.NODE_ENV);
-  // console.log(process.env)
   let link
   if (process.env.NODE_ENV === "production") {
     link = process.env.REACT_APP_SECRET_URL

@@ -26,7 +26,6 @@ export default function CommentRow(props: CommentRowProps) {
       <div
         className='comment-row-container marquee-wrapper'
         onAnimationStart={(e) => {
-          console.log("animation started")
           e.isDefaultPrevented()
         }}
       >

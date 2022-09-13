@@ -1,15 +1,16 @@
 import { AudienceComments } from "./customTypes"
+import SwitchCityName from "./switchCityName"
 import axios from "axios"
 
-let local = `api.opposite.space/comments/city`
+let local = `http://localhost:4001/comments/city`
 let productionKey = `${process.env.REACT_APP_API_BOO}`
-async function getComments(city: string | undefined) {
-  if (!city) city = "nyc"
+async function getComments(cityIn: string | undefined) {
+  const city = SwitchCityName(cityIn, "comment")
   let t: AudienceComments[] = []
   try {
     if (process.env.NODE_ENV !== "production") {
       await axios
-        .get(`http://${local}/${city}`)
+        .get(`${local}/${city}`)
         .then((res) => {
           t = res.data.data
         })
@@ -18,7 +19,7 @@ async function getComments(city: string | undefined) {
         })
     } else if (process.env.NODE_ENV === "production") {
       await axios
-        .get(`https://${productionKey}/comments/${city}`)
+        .get(`https://${productionKey}/comments/city/${city}`)
         .then((res) => {
           t = res.data.data
         })
@@ -29,7 +30,6 @@ async function getComments(city: string | undefined) {
   } catch (err) {
     console.log(err)
   }
-  console.log(t)
   return t
 }
 export default getComments

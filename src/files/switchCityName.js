@@ -1,40 +1,32 @@
-export default function SwitchCityName(city) {
-  //   const ticketCities = {
-  //     atlanta: "atlanta",
-  //     boston: "boston",
-  //     chicago: "chicago",
-  //     dallas: "dallas",
-  //     dc: "dc",
-  //     houston: "houston",
-  //     losangeles: "losangeles",
-  //     nyc: "nyc",
-  //     portland: "portland",
-  //     sanfrancisco: "sanfrancisco",
-  //     seattle: "seattle",
-  //   }
-
+export default function SwitchCityName(city, type) {
   const concertCities = {
     atlanta: "atlanta",
     boston: "boston",
-    charlestonTrio: "nyc",
     chicago: "chicago",
     dallas: "dallas",
     dc: "dc",
-    denver: "nyc",
-    fortLauderdale: "nyc",
-    honolulu: "nyc",
     houston: "houston",
-    kansasCity: "nyc",
     la: "losangeles",
     nyc: "nyc",
-    philly: "nyc",
     portland: "portland",
-    sacramento: "nyc",
-    sanMarcos: "nyc",
     seattle: "seattle",
     sf: "sanfrancisco",
   }
 
+  const commentCities = {
+    atlanta: "Atlanta",
+    boston: "Boston",
+    chicago: "Chicago",
+    dallas: "Dallas",
+    dc: "Washington",
+    houston: "Houston",
+    la: "Los Angeles",
+    nyc: "New York City",
+    portland: "Portland",
+    seattle: "Seattle",
+    sf: "San Francisco",
+  }
+  if (type === "ticket") return concertCities[city]
+  if (type === "comment") return commentCities[city]
   // switches url city name to ticket city name to load the proper ticket
-  return concertCities[city]
 }

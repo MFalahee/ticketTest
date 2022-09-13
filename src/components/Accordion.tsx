@@ -14,13 +14,11 @@ export default function Accordion(props: AccordionProps) {
     const fetchComments = setTimeout(async () => {
       if (comments && comments.length === 0 && apiAttempts <= 2) {
         await getComments(props.city).then((result) => {
-          console.log("Comment attempts: ", apiAttempts)
           setComments(result)
         })
       }
     }, 1000)
     return () => {
-      console.log("fetching comments")
       clearTimeout(fetchComments)
       setApiAttempts(apiAttempts + 1)
     }
@@ -93,7 +91,6 @@ export default function Accordion(props: AccordionProps) {
           <div
             className='cas-top-row'
             onClick={() => accordionClickHandler(section.id)}
-            onChange={(e) => console.log("change fired", e)}
           >
             <span className='cas-title-text'>{section.name}</span>
             <ArrowButton index={section.id} />
