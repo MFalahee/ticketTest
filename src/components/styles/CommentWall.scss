@@ -114,15 +114,15 @@ $second_value: default;
 }
 
 @include for-tablet {
-  @include marquee-mixin(slide-1, 1, 30%, 0%, -93%);
-  @include marquee-mixin(slide-2, 2, 30%, 15%, -93%);
-  @include marquee-mixin(slide-3, 3, 40%, 10%, -93%);
-  @include marquee-mixin(slide-4, 4, 20%, 5%, -93%);
+  @include marquee-mixin(slide-1, 1, 10%, 0%, -93%);
+  @include marquee-mixin(slide-2, 2, 10%, 15%, -93%);
+  @include marquee-mixin(slide-3, 3, 20%, 10%, -93%);
+  @include marquee-mixin(slide-4, 4, 10%, 5%, -93%);
 }
 
 @include for-desktop-up {
-  @include marquee-mixin(slide-1, 1, 73%, -10%, -83%);
-  @include marquee-mixin(slide-2, 2, 73%, -10%, -83%);
-  @include marquee-mixin(slide-3, 3, 73%, -10%, -83%);
-  @include marquee-mixin(slide-4, 4, 73%, -10%, -83%);
+  @include marquee-mixin(slide-1, 1, 53%, -10%, -83%);
+  @include marquee-mixin(slide-2, 2, 53%, -10%, -83%);
+  @include marquee-mixin(slide-3, 3, 43%, -10%, -83%);
+  @include marquee-mixin(slide-4, 4, 43%, -10%, -83%);
 }

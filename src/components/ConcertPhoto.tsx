@@ -4,7 +4,6 @@ import * as React from "react"
 // going to try using imgix to deliver the images.
 const ConcertPhoto: React.FC<{ photo: string; id: number }> = (props) => {
   if (props.photo !== "") {
-    console.log(props.photo)
     return (
       <div className='custom-photo-ticker-photo'>
         <img

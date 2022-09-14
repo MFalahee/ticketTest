@@ -19,7 +19,9 @@ async function getComments(cityIn: string | undefined) {
         })
     } else if (process.env.NODE_ENV === "production") {
       await axios
-        .get(`https://${productionKey}/comments/city/${city}`)
+        .get(
+          `https://${process.env.REACT_APP_COMMENTS_API}/comments/city/${city}`
+        )
         .then((res) => {
           t = res.data.data
         })
