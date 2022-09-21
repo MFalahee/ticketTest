@@ -2,6 +2,7 @@ import React from "react"
 import ReactDOM from "react-dom/client"
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom"
 import "./index.css"
+import { Login } from "./components/index"
 import App from "./App"
 
 const root = ReactDOM.createRoot(document.getElementById("root") as HTMLElement)
@@ -26,7 +27,7 @@ root.render(
       <Route path='hgtour'>
         <Route path=':city' element={<App />} />
       </Route>
-      <Route path='home' />
+      <Route path='/' element={<Login />} />
       <Route path='*' element={<ErrorPage />} />
     </Routes>
   </Router>
