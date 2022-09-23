@@ -1,6 +1,7 @@
-import "./stylesheet.scss"
+import "./root.scss"
 import * as React from "react"
-import { useParams } from "react-router-dom"
+import { useParams, useLocation, useNavigate } from "react-router-dom"
+import { useAuth } from "./files/useAuth"
 import {
   Header,
   Ticket,
@@ -18,13 +19,14 @@ function App() {
   const [params] = React.useState(useParams())
   const timeRef = React.useRef<NodeJS.Timeout>()
   const delay = 500
-
+  const auth = useAuth()
+  const location = useLocation()
+  const navigate = useNavigate()
   function resetTimeout() {
     if (timeRef.current) {
       clearTimeout(timeRef.current)
     }
   }
-
   // this listens for scrolling on the document and changes footer class based on that.
   function scrollListener() {
     // need to reset these on resize!
@@ -52,7 +54,6 @@ function App() {
       }
     }
   }
-
   React.useEffect(() => {
     async function fetchPhotoURLs(city: string) {
       const apiResult = await photoAPI(city)
@@ -68,7 +69,6 @@ function App() {
     if (params && params.city) fetchPhotoURLs(params.city)
     scrollListener()
   }, [params])
-
   React.useEffect(() => {
     resetTimeout()
     timeRef.current = setTimeout(() => {
@@ -81,24 +81,36 @@ function App() {
     }
   }, [])
 
-  return (
-    <div className='App' id='app-container'>
-      <CssBaseline />
-      <Crosshair />
-      <div className='header-container'>
-        <Header />
-        {params !== null ? <Ticket city={params.city} /> : null}
-      </div>
-      {params !== null ? (
-        <Accordion
-          city={params.city}
-          sections={[...sectionsData]}
-          photos={[...photos]}
-        />
-      ) : null}
-      <Footer />
-    </div>
-  )
+  if (auth.token && auth.concerts) {
+    console.log(auth.token && auth.concerts && auth.user)
+    let loc = location.pathname.split("/")[2]
+    if (auth.user === "Moo" || auth.concerts.includes(loc))
+      return (
+        <div className='App' id='app-container'>
+          <CssBaseline />
+          <Crosshair />
+          <div className='header-container'>
+            <Header />
+            {params !== null ? <Ticket city={params.city} /> : null}
+          </div>
+          {params !== null ? (
+            <Accordion
+              city={params.city}
+              sections={[...sectionsData]}
+              photos={[...photos]}
+            />
+          ) : null}
+          <Footer />
+        </div>
+      )
+    else {
+      navigate("/", { replace: true })
+      return <></>
+    }
+  } else {
+    navigate("/", { replace: true })
+    return <></>
+  }
 }
 
 export default App

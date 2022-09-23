@@ -1,0 +1,48 @@
+@mixin crosshair-sizing {
+  width: 100%;
+  @include for-mobile {
+    max-width: 7rem;
+  }
+  @include for-tablet {
+    max-width: 10rem;
+  }
+  @include for-desktop-up {
+    max-width: 15rem;
+  }
+}
+
+.crosshair-container {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  @keyframes crosshair-stop-animation {
+    0% {
+      transform: translateY(-3%);
+    }
+    25% {
+      transform: translateY(11%);
+    }
+    50% {
+      transform: translateY(-5%);
+    }
+    100% {
+      transform: translateY(-3%);
+    }
+  }
+
+  .crosshair-left {
+    position: fixed;
+    top: 20%;
+    z-index: 2;
+    left: 0;
+    @include crosshair-sizing();
+  }
+  .crosshair-right {
+    top: 20%;
+    position: fixed;
+    z-index: 2;
+    right: 0;
+    transform: rotate(180deg);
+    @include crosshair-sizing();
+  }
+}

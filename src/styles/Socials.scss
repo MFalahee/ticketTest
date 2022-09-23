@@ -1,0 +1,95 @@
+.socials {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
+  width: 100%;
+  overflow: hidden;
+  &-top-section {
+    width: 100%;
+    height: 500px;
+    max-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    border-top: 0.3rem inset black;
+    border-bottom: 0.5rem inset black;
+    overflow: hidden;
+    &-logo-container {
+      // discord logo
+      width: 100%;
+      height: 100%;
+      .discord-logo {
+        z-index: 1;
+        position: relative;
+        top: 40%;
+        padding: 0;
+        scale: 0.7;
+        &:hover {
+          cursor: pointer;
+          opacity: 0.8;
+        }
+        &:active {
+          opacity: 0.5;
+        }
+      }
+    }
+    .discord-text {
+      // top text
+      z-index: 1;
+      width: 100%;
+      padding: 0;
+      margin: 0;
+    }
+    &-spinner-container {
+      // hands spinning around logo
+      position: absolute;
+      overflow: hidden;
+      width: 100%;
+      .hands-container {
+        .hands-img {
+          position: relative;
+          z-index: 0;
+          overflow: hidden;
+          filter: invert(100%) sepia(100%) saturate(0%) hue-rotate(360deg)
+            brightness(300%) contrast(100%);
+          max-height: 600px;
+          scale: 1.5;
+          animation: spin-fingers 7s infinite both;
+        }
+      }
+    }
+  }
+  &-bottom-section {
+    // rest of social styling
+    z-index: 1;
+    overflow: hidden;
+    width: 100%;
+    padding: 1rem 0;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    align-items: center;
+    .socials-logo {
+      cursor: pointer;
+      &:hover {
+        opacity: 0.8;
+      }
+      &:active {
+        opacity: 0.5;
+      }
+    }
+    .socials-logo {
+      width: 10%;
+    }
+  }
+
+  @include for-desktop-up {
+    &-bottom-section {
+      .socials-logo {
+        max-width: 150px;
+      }
+    }
+  }
+}

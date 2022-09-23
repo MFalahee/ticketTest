@@ -7,8 +7,8 @@ const photoAPI = async (city) => {
   if (city) {
     try {
       if (process.env.NODE_ENV !== "production")
-        // l = `http://localhost:4001/aws/photos/${city}`
-        l = `${hosted}/${city}`
+        l = `http://localhost:4001/aws/photos/${city}`
+      // l = `${hosted}/${city}`
       else {
         l = `${hosted}/${city}`
       }

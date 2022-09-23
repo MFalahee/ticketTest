@@ -1,0 +1,44 @@
+.custom-ticket-section {
+  min-width: 100%;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: left;
+  align-items: center;
+  @include for-mobile {
+    top: -1rem;
+  }
+  @include for-tablet {
+    top: -1.4rem;
+  }
+  @include for-desktop-up {
+    top: -1.8rem;
+  }
+  .custom-ticket-image {
+    @include for-mobile {
+      max-width: 100%;
+    }
+    @include for-tablet {
+      max-width: 70%;
+    }
+    @include for-desktop-up {
+      max-width: 50%;
+    }
+  }
+  .custom-ticket-text {
+    position: relative;
+    font-family: $font3;
+    font-size: 0.5rem;
+    font-weight: 200;
+    left: -11%;
+    margin: 0;
+    padding: 0;
+    @include for-desktop-up {
+      left: -7%;
+      font-size: 0.8rem;
+    }
+  }
+}
+
+@keyframes ticket-grow {
+}

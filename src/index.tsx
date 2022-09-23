@@ -1,33 +1,37 @@
 import React from "react"
 import ReactDOM from "react-dom/client"
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom"
+import { BrowserRouter as Router, Routes, Route, Link } from "react-router-dom"
+import { ProvideAuth } from "./files/useAuth"
 import "./index.css"
+import { Login } from "./components/index"
 import App from "./App"
 
 const root = ReactDOM.createRoot(document.getElementById("root") as HTMLElement)
-
 const ErrorPage = () => {
   return (
     <div className='errorPageContainer'>
-      <p>Page not found</p>
-      <img
-        src={"phlogo.png"}
-        onClick={() => window.open("http://www.elephantemusic.com/")}
-        alt={
-          "elephante logo art that is basically a squiggly looking elephant - the dev"
-        }
-      />
+      <p>PNF - 403</p>
+      <Link to='/'>
+        <img
+          src={"phlogo.png"}
+          alt={
+            "elephante logo art that is a squiggly looking elephant face in black and white"
+          }
+        />
+      </Link>
     </div>
   )
 }
 root.render(
-  <Router>
-    <Routes>
-      <Route path='hgtour'>
-        <Route path=':city' element={<App />} />
-      </Route>
-      <Route path='home' />
-      <Route path='*' element={<ErrorPage />} />
-    </Routes>
-  </Router>
+  <ProvideAuth>
+    <Router>
+      <Routes>
+        <Route path='hgtour'>
+          <Route path=':city' element={<App />} />
+        </Route>
+        <Route path='/' element={<Login />} />
+        <Route path='*' element={<ErrorPage />} />
+      </Routes>
+    </Router>
+  </ProvideAuth>
 )
