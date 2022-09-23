@@ -8,9 +8,12 @@ $photo-ticker-delay: 0.5s;
   background-color: $yellow;
   overflow: hidden;
   display: relative;
-  .prev-b,
-  .next-b {
-    padding: 1rem 0;
+  .photo-button {
+    &.prev-b {
+      padding-top: 0.2rem;
+      transform: rotateY(180deg);
+    }
+    padding: 1rem 5rem;
     z-index: 2;
     cursor: pointer;
     position: relative;

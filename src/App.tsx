@@ -11,11 +11,13 @@ import {
 } from "./components/index"
 import CssBaseline from "@mui/material/CssBaseline"
 import sections from "./files/sectionsData"
-import photoAPI from "./files/photoAPI"
+import SwitchCityName from "./files/switchCityName"
+import axios from "axios"
 
 function App() {
   const [sectionsData] = React.useState(sections)
   const [photos, setPhotos] = React.useState(new Array(10).fill("placeholder"))
+  const [ticketURL, setTicketURL] = React.useState<string>("")
   const [params] = React.useState(useParams())
   const timeRef = React.useRef<NodeJS.Timeout>()
   const delay = 500
@@ -28,61 +30,62 @@ function App() {
     }
   }
   // this listens for scrolling on the document and changes footer class based on that.
-  function scrollListener() {
-    // need to reset these on resize!
-    onscroll = () => {
-      let heightD
-      let docHeight = document.scrollingElement?.scrollHeight
-      let toggleTarget = document.getElementById("moving-footer")
 
-      if (docHeight) {
-        heightD = docHeight - window.innerHeight
-      }
-      if (heightD && window.scrollY >= heightD) {
-        let target = document.getElementById("static-footer")
-        if (
-          target &&
-          document.scrollingElement &&
-          !toggleTarget?.classList.contains("footer-at-bottom")
-        ) {
-          document.scrollingElement.scrollTop = target.offsetTop
-          toggleTarget?.classList.toggle("footer-at-bottom")
-        }
-      } else {
-        if (toggleTarget?.classList.contains("footer-at-bottom"))
-          toggleTarget.classList.remove("footer-at-bottom")
+  React.useEffect(() => {
+    async function fetchTicket(city: string) {
+      city = SwitchCityName(city, "ticket")
+      let res = await axios.get(
+        `${
+          process.env.NODE_ENV === "production"
+            ? process.env.REACT_APP_API
+            : process.env.REACT_APP_DEV_API
+        }/images/t/${city}`
+      )
+      if (res.status === 200) {
+        setTicketURL(res.data.data)
       }
     }
-  }
-  React.useEffect(() => {
+
     async function fetchPhotoURLs(city: string) {
-      const apiResult = await photoAPI(city)
-      if (apiResult && apiResult !== null && apiResult.keyArr !== null) {
-        let output = apiResult.keyArr.map((element: string) => {
-          return `${process.env.REACT_APP_IMGIX}/${element}?w=690&h=690&auto=format&q=60`
-        })
-        setPhotos(output)
+      const apiResult = await axios.get(
+        `${
+          process.env.NODE_ENV === "production"
+            ? process.env.REACT_APP_API
+            : process.env.REACT_APP_DEV_API
+        }/images/p/${city}`
+      )
+      if (apiResult && apiResult !== null) {
+        setPhotos(apiResult.data.urls)
       } else {
         console.log("no photos")
       }
     }
-    if (params && params.city) fetchPhotoURLs(params.city)
-    scrollListener()
+    if (params && params.city) {
+      fetchPhotoURLs(params.city)
+      fetchTicket(params.city)
+    }
   }, [params])
   React.useEffect(() => {
     resetTimeout()
     timeRef.current = setTimeout(() => {
-      window.onresize = () => {
-        scrollListener()
+      let t = document.getElementById("in-need-of-redirect")
+      if (
+        t !== null &&
+        t.classList.contains("active") &&
+        !auth.token &&
+        !auth.user
+      ) {
+        navigate("/", { replace: true })
       }
     }, delay)
     return () => {
       resetTimeout()
     }
-  }, [])
+  })
+
+  React.useEffect(() => {})
 
   if (auth.token && auth.concerts) {
-    console.log(auth.token && auth.concerts && auth.user)
     let loc = location.pathname.split("/")[2]
     if (auth.user === "Moo" || auth.concerts.includes(loc))
       return (
@@ -91,7 +94,9 @@ function App() {
           <Crosshair />
           <div className='header-container'>
             <Header />
-            {params !== null ? <Ticket city={params.city} /> : null}
+            {params !== null ? (
+              <Ticket city={params.city} ticketURL={ticketURL} />
+            ) : null}
           </div>
           {params !== null ? (
             <Accordion
@@ -104,12 +109,10 @@ function App() {
         </div>
       )
     else {
-      navigate("/", { replace: true })
-      return <></>
+      return <div id='in-need-of-redirect' className='active'></div>
     }
   } else {
-    navigate("/", { replace: true })
-    return <></>
+    return <div id='in-need-of-redirect' className='active'></div>
   }
 }
 

@@ -36,5 +36,6 @@ export type CommentWallProps = {
 }
 
 export type TicketProps = {
+  ticketURL?: string
   city?: string
 }
