@@ -4,13 +4,18 @@ import { useNavigate } from "react-router-dom"
 //
 import { Header } from "./index"
 import { getCookie } from "../files/getCookie"
-import eventNum from "../files/eventNum"
 import { useAuth } from "../files/useAuth"
+import eventNum from "../files/eventNum"
 
 const Login: React.FC = () => {
   const [text, setText] = React.useState<String>("")
   const auth = useAuth()
   let navigate = useNavigate()
+  let navOptions = {
+    replace: true,
+    state: "fromLogin=true?",
+  }
+
   function handleTyping(text: string) {
     if (text === typeof String) {
     }
@@ -26,18 +31,25 @@ const Login: React.FC = () => {
       const input = text.toLowerCase()
       let t = document.getElementById("login-page-error-text")
       // quick checks to see if it's actually an attempt at a valid email.
-      //   if (
-      //     t &&
-      //     input.includes("@", 1) &&
-      //     input.includes(".", input.length - 4)
-      //   ) {
-      //       navigate(pathname, navOptions);
-      //     }
-      //   } else {
-      //     if (t) t.innerHTML = "Please provide a valid email"
-      //     return
-      //   }
-      // }
+      if (
+        t &&
+        input.includes("@", 1) &&
+        input.includes(".", input.length - 4) &&
+        !input.includes(" ")
+      ) {
+        let result = await auth.signin(input)
+        if (typeof result === "string") {
+          // error signing in.
+          t.innerHTML = result
+        } else {
+          if (typeof result === "number") {
+            let city = eventNum(result)
+            navigate(`/hgtour/${city}`, navOptions)
+          }
+          // this should never happen?
+          return "Something went wrong"
+        }
+      }
     }
   }
 

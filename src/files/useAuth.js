@@ -19,6 +19,7 @@ export const useAuth = () => {
 function useProvideAuth() {
   const [token, setToken] = React.useState(null)
   const [user, setUser] = React.useState(null)
+  const [concerts, setConcerts] = React.useState([])
   let maxAge = 100000
   let expires = new Date().getUTCDate()
   let url = process.env.REACT_APP_API
@@ -28,10 +29,11 @@ function useProvideAuth() {
   }
 
   const signin = async (email) => {
+    // console.log("auth signin", email)
     const result = await axios
       .post(`${url}/login?email=${email}`)
       .then((response) => {
-        return response.data
+        return response
       })
       .catch((error) => {
         return error.request.status
@@ -50,42 +52,50 @@ function useProvideAuth() {
           return "Unable to process your request. Please try again."
       }
     } else {
-      if (result.request.status === 206) {
-        console.log("Multi-concert user")
+      if (result && result.status === 206) {
+        setUser("Moo")
+        return "Multi-concert user-"
       }
-      let city = eventNum(result.redirect)
-      document.cookie = `token=${result.data};max_age=${maxAge};secure;samesite=none;expires=${expires}`
-      let pathname = `/hgtour/${city}`
-      let navOptions = { replace: true, state: "fromLogin" }
+      document.cookie = `token=${result.data.data};max_age=${maxAge};secure;samesite=none;expires=${expires}`
+      setToken(result.data.data)
+      setConcerts([eventNum(result.data.redirect)])
+      return result.data.redirect
     }
   }
   const checkToken = async (tokenInput) => {
     if (!tokenInput) {
-      return `Must provide a token to check.`
+      return `Must provide a token to validate.`
     } else {
-      const check = await axios.post(`${url}/checktoken`, {
-        Headers: { Authorization: `${tokenInput}` },
-      })
-      return check
+      const checkIfValid = await axios
+        .post(`${url}/checktoken?token=${tokenInput}`)
+        .then((response) => {
+          return response
+        })
+      return checkIfValid
     }
   }
-  const redirectWithAuth = () => {}
 
   React.useEffect(() => {
+    // checks cookie on load
     let cookie
     if (!token) cookie = getCookie("token")
     async function checkIfValidCookie() {
       const result = await checkToken(cookie)
-      console.log(result)
+      if (result && result.status === 200) {
+        setToken(result.data.data.token)
+        setUser(result.data.data.user)
+        setConcerts([eventNum(result.data.data.guestbook_event_id)])
+      }
     }
     if (cookie) checkIfValidCookie()
-  }, [])
+  })
+
   // Return the user object and auth methods
   return {
     user,
     token,
+    concerts,
     signin,
     checkToken,
-    redirectWithAuth,
   }
 }
