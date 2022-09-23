@@ -103,10 +103,10 @@ $second_value: default;
       border: 1px solid;
       &:nth-of-type(#{$i}) {
         .marquee-inner {
-          animation: slide-#{$i} 25s linear infinite;
+          animation: slide-#{$i} 24s linear infinite;
           animation-play-state: running;
           animation-fill-mode: both;
-          animation-delay: calc(#{$i + 5 * math.random($limit: 100) * 0.001s});
+          animation-delay: calc(#{$i + 1 * math.random($limit: 100) * 0.001s});
         }
       }
     }

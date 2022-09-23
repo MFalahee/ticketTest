@@ -82,6 +82,13 @@ export default function PhotoTicker(props: PhotoTickerProps) {
     }
     handlePhotoIndex(nextIndex, photoIndex)
   }
+  const handlePrevPhoto = (e: React.MouseEvent) => {
+    let nextIndex = photoIndex - 1
+    if (nextIndex < 0) {
+      nextIndex = arrLength - 1
+    }
+    handlePhotoIndex(nextIndex, photoIndex)
+  }
 
   function resetTimeout() {
     if (timeRef.current) {
@@ -113,12 +120,20 @@ export default function PhotoTicker(props: PhotoTickerProps) {
   return (
     <div className='custom-photo-ticker' id='cpt'>
       <button
-        className='next-b'
+        className='prev-b photo-button'
+        id={`prev-button`}
+        onClick={(e) => handlePrevPhoto(e)}
+      >
+        <NavigateNextOutlinedIcon color={"inherit"} />
+      </button>
+      <button
+        className='next-b photo-button'
         id={`next-button`}
         onClick={(e) => handleNextPhoto(e)}
       >
         <NavigateNextOutlinedIcon color={"inherit"} />
       </button>
+
       <div className='custom-photo-ticker-photo-container'>
         {photos?.map((photo, key) => {
           return <ConcertPhoto photo={photo} id={key} key={key} />
