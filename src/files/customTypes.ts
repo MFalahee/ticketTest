@@ -2,7 +2,6 @@ export type Section = {
   name: string
   subcategories?: Array<string>
   id: number
-  photos?: Array<string>
   description?: string
   // add more properties to section here when needed
 }

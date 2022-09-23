@@ -17,8 +17,9 @@ async function getComments(cityIn: string | undefined) {
         })
     } else {
       await axios
-        .get(`https://${process.env.REACT_APP_API}/comments/city/${city}`)
+        .get(`${process.env.REACT_APP_API}/comments/city/${city}`)
         .then((res) => {
+          console.log(t)
           t = res.data.data
         })
         .catch((err) => {
