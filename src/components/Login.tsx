@@ -1,30 +1,51 @@
 import * as React from "react"
+import { useNavigate } from "react-router-dom"
+//
+//
 import { Header } from "./index"
+import { getCookie } from "../files/getCookie"
+import eventNum from "../files/eventNum"
+import { useAuth } from "../files/useAuth"
 
 const Login: React.FC = () => {
   const [text, setText] = React.useState<String>("")
+  const auth = useAuth()
+  let navigate = useNavigate()
   function handleTyping(text: string) {
     if (text === typeof String) {
     }
     setText(text)
   }
 
-  function submitForm() {
-    console.log("submit fired")
+  // submits text to the backend and redirects to the correct location
+  async function submitForm() {
     if (text.length === 0) {
+      // no data to submit
       return
-
-      //   check if the email is valid and in the database.
-      //   redirect to the correct page with proper credentials
-
-      //   each concert has own id -- own key
+    } else {
+      const input = text.toLowerCase()
+      let t = document.getElementById("login-page-error-text")
+      // quick checks to see if it's actually an attempt at a valid email.
+      //   if (
+      //     t &&
+      //     input.includes("@", 1) &&
+      //     input.includes(".", input.length - 4)
+      //   ) {
+      //       navigate(pathname, navOptions);
+      //     }
+      //   } else {
+      //     if (t) t.innerHTML = "Please provide a valid email"
+      //     return
+      //   }
+      // }
     }
   }
 
-  function onClick(e: React.MouseEvent) {
-    e.preventDefault()
-    submitForm()
-  }
+  React.useEffect(() => {
+    const token = getCookie(`token`)
+    if (token) console.log("token stored")
+    // get auth token from cookies
+  }, [])
   return (
     <div className='login-page'>
       <Header />
@@ -58,13 +79,19 @@ const Login: React.FC = () => {
           {" "}
           Submit{" "}
         </button>
+        <div className='login-page-form-error-text-container'>
+          <span
+            id='login-page-error-text'
+            className='login-page-form-error-text-container-text'
+          ></span>
+        </div>
       </form>
       <img
         className='login-page-phlogo'
         src={"phlogo.png"}
         onClick={() => window.open("http://www.elephantemusic.com/")}
         alt={
-          "elephante logo art that is basically a squiggly looking elephant wearing a partyhat - the dev"
+          "elephante logo art that is basically a squiggly looking elephant wearing a partyhat"
         }
       />
     </div>

@@ -1,6 +1,6 @@
 import "./root.scss"
 import * as React from "react"
-import { useParams } from "react-router-dom"
+import { useParams, useLocation } from "react-router-dom"
 import {
   Header,
   Ticket,
@@ -13,6 +13,7 @@ import sections from "./files/sectionsData"
 import photoAPI from "./files/photoAPI"
 
 function App() {
+  let location = useLocation()
   const [sectionsData] = React.useState(sections)
   const [photos, setPhotos] = React.useState(new Array(10).fill("placeholder"))
   const [params] = React.useState(useParams())
