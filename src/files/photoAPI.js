@@ -2,15 +2,14 @@
 import axios from "axios"
 
 const photoAPI = async (city) => {
-  let hosted = "https://api.opposite.space/aws/photos"
   let l, j
   if (city) {
     try {
       if (process.env.NODE_ENV !== "production")
-        l = `http://localhost:4001/aws/photos/${city}`
+        l = `${process.env.REACT_APP_DEV_API}/aws/photos/${city}`
       // l = `${hosted}/${city}`
       else {
-        l = `${hosted}/${city}`
+        l = `${process.env.REACT_APP_API}/aws/photos/${city}`
       }
       j = await axios.get(l).then(
         (res) => {
