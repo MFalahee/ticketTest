@@ -33,7 +33,7 @@ const Login: React.FC = () => {
       if (
         t &&
         input.includes("@", 1) &&
-        input.includes(".", input.length - 6) &&
+        input.includes(".", 1) &&
         !input.includes(" ")
       ) {
         let result = await auth.signin(input)
@@ -48,6 +48,10 @@ const Login: React.FC = () => {
           // this should never happen?
           return "Something went wrong"
         }
+      } else {
+        if (t)
+          t.innerHTML =
+            "Please check if you entered a valid email address. Thank you."
       }
     }
   }
