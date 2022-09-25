@@ -3,7 +3,6 @@ import { useNavigate } from "react-router-dom"
 //
 //
 import { Header } from "./index"
-import { getCookie } from "../files/getCookie"
 import { useAuth } from "../files/useAuth"
 import eventNum from "../files/eventNum"
 
@@ -22,7 +21,7 @@ const Login: React.FC = () => {
     setText(text)
   }
 
-  // submits text to the backend and redirects to the correct location
+  // submits text to the backend and redirects to the correct location  
   async function submitForm() {
     if (text.length === 0) {
       // no data to submit
@@ -44,7 +43,7 @@ const Login: React.FC = () => {
         } else {
           if (typeof result === "number") {
             let city = eventNum(result)
-            navigate(`/hgtour/${city}`, navOptions)
+            return navigate(`/hgtour/${city}`, navOptions)
           }
           // this should never happen?
           return "Something went wrong"
@@ -54,9 +53,6 @@ const Login: React.FC = () => {
   }
 
   React.useEffect(() => {
-    const token = getCookie(`token`)
-    if (token) console.log("token stored")
-    // get auth token from cookies
   }, [])
   return (
     <div className='login-page'>
