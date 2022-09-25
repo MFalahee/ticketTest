@@ -14,7 +14,6 @@ export function ProvideAuth({ children }) {
 export const useAuth = () => {
   return React.useContext(authContext)
 }
-
 // Provider hook that creates auth object and handles state
 function useProvideAuth() {
   const [token, setToken] = React.useState(null)

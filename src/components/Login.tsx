@@ -21,7 +21,7 @@ const Login: React.FC = () => {
     setText(text)
   }
 
-  // submits text to the backend and redirects to the correct location  
+  // submits text to the backend and redirects to the correct location
   async function submitForm() {
     if (text.length === 0) {
       // no data to submit
@@ -33,7 +33,7 @@ const Login: React.FC = () => {
       if (
         t &&
         input.includes("@", 1) &&
-        input.includes(".", input.length - 4) &&
+        input.includes(".", input.length - 6) &&
         !input.includes(" ")
       ) {
         let result = await auth.signin(input)
@@ -52,8 +52,7 @@ const Login: React.FC = () => {
     }
   }
 
-  React.useEffect(() => {
-  }, [])
+  React.useEffect(() => {}, [])
   return (
     <div className='login-page'>
       <Header />
