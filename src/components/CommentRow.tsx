@@ -2,7 +2,14 @@ import { AudienceComments, CommentRowProps } from "../files/customTypes"
 
 export default function CommentRow(props: CommentRowProps) {
   function seedComment(comment: AudienceComments, key: number) {
-    if (comment)
+    if (comment) {
+      let d = new Date(comment.created_at)
+      let time = d.toLocaleDateString("en-us", {
+        year: "numeric",
+        month: "short",
+        day: "numeric",
+      })
+
       return (
         <div key={key} className='marquee-item'>
           <div className='comment-style-div'>
@@ -12,11 +19,12 @@ export default function CommentRow(props: CommentRowProps) {
             <div className={`comment-row-comment-bottom`}>
               <span className='comment-name'>{`${comment.name}`}</span>
               <span> | </span>
-              <span className='comment-date'>{`${comment.created_at}`}</span>
+              <span className='comment-date'>{`${time}`}</span>
             </div>
           </div>
         </div>
       )
+    }
   }
 
   if (props.comments) {

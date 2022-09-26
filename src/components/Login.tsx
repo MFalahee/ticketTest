@@ -45,8 +45,9 @@ const Login: React.FC = () => {
             let city = eventNum(result)
             return navigate(`/hgtour/${city}`, navOptions)
           }
+
           // this should never happen?
-          return "Something went wrong"
+          return (t.innerHTML = "Something went wrong")
         }
       } else {
         if (t)

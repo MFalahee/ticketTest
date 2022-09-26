@@ -15,7 +15,7 @@ export type AccordionProps = {
 export type AudienceComments = {
   name: string
   message: string
-  created_at: Date
+  created_at: string
   city: string
   id: number
 }
