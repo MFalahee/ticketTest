@@ -66,7 +66,7 @@ const Login: React.FC = () => {
       </h3>
       <form className='login-page-form'>
         <input
-          placeholder='tim@iamtheelephante.com'
+          placeholder='Email'
           className='login-page-form-text-input'
           type='text'
           onChange={(e) => {
