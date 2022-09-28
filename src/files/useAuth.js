@@ -14,7 +14,8 @@ export function ProvideAuth({ children }) {
 export const useAuth = () => {
   return React.useContext(authContext)
 }
-// Provider hook that creates auth object and handles state
+
+
 function useProvideAuth() {
   const [token, setToken] = React.useState(null)
   const [user, setUser] = React.useState(null)
@@ -28,7 +29,6 @@ function useProvideAuth() {
   }
 
   const signin = async (email) => {
-    // console.log("auth signin", email)
     const result = await axios
       .post(`${url}/login?email=${email}`)
       .then((response) => {
@@ -38,7 +38,6 @@ function useProvideAuth() {
         return error.request.status
       })
     if (typeof result === "number") {
-      // error occurred
       switch (result) {
         case 404:
           console.log("Unable to find your email in the database.")
@@ -89,7 +88,6 @@ function useProvideAuth() {
     if (cookie) checkIfValidCookie()
   })
 
-  // Return the user object and auth methods
   return {
     user,
     token,

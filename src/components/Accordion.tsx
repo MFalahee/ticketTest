@@ -23,16 +23,14 @@ export default function Accordion(props: AccordionProps) {
       setApiAttempts(apiAttempts + 1)
     }
   }, [comments, apiAttempts, props.city])
-  // index = which drawer was clicked
+
   function accordionClickHandler(index: number) {
-    // SHOWS opens a link
     if (index === 4) {
+      // shows tab opens link
       window.open("http://www.elephantemusic.com/tour")
     }
-    // toggle our state obj
     let newOpenArr = [...openArr]
     newOpenArr[index] = !newOpenArr[index]
-    // park it
     setOpenArr(newOpenArr)
   }
 
@@ -68,10 +66,9 @@ export default function Accordion(props: AccordionProps) {
           </div>
         )
       case 4:
-        // SHOWS section- left blank intentionally
+        // SHOWS section- 
         return (
           <div className='cas-section-content animate-accordion-open'>
-            {/* put anything here in SHOWS? */}
           </div>
         )
       default:

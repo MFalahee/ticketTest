@@ -3,7 +3,6 @@ import PlayArrowIcon from "@mui/icons-material/PlayArrow"
 import SquareIcon from "@mui/icons-material/Square"
 
 interface ArrowButtonProps {
-  // todo: add props
   index: number
 }
 const ArrowButton: React.FC<ArrowButtonProps> = (props) => {

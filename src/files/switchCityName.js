@@ -28,5 +28,4 @@ export default function SwitchCityName(city, type) {
   }
   if (type === "ticket") return concertCities[city]
   if (type === "comment") return commentCities[city]
-  // switches url city name to ticket city name to load the proper ticket
 }
